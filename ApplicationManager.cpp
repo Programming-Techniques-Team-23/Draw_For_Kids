@@ -4,6 +4,7 @@
 #include "Actions\AddCircAction.h"
 #include "Actions\AddSquAction.h"
 #include "Actions\AddTriAction.h"
+#include "Figures/CFigure.h"
 
 
 
@@ -82,10 +83,17 @@ void ApplicationManager::AddFigure(CFigure* pFig)
 		FigList[FigCount++] = pFig;	
 }
 ////////////////////////////////////////////////////////////////////////////////////
-CFigure *ApplicationManager::GetFigure(int x, int y) const
+CFigure* ApplicationManager::GetFigure(int x, int y) const
 {
-	for (int i = 0; i < FigCount; i++)
-		FigList[i]->pointchecker(x,y);
+	CFigure* Figp = NULL;
+	for (int i = 0; i < FigCount; i++) {
+		if (FigList[i]->pointchecker(x, y)) {
+			Figp = FigList[i];
+		}
+	}
+	return Figp;
+}
+
 
 	//If a figure is found return a pointer to it.
 	//if this point (x,y) does not belong to any figure return NULL
@@ -94,8 +102,6 @@ CFigure *ApplicationManager::GetFigure(int x, int y) const
 	//Add your code here to search for a figure given a point x,y	
 	//Remember that ApplicationManager only calls functions do NOT implement it.
 
-	return NULL;
-}
 //==================================================================================//
 //							Interface Management Functions							//
 //==================================================================================//
