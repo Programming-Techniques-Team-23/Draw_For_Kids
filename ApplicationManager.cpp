@@ -1,5 +1,10 @@
 #include "ApplicationManager.h"
 #include "Actions\AddRectAction.h"
+#include "Actions\AddHexAction.h"
+#include "Actions\AddCircAction.h"
+#include "Actions\AddSquAction.h"
+#include "Actions\AddTriAction.h"
+
 
 
 //Constructor
@@ -36,6 +41,18 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case DRAW_RECT:
 			pAct = new AddRectAction(this);
 			break;
+		case DRAW_SQUR:
+			pAct = new AddSquAction(this);
+		break;
+		case DRAW_CIRC:
+			pAct = new AddCircAction(this);
+			break;
+		case DRAW_TRI:
+			pAct = new AddTriAction(this);
+			break;
+		case DRAW_HEX:
+			pAct = new AddHexAction(this);
+			break;
 
 		case EXIT:
 			///create ExitAction here
@@ -67,6 +84,9 @@ void ApplicationManager::AddFigure(CFigure* pFig)
 ////////////////////////////////////////////////////////////////////////////////////
 CFigure *ApplicationManager::GetFigure(int x, int y) const
 {
+	for (int i = 0; i < FigCount; i++)
+		FigList[i]->pointchecker(x,y);
+
 	//If a figure is found return a pointer to it.
 	//if this point (x,y) does not belong to any figure return NULL
 

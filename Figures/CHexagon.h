@@ -2,7 +2,6 @@
 #define CHEX_H
 
 #include "CFigure.h"
-
 class CHexagon : public CFigure
 {
 private:
@@ -10,6 +9,7 @@ private:
 public:
 	CHexagon(Point, GfxInfo FigureGfxInfo);
 	virtual void Draw(Output* pOut) const;
+	bool pointchecker(int x, int y);
 };
 
 #endif

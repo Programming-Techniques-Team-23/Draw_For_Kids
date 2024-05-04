@@ -12,6 +12,8 @@ private:
 public:
 	CTriangle(Point, Point, Point, GfxInfo FigureGfxInfo);
 	virtual void Draw(Output* pOut) const;
+	bool pointchecker(int x, int y);
+	double area(Point , Point , Point );
 };
 
 #endif
