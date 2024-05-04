@@ -5,6 +5,7 @@
 #include "Actions\AddSquAction.h"
 #include "Actions\AddTriAction.h"
 #include "Figures/CFigure.h"
+#include "Actions/SelectAction.h"
 
 
 
@@ -53,6 +54,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			break;
 		case DRAW_HEX:
 			pAct = new AddHexAction(this);
+			break;
+		case SELECT:
+			pAct = new SelectAction(this);
 			break;
 
 		case EXIT:
