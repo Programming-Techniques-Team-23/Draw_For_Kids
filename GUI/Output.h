@@ -23,8 +23,8 @@ public:
 	void DrawRect(Point P1, Point P2, GfxInfo RectGfxInfo, bool selected = false) const;  //Draw a rectangle
 	void DrawHex(Point P1, GfxInfo HEXGfxInfo, bool selected = false)const;//Draw a hexagon
 	void DrawCirc(Point P1, Point P2, GfxInfo CircGfxInfo, bool selected = false)const;//Draw a circle
-	void DrawSquare(Point P1, GfxInfo HEXGfxInfo, bool selected = false)const;//Draw a square
-	void DrawTri(Point P1, Point P2, Point P3, GfxInfo HEXGfxInfo, bool selected = false)const;//Draw a triangle
+	void DrawSquare(Point P1, GfxInfo SQUGfxInfo, bool selected = false)const;//Draw a square
+	void DrawTri(Point P1, Point P2, Point P3, GfxInfo TRIGfxInfo, bool selected = false)const;//Draw a triangle
 
 
 	///Make similar functions for drawing all other figure types.

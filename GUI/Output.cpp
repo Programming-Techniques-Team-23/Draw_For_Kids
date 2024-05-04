@@ -265,19 +265,19 @@ void Output::DrawCirc(Point P1, Point P2, GfxInfo CircGfxInfo, bool selected)con
 	CreateDrawToolBar();
 }
 
-void Output::DrawSquare(Point P1, GfxInfo HEXGfxInfo, bool selected)const {
+void Output::DrawSquare(Point P1, GfxInfo SQUGfxInfo, bool selected)const {
 	color DrawingClr;
 	if (selected)
 		DrawingClr = UI.HighlightColor; //Figure should be drawn highlighted
 	else
-		DrawingClr = HEXGfxInfo.DrawClr;
+		DrawingClr = SQUGfxInfo.DrawClr;
 
 	pWind->SetPen(DrawingClr, 1);
 	drawstyle style;
-	if (HEXGfxInfo.isFilled)
+	if (SQUGfxInfo.isFilled)
 	{
 		style = FILLED;
-		pWind->SetBrush(HEXGfxInfo.FillClr);
+		pWind->SetBrush(SQUGfxInfo.FillClr);
 	}
 	else
 		style = FRAME;
@@ -291,20 +291,20 @@ void Output::DrawSquare(Point P1, GfxInfo HEXGfxInfo, bool selected)const {
 	CreateDrawToolBar();
 }
 
-void Output::DrawTri(Point P1, Point P2, Point P3, GfxInfo HEXGfxInfo, bool selected)const {
+void Output::DrawTri(Point P1, Point P2, Point P3, GfxInfo TRIGfxInfo, bool selected)const {
 
 	color DrawingClr;
 	if (selected)
 		DrawingClr = UI.HighlightColor; //Figure should be drawn highlighted
 	else
-		DrawingClr = HEXGfxInfo.DrawClr;
+		DrawingClr = TRIGfxInfo.DrawClr;
 
 	pWind->SetPen(DrawingClr, 1);
 	drawstyle style;
-	if (HEXGfxInfo.isFilled)
+	if (TRIGfxInfo.isFilled)
 	{
 		style = FILLED;
-		pWind->SetBrush(HEXGfxInfo.FillClr);
+		pWind->SetBrush(TRIGfxInfo.FillClr);
 	}
 	else
 		style = FRAME;
