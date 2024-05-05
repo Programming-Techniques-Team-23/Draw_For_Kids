@@ -6,6 +6,9 @@
 #include "Actions\AddTriAction.h"
 #include "Figures/CFigure.h"
 #include "Actions/SelectAction.h"
+#include"../Phase-2/Actions/Switchtoplay.h"
+#include"ApplicationManager.h"
+#include"Actions/Exit.h"
 
 
 
@@ -58,8 +61,12 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case SELECT:
 			pAct = new SelectAction(this);
 			break;
+		case TO_PLAY:
+			pAct = new SwitchToPlay(this);
+			break;
 
 		case EXIT:
+			pAct = new Exit(this);
 			///create ExitAction here
 			
 			break;
@@ -101,9 +108,15 @@ CFigure* ApplicationManager::GetFigure(int x, int y) const
 {
 	Clipboard = c;
 }
- void ApplicationManager::setmessage(string s) {
-	message = s;
+ void ApplicationManager::setselected(CFigure* sf) {
+	 SelectedFig = sf;
  }
+ CFigure *ApplicationManager::getselected() {
+	 return SelectedFig;
+
+ }
+
+	 
 
 
 	//If a figure is found return a pointer to it.
