@@ -6,5 +6,5 @@ public:
 	Exit(ApplicationManager* AM);
 	virtual void ReadActionParameters();
 	virtual void Execute();
-	~Exit();
+	
 };
