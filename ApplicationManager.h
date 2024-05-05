@@ -42,7 +42,6 @@ public:
 	Output *GetOutput() const; //Return pointer to the output
 	void UpdateInterface() const;	//Redraws all the drawing window	
     void setclipboard(CFigure* c);
-    void setmessage(string s);
 	void setselected(CFigure*sf);
 	CFigure* getselected();
 		

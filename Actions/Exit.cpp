@@ -13,7 +13,8 @@ void Exit::Execute()
 {
 	Output* pOut = pManager->GetOutput();
 	Input* pIn = pManager->GetInput();
-	pManager->setmessage("bye");
+
+	pOut->PrintMessage("BYE");
 }
 
 Exit::~Exit()

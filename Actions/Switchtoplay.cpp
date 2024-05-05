@@ -8,8 +8,9 @@ SwitchToPlay::SwitchToPlay(ApplicationManager*AM):Action(AM)
 void SwitchToPlay::ReadActionParameters()
 {
 	Output* pOut = pManager->GetOutput();
-	pManager->setmessage("welcome to playmode");
+	Input* pIn = pManager->GetInput();
 
+	pOut->PrintMessage("welcome to playmode");
 }
 
 void SwitchToPlay::Execute()

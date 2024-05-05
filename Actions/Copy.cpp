@@ -7,9 +7,9 @@ Copy::Copy(ApplicationManager* AM):Action(AM)
 void Copy::ReadActionParameters()
 {
 	Output* pOut = pManager->GetOutput();
+	Input* pIn = pManager->GetInput();
 
-	pManager->setmessage("Figure has been copied");
-
+	pOut->PrintMessage("Figure has been copied");
 }
 
 void Copy::Execute()
@@ -21,7 +21,7 @@ void Copy::Execute()
 
 	}
 	else
-		pManager->setmessage("Copy a Figure first");
+		pOut->PrintMessage("Copy a Figure first");
 }
 
 Copy::~Copy()
