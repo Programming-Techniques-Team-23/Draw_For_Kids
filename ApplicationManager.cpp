@@ -6,7 +6,7 @@
 #include "Actions\AddTriAction.h"
 #include "Figures/CFigure.h"
 #include "Actions/SelectAction.h"
-#include"../Phase-2/Actions/Switchtoplay.h"
+#include"Actions/Switchtoplay.h"
 #include"ApplicationManager.h"
 #include"Actions/Exit.h"
 

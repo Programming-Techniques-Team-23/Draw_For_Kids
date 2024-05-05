@@ -41,10 +41,10 @@ public:
 	Input *GetInput() const; //Return pointer to the input
 	Output *GetOutput() const; //Return pointer to the output
 	void UpdateInterface() const;	//Redraws all the drawing window	
-        void setclipboard(CFigure* c);
-         void setmessage(string s);
-		 void setselected(CFigure*sf);
-		 CFigure* getselected();
+    void setclipboard(CFigure* c);
+    void setmessage(string s);
+	void setselected(CFigure*sf);
+	CFigure* getselected();
 		
 		 
 };
