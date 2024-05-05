@@ -30,5 +30,4 @@ void SelectAction::Execute()
 	ReadActionParameters();
 
 	CFigure* Figp = pManager->GetFigure(P1.x, P1.y);
-	Figp->Draw(
 }

@@ -23,7 +23,7 @@ void AddSquAction::ReadActionParameters()
 	SquGfxInfo.isFilled = false;	//default is not filled
 	//get drawing, filling colors and pen width from the interface
 	SquGfxInfo.DrawClr = pOut->getCrntDrawColor();
-	RectGfxInfo.FillClr = pOut->getCrntFillColor();
+	SquGfxInfo.FillClr = pOut->getCrntFillColor();
 
 	pOut->ClearStatusBar();
 
@@ -36,7 +36,7 @@ void AddSquAction::Execute()
 	ReadActionParameters();
 
 	//Create a square with the parameters read from the user
-	CSquare* S = new CSquare(P1, P2, RectGfxInfo);
+	CSquare* S = new CSquare(P1,SquGfxInfo);
 
 	//Add the square to the list of figures
 	pManager->AddFigure(S);

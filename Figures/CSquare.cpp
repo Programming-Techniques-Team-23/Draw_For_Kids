@@ -9,7 +9,7 @@ CSquare::CSquare(Point P1, GfxInfo FigureGfxInfo) :CFigure(FigureGfxInfo)
 void CSquare::Draw(Output* pOut) const
 {
 	//Call Output::DrawSqaure to draw a square on the screen	
-	pOut->DrawSquare(Corner1, Corner2, FigGfxInfo, Selected);
+	pOut->DrawSquare(Centre, FigGfxInfo, Selected);
 }
 bool CSquare::pointchecker(int x, int y)
 {

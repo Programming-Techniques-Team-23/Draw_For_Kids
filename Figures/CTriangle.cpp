@@ -16,12 +16,12 @@ void CTriangle::Draw(Output* pOut) const
 double CTriangle::area(Point a, Point b, Point c) {
 	return abs((double)((a.x * (b.y - c.y) + b.x * (c.y - a.y) + c.x * (a.y - b.y)) / 2.0));
 }
-void CTriangle::pointchecker(int x, int y) {
-	Point p(x, y);
-	double A = area(a, b, c); 
-	double A1 = area(p, b, c); 
-	double A2 = area(a, p, c); 
-	double A3 = area(a, b, p); 
+bool CTriangle::pointchecker(int x, int y) {
+	Point p = { x,y };
+	double A = area(Corner1, Corner2, Corner3); 
+	double A1 = area(p, Corner2, Corner3); 
+	double A2 = area(Corner1, p, Corner3); 
+	double A3 = area(Corner1, Corner2, p); 
 
 	if (A == A1 + A2 + A3)
 		return true;
