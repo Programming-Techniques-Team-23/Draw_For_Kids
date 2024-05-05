@@ -44,7 +44,7 @@ public:
     void setclipboard(CFigure* c);
 	void setselected(CFigure*sf);
 	CFigure* getselected();
-		
+	void SaveAll();
 		 
 };
 

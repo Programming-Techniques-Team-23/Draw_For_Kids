@@ -21,3 +21,10 @@ bool CCircle::pointchecker(int x, int y)
 	else
 		return false;
 }
+
+void CCircle::Save(ofstream& OutFile)
+{
+	ofstream fout(&OutFile);
+
+	fout << "Circ" << "   " << ID << "   " << Centre.x << "   " << Centre.y << "   " << Radius.x << "   " << Radius.y << "   " << FigGfxInfo.DrawClr << "   " << FigGfxInfo.FillClr << '/n';
+}

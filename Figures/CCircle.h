@@ -12,6 +12,7 @@ public:
 	CCircle(Point, Point, GfxInfo FigureGfxInfo);
 	virtual void Draw(Output* pOut) const;
 	bool pointchecker(int x, int y);
+	virtual void Save(ofstream& OutFile);
 };
 
 #endif

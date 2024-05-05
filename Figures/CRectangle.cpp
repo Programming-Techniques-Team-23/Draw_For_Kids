@@ -43,3 +43,12 @@ bool CRectangle::pointchecker(int x, int y)
         return false;
 }
 
+void CRectangle::Save(ofstream& OutFile)
+{
+    ofstream fout(& OutFile);
+
+    fout << "Rect" << "   " << ID << "   " << Corner1.x << "   " << Corner1.y << "   " << Corner2.x << "   " << Corner2.y << "   " << FigGfxInfo.DrawClr << "   " << FigGfxInfo.FillClr<< '/n';
+
+
+}
+

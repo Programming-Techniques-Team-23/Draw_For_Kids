@@ -23,3 +23,11 @@ bool CSquare::pointchecker(int x, int y)
     else
         return false;
 }
+
+void CSquare::Save(ofstream& OutFile)
+{
+    ofstream fout(&OutFile);
+
+    fout << "Squr" << "   " << ID << "   " << Centre.x << "   " <<Centre.y<<"    " << FigGfxInfo.DrawClr << "   " << FigGfxInfo.FillClr << '/n';
+
+}

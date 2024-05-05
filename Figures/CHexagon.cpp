@@ -32,3 +32,11 @@ bool CHexagon::pointchecker(int x, int y) {
 	else
 		return false;
 }
+
+void CHexagon::Save(ofstream& OutFile)
+{
+	ofstream fout(&OutFile);
+	
+	fout << "Hex" << "   " << ID << "   " << Centre.x << "   "<<  Centre.y << FigGfxInfo.DrawClr << "   " << FigGfxInfo.FillClr << '/n';
+}
+

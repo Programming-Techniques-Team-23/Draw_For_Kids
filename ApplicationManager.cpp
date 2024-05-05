@@ -116,6 +116,12 @@ CFigure* ApplicationManager::GetFigure(int x, int y) const
 
  }
 
+ void ApplicationManager::SaveAll()
+ {
+	 
+
+ }
+
 	 
 
 

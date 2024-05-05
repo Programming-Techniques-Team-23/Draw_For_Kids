@@ -16,6 +16,7 @@ void CTriangle::Draw(Output* pOut) const
 double CTriangle::area(Point a, Point b, Point c) {
 	return abs((double)((a.x * (b.y - c.y) + b.x * (c.y - a.y) + c.x * (a.y - b.y)) / 2.0));
 }
+
 bool CTriangle::pointchecker(int x, int y) {
 	Point p = { x,y };
 	double A = area(Corner1, Corner2, Corner3); 
@@ -27,4 +28,12 @@ bool CTriangle::pointchecker(int x, int y) {
 		return true;
 	else
 		return false;
+
+}
+void CTriangle::Save(ofstream& OutFile)
+{
+	ofstream fout(&OutFile);
+
+	fout << "Tri ang" << "   " << ID << "   " << Corner1.x << "   " << Corner1.y << "    " << Corner2.x<<"    "<<Corner2.y<<"    "<<Corner3.x << "    "<< Corner3.y<<"    " << FigGfxInfo.DrawClr << "   " << FigGfxInfo.FillClr << '/n';
+
 }
