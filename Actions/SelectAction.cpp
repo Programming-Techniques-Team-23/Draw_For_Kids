@@ -23,6 +23,7 @@ void SelectAction::ReadActionParameters()
 
 }
 
+
 //Execute the action
 void SelectAction::Execute()
 {
@@ -30,5 +31,5 @@ void SelectAction::Execute()
 	ReadActionParameters();
 
 	CFigure* Figp = pManager->GetFigure(P1.x, P1.y);
-	Figp->Draw(
+	Figp->SetSelected(true);
 }
