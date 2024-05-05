@@ -17,8 +17,6 @@ void Exit::Execute()
 	pOut->PrintMessage("BYE");
 }
 
-Exit::~Exit()
-{
-}
+
 
 
