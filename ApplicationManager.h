@@ -13,6 +13,7 @@ class ApplicationManager
 
 private:
 	int FigCount;		//Actual number of figures
+       string message;
 	CFigure* FigList[MaxFigCount];	//List of all figures (Array of pointers)
 
 	CFigure* SelectedFig; //Pointer to the selected figure
@@ -40,6 +41,8 @@ public:
 	Input *GetInput() const; //Return pointer to the input
 	Output *GetOutput() const; //Return pointer to the output
 	void UpdateInterface() const;	//Redraws all the drawing window	
+        void setclipboard(CFigure* c);
+         void setmessage(string s);
 };
 
 #endif

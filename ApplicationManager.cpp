@@ -97,6 +97,13 @@ CFigure* ApplicationManager::GetFigure(int x, int y) const
 	}
 	return Figp;
 }
+ void ApplicationManager::setclipboard(CFigure* c) 
+{
+	Clipboard = c;
+}
+ void ApplicationManager::setmessage(string s) {
+	message = s;
+ }
 
 
 	//If a figure is found return a pointer to it.
