@@ -13,7 +13,7 @@ class ApplicationManager
 
 private:
 	int FigCount;		//Actual number of figures
-       string message;
+     string message;
 	CFigure* FigList[MaxFigCount];	//List of all figures (Array of pointers)
 
 	CFigure* SelectedFig; //Pointer to the selected figure
@@ -44,8 +44,8 @@ public:
     void setclipboard(CFigure* c);
 	void setselected(CFigure*sf);
 	CFigure* getselected();
-		
-		 
+	int GetFigCount();
+	void UnselectAll();
 };
 
 #endif

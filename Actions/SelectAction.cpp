@@ -13,8 +13,10 @@ void SelectAction::ReadActionParameters()
 	//Get a Pointer to the Input / Output Interfaces
 	Output* pOut = pManager->GetOutput();
 	Input* pIn = pManager->GetInput();
-
-	pOut->PrintMessage("Select a figure");
+	if(pManager->GetFigCount()==0)
+		pOut->PrintMessage("Draw a figure first");
+	else
+		pOut->PrintMessage("Select a figure");
 
 	//Read Point clicked
 	pIn->GetPointClicked(P1.x, P1.y);
@@ -29,8 +31,26 @@ void SelectAction::ReadActionParameters()
 void SelectAction::Execute()
 {
 	//This action needs to read some parameters first
-	ReadActionParameters();
 
-	CFigure* Figp = pManager->GetFigure(P1.x, P1.y);
-	Figp->SetSelected(true);
+	ReadActionParameters();
+	if (pManager->GetFigCount() != 0) {
+		CFigure* Figp = pManager->GetFigure(P1.x, P1.y);
+		if (Figp != NULL) {
+			if (Figp->IsSelected())
+				Figp->SetSelected(false);
+			else
+				Figp->SetSelected(true);
+		}
+		else {
+			pManager->UnselectAll();
+		}
+	}
+	if(pManager->GetFigCount()==1){
+		Output* pOut = pManager->GetOutput();
+		pOut->PrintMessage("");
+
+	}
+
+
+
 }
