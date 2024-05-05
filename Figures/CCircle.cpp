@@ -14,8 +14,8 @@ void CCircle::Draw(Output* pOut) const
 }
 bool CCircle::pointchecker(int x, int y)
 {
-	int dsq = (x - Centre.x) ^ 2 + (y - Centre.y) ^ 2;
-	int radius = (Radius.x - Centre.x) ^ 2 + (Radius.y - Centre.y) ^ 2;
+	int dsq = (x - Centre.x)* (x - Centre.x) + (y - Centre.y) * (y - Centre.y);
+	int radius = (Radius.x - Centre.x) * (Radius.x - Centre.x) + (Radius.y - Centre.y) * (Radius.y - Centre.y);
 	if (dsq <= radius)
 		return true;
 	else

@@ -115,6 +115,16 @@ CFigure* ApplicationManager::GetFigure(int x, int y) const
 	 return SelectedFig;
 
  }
+ int ApplicationManager::GetFigCount() {
+	 return FigCount;
+ }
+ void ApplicationManager::UnselectAll() {
+	 for (int i = 0; i < FigCount; i++) {
+		 FigList[i]->SetSelected(false);
+	 }
+ }
+
+
 
  void ApplicationManager::SaveAll()
  {
