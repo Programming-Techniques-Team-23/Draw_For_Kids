@@ -1,14 +1,9 @@
 #pragma once
 #include"Action.h"
-
-class Exit : public Action
-{
+class Cut :public Action {
 public:
-	Exit(ApplicationManager* AM);
+	Cut(ApplicationManager* AM);
 	virtual void ReadActionParameters();
 	virtual void Execute();
-	~Exit();
-
-
-
+	~Cut();
 };

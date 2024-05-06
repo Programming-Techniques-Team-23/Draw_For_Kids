@@ -6,22 +6,27 @@ Copy::Copy(ApplicationManager* AM):Action(AM)
 }
 void Copy::ReadActionParameters()
 {
+	
 	Output* pOut = pManager->GetOutput();
 	Input* pIn = pManager->GetInput();
 
-	pOut->PrintMessage("Figure has been copied");
+	
 }
 
 void Copy::Execute()
 {
 	Output* pOut = pManager->GetOutput();
+	ReadActionParameters();
+	 
 	if (pManager->getselected() != NULL) {
-		ReadActionParameters();
+	
 		pManager->setclipboard(pManager->getselected());
+		pOut->PrintMessage("Figure has been copied");
 
 	}
 	else
 		pOut->PrintMessage("Copy a Figure first");
+	return;
 }
 
 Copy::~Copy()

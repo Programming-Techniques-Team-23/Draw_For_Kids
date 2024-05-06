@@ -9,7 +9,9 @@
 #include"Actions/Switchtoplay.h"
 #include"ApplicationManager.h"
 #include"Actions/Exit.h"
-
+#include"Actions/switchtodraw.h"
+#include"Actions/Copy.h"
+#include"Actions/Cut.h"
 
 
 //Constructor
@@ -62,11 +64,22 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			pAct = new SelectAction(this);
 			break;
 		case TO_PLAY:
-			pAct = new SwitchToPlay(this);
+			pAct = new SwitchToPlay(this, mode);//1
+			break;
+		case TO_DRAW:
+			pAct = new SwitchToDraw(this, &mode);//0
+			break;
+		case COPY:
+			pAct = new Copy(this);
+			break;
+		case CUT:
+			pAct = new Cut(this);
 			break;
 
 		case EXIT:
+
 			pAct = new Exit(this);
+			
 			///create ExitAction here
 			
 			break;
@@ -104,11 +117,11 @@ CFigure* ApplicationManager::GetFigure(int x, int y) const
 	}
 	return Figp;
 }
- void ApplicationManager::setclipboard(CFigure* c) 
+ void ApplicationManager::setclipboard(CFigure* c)    //the clipboard to store on it figures 
 {
 	Clipboard = c;
 }
- void ApplicationManager::setselected(CFigure* sf) {
+ void ApplicationManager::setselected(CFigure* sf) {      //set the selcted figure. We need it on copy, cut, paste and delete actions
 	 SelectedFig = sf;
  }
  CFigure *ApplicationManager::getselected() {
@@ -131,11 +144,18 @@ CFigure* ApplicationManager::GetFigure(int x, int y) const
 //==================================================================================//
 
 //Draw all figures on the user interface
-void ApplicationManager::UpdateInterface() const
-{	
-	for(int i=0; i<FigCount; i++)
-		FigList[i]->Draw(pOut);		//Call Draw function (virtual member fn)
-}
+ void ApplicationManager::UpdateInterface() const
+ {
+	 for (int i = 0; i < FigCount; i++)
+		 FigList[i]->Draw(pOut);
+	 if (mode == 0) {
+		 pOut->CreateDrawToolBar();
+	 }
+	 else if (mode == 1) {
+		 pOut->CreatePlayToolBar();
+	 }//Call Draw function (virtual member fn)
+	 
+ }
 ////////////////////////////////////////////////////////////////////////////////////
 //Return a pointer to the input
 Input *ApplicationManager::GetInput() const

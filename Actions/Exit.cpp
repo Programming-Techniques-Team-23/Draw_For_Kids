@@ -1,7 +1,9 @@
 #include "Exit.h"
+
+
 #include"../ApplicationManager.h"
 
-Exit::Exit(ApplicationManager* AM):Action(AM)
+Exit::Exit(ApplicationManager* AM) :Action(AM)
 {
 }
 
@@ -17,6 +19,6 @@ void Exit::Execute()
 	pOut->PrintMessage("BYE");
 }
 
-
-
-
+Exit::~Exit()
+{
+}
