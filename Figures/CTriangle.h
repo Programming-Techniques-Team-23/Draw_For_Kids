@@ -15,6 +15,7 @@ public:
 	bool pointchecker(int x, int y);
 	double area(Point , Point , Point );
 	virtual void Save(ofstream& OutFile);
+	string getType();
 };
 
 #endif

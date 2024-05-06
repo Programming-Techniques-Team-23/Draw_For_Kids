@@ -7,9 +7,13 @@ CTriangle::CTriangle(Point P1, Point P2, Point P3,GfxInfo FigureGfxInfo) :CFigur
 	Corner1 = P1;
 	Corner2 = P2;
 	Corner3 = P3;
+	Type = "Triangle";
 }
 
-
+string CTriangle::getType()
+{
+	return Type;
+}
 void CTriangle::Draw(Output* pOut) const
 {
 	//Call Output::DrawTri to draw a triangle on the screen	

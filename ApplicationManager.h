@@ -13,10 +13,9 @@ class ApplicationManager
 
 private:
 
-	int FigCount;
-	int mode;//Actual number of figures
-  string message;
-		//Actual number of figures
+	int FigCount; //Figure Count
+	int mode; //Actual number of figures
+	string message; //Actual number of figures
   
 	CFigure* FigList[MaxFigCount];	//List of all figures (Array of pointers)
 
@@ -51,6 +50,12 @@ public:
 	int GetFigCount();
 	void UnselectAll();
 	void SaveAll(string OutFile);
+	int RecCount();
+	int HexCount();
+	int CircCount();
+	int SquCount();
+	int TriCount();
+	int SelectedCount();
 };
 
 #endif
