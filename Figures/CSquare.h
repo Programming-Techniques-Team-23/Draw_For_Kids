@@ -12,7 +12,7 @@ public:
 	virtual void Draw(Output* pOut) const;
 	bool pointchecker(int x, int y);
 	virtual void Save(ofstream& OutFile);
-
+	string getType();
 };
 
 #endif
