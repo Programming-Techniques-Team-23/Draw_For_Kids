@@ -27,6 +27,7 @@ ApplicationManager::ApplicationManager()
 	//Create an array of figure pointers and set them to NULL		
 	for(int i=0; i<MaxFigCount; i++)
 		FigList[i] = NULL;	
+
 }
 
 //==================================================================================//
@@ -190,13 +191,72 @@ Input *ApplicationManager::GetInput() const
 //Return a pointer to the output
 Output *ApplicationManager::GetOutput() const
 {	return pOut; }
+
+//Rectangle Count
+int ApplicationManager::RecCount() {
+	int cRec = 0;
+	for (int i = 0; i < FigCount; i++) {
+		if (FigList[i]->IsSelected()&& FigList[i]->getType() == "Rectangle")
+			cRec++;
+	}
+	return cRec;
+}
+
+//Hexagon Count
+int ApplicationManager::HexCount() {
+	int cHex = 0;
+	for (int i = 0; i < FigCount; i++) {
+		if (FigList[i]->IsSelected() && FigList[i]->getType() == "Hexagon")
+			cHex++;
+	}
+	return cHex;
+}
+
+//Circle Count
+int ApplicationManager::CircCount() {
+	int cCirc = 0;
+	for (int i = 0; i < FigCount; i++) {
+		if (FigList[i]->IsSelected() && FigList[i]->getType() == "Circle")
+			cCirc++;
+	}
+	return cCirc;
+}
+
+//Square Count
+int ApplicationManager::SquCount() {
+	int cSqu = 0;
+	for (int i = 0; i < FigCount; i++) {
+		if (FigList[i]->IsSelected() && FigList[i]->getType() == "Square")
+			cSqu++;
+	}
+	return cSqu;
+}
+
+//Triangle Count
+int ApplicationManager::TriCount() {
+	int cTri = 0;
+	for (int i = 0; i < FigCount; i++) {
+		if (FigList[i]->IsSelected() && FigList[i]->getType() == "Triangle")
+			cTri++;
+	}
+	return cTri;
+}
+int ApplicationManager::SelectedCount() {
+	int c = 0;
+	for (int i = 0; i < FigCount; i++) {
+		if (FigList[i]->IsSelected())
+			c++;
+	}
+	return c;
+}
+
 ////////////////////////////////////////////////////////////////////////////////////
 //Destructor
 ApplicationManager::~ApplicationManager()
 {
-	for(int i=0; i<FigCount; i++)
+	for (int i = 0; i < FigCount; i++)
 		delete FigList[i];
 	delete pIn;
 	delete pOut;
-	
+
 }
