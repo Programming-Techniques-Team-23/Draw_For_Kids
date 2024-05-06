@@ -1,19 +1,15 @@
 #include "SaveAction.h"
 #include"../Figures/CFigure.h"
 #include<fstream>
-#include "ApplicationManager.h"
+#include"../ApplicationManager.h"
 
-SaveAction::SAVE(ApplicationManager* AM): Action(AM)
-{
-}
+SaveAction::SaveAction(ApplicationManager* AM) : Action(AM)
+{}
 
 void SaveAction::ReadActionParameters()
 {
 }
 
-void SaveAction::Execute()
-{
-}
 
 void SaveAction::Execute()
 {
