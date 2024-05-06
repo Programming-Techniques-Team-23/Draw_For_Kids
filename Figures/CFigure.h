@@ -1,5 +1,6 @@
 #ifndef CFIGURE_H
 #define CFIGURE_H
+#include<fstream>
 
 #include "..\defs.h"
 #include "..\GUI\Output.h"
@@ -11,7 +12,7 @@ protected:
 	int ID;		//Each figure has an ID
 	bool Selected;	//true if the figure is selected.
 	GfxInfo FigGfxInfo;	//Figure graphis info
-	
+	string Type;  //Type of the figure
 	/// Add more parameters if needed.
 
 public:
@@ -24,14 +25,17 @@ public:
 	
 	void ChngDrawClr(color Dclr);	//changes the figure's drawing color
 	void ChngFillClr(color Fclr);	//changes the figure's filling color
-	virtual bool pointchecker(int x, int y) = 0;      //checks if the point is inside the figure
+	virtual bool pointchecker(int x, int y) = 0; 
+	void Setid(int x);
+	int getid() ;
+	//checks if the point is inside the figure
 	///The following functions should be supported by the figure class
 	///It should be overridden by each inherited figure
 
 	///Decide the parameters that you should pass to each function	
 
-
-	//virtual void Save(ofstream &OutFile) = 0;	//Save the figure parameters to the file
+	
+	virtual void Save(ofstream &OutFile)=0;	//Save the figure parameters to the file
 	//virtual void Load(ifstream &Infile) = 0;	//Load the figure parameters to the file
 	//virtual void PrintInfo(Output* pOut) = 0;	//print all figure info on the status bar
 };

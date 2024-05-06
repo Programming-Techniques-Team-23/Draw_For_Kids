@@ -1,4 +1,5 @@
 #include "CFigure.h"
+#include <fstream>
 
 CFigure::CFigure(GfxInfo FigureGfxInfo)
 { 
@@ -19,5 +20,15 @@ void CFigure::ChngFillClr(color Fclr)
 {	
 	FigGfxInfo.isFilled = true;
 	FigGfxInfo.FillClr = Fclr; 
+}
+
+void CFigure::Setid(int x)
+{
+	ID = x;
+}
+
+int CFigure::getid()
+{
+	return ID;
 }
 

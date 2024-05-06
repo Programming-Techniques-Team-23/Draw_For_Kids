@@ -12,6 +12,7 @@
 #include"Actions/switchtodraw.h"
 #include"Actions/Copy.h"
 #include"Actions/Cut.h"
+#include "Actions/SaveAction.h"
 
 
 //Constructor
@@ -75,6 +76,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case CUT:
 			pAct = new Cut(this);
 			break;
+		case SAVE:
+			pAct = new SaveAction(this);
+			break;
 
 		case EXIT:
 
@@ -127,6 +131,25 @@ CFigure* ApplicationManager::GetFigure(int x, int y) const
  CFigure *ApplicationManager::getselected() {
 	 return SelectedFig;
 
+ }
+ int ApplicationManager::GetFigCount() {
+	 return FigCount;
+ }
+ void ApplicationManager::UnselectAll() {
+	 for (int i = 0; i < FigCount; i++) {
+		 FigList[i]->SetSelected(false);
+	 }
+ }
+
+
+
+ void ApplicationManager::SaveAll( string OutFile )
+ {
+	 
+	 for (int i = 0; i < FigCount; i++)
+	 {
+		 FigList[i]->Save(ofstream (OutFile));
+	 }
  }
 
 	 
