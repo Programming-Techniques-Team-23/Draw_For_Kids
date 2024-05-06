@@ -1,6 +1,6 @@
 #ifndef CCIRC_H
 #define CCIRC_H
-
+#include<string>
 #include "CFigure.h"
 
 class CCircle : public CFigure

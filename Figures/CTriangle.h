@@ -1,6 +1,6 @@
 #ifndef CTRI_H
 #define CTRI_H
-
+#include<string>
 #include "CFigure.h"
 
 class CTriangle : public CFigure

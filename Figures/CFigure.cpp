@@ -1,4 +1,5 @@
 #include "CFigure.h"
+#include <fstream>
 
 CFigure::CFigure(GfxInfo FigureGfxInfo)
 { 
