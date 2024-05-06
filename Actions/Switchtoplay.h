@@ -4,13 +4,12 @@
 
 class SwitchToPlay : public Action
 {
-private:
-	string FileName;
+
 
 public:
-	SwitchToPlay(ApplicationManager*AM);
-
-	virtual void ReadActionParameters();
+	SwitchToPlay(ApplicationManager*AM, int &);
+   virtual void ReadActionParameters();
 	virtual void Execute();
 	~SwitchToPlay();
+
 };

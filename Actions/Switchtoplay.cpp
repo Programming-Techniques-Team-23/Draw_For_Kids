@@ -2,8 +2,9 @@
 #include"../ApplicationManager.h"
 #include"Action.h"
 
-SwitchToPlay::SwitchToPlay(ApplicationManager*AM):Action(AM)
+SwitchToPlay::SwitchToPlay(ApplicationManager*AM,int &mode):Action(AM)
 {
+	mode = 1;
 }
 void SwitchToPlay::ReadActionParameters()
 {
