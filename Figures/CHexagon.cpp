@@ -99,6 +99,7 @@ void CHexagon::Save(ofstream& OutFile)
 		fc = "NOT FILLED";
 	}
 
-	OutFile << "Hex" << s << ID << s << Centre.x << s << Centre.y << dc << s << fc << endl;
+	OutFile << "Hex" << s << ID << s << Centre.x << s << Centre.y<< s << dc << s << fc << endl;
+	
 }
 

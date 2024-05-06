@@ -112,6 +112,6 @@ void CRectangle::Save(ofstream& OutFile)
     
 
 	OutFile << "Rect" << s << ID << s << Corner1.x << s << Corner1.y << s << Corner2.x << s << Corner2.y << s << dc << s << fc << endl;
-
+	
 }
 

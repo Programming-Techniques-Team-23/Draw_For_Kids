@@ -91,5 +91,6 @@ void CSquare::Save(ofstream& OutFile)
 	}
 
 	OutFile << "Squr" << s << ID << s<<Centre.x << s <<Centre.y<<s << dc << s << fc << endl;
+	
 
 }

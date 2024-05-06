@@ -102,5 +102,5 @@ void CTriangle::Save(ofstream& OutFile)
 	
 	
 	OutFile << t << "   " << ID << s << Corner1.x << s << Corner1.y << s << Corner2.x << s << Corner2.y << s << Corner3.x << s << Corner3.y << s << dc << s << fc << endl;
-	OutFile.close();
+	
 }

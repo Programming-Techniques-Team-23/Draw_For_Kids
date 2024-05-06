@@ -29,6 +29,7 @@ void CCircle::Save(ofstream& OutFile)
 	string c = "circ";
 	string dc;
 	string fc;
+	
 	if (FigGfxInfo.DrawClr == BLACK)
 	{
 		fc = "Black";
@@ -92,4 +93,5 @@ void CCircle::Save(ofstream& OutFile)
 	int y2 = Radius.y;
 
 	OutFile << c << "   " << ID << "   " << x1 << "   " << y1 << "   " << x2 << "   " << y2 << "   " << dc << "   " << fc<<endl;
+	
 }

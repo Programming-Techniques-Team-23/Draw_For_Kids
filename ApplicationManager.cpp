@@ -107,8 +107,11 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 //Add a figure to the list of figures
 void ApplicationManager::AddFigure(CFigure* pFig)
 {
-	if(FigCount < MaxFigCount )
-		FigList[FigCount++] = pFig;	
+	if (FigCount < MaxFigCount)
+	{
+		FigList[FigCount++] = pFig;
+		pFig->Setid(FigCount);
+	}
 }
 ////////////////////////////////////////////////////////////////////////////////////
 CFigure* ApplicationManager::GetFigure(int x, int y) const
@@ -143,12 +146,13 @@ CFigure* ApplicationManager::GetFigure(int x, int y) const
 
 
 
- void ApplicationManager::SaveAll( string OutFile )
+ void ApplicationManager::SaveAll( string fname )
  {
 	 
 	 for (int i = 0; i < FigCount; i++)
 	 {
-		 FigList[i]->Save(ofstream (OutFile));
+		 
+		 FigList[i]->Save(ofstream (fname));
 	 }
  }
 
