@@ -25,7 +25,10 @@ public:
 	
 	void ChngDrawClr(color Dclr);	//changes the figure's drawing color
 	void ChngFillClr(color Fclr);	//changes the figure's filling color
-	virtual bool pointchecker(int x, int y) = 0;      //checks if the point is inside the figure
+	virtual bool pointchecker(int x, int y) = 0; 
+	void Setid(int x);
+	int getid() ;
+	//checks if the point is inside the figure
 	///The following functions should be supported by the figure class
 	///It should be overridden by each inherited figure
 

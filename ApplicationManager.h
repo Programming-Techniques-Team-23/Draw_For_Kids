@@ -46,7 +46,7 @@ public:
 	CFigure* getselected();
 	int GetFigCount();
 	void UnselectAll();
-	void SaveAll();
+	void SaveAll(string OutFile);
 };
 
 #endif

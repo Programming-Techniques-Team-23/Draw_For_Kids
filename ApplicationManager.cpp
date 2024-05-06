@@ -9,6 +9,7 @@
 #include"Actions/Switchtoplay.h"
 #include"ApplicationManager.h"
 #include"Actions/Exit.h"
+#include "Actions/SaveAction.h"
 
 
 
@@ -63,6 +64,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			break;
 		case TO_PLAY:
 			pAct = new SwitchToPlay(this);
+			break;
+		case SAVE:
+			pAct = new SaveAction(this);
 			break;
 
 		case EXIT:
@@ -126,12 +130,13 @@ CFigure* ApplicationManager::GetFigure(int x, int y) const
 
 
 
- void ApplicationManager::SaveAll()
+ void ApplicationManager::SaveAll( string OutFile )
  {
+	 
 	 for (int i = 0; i < FigCount; i++)
 	 {
+		 FigList[i]->Save(ofstream (OutFile));
 	 }
-     
  }
 
 	 
