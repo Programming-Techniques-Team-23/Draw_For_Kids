@@ -45,12 +45,35 @@ void SelectAction::Execute()
 			pManager->UnselectAll();
 		}
 	}
-	if(pManager->GetFigCount()==1){
+	if(pManager->SelectedCount()>1){
 		Output* pOut = pManager->GetOutput();
-		pOut->PrintMessage("");
+		string message = "Selected: ";
+		int totalSelected = 0;
+		if (pManager->RecCount() > 0) {
+			message += to_string(pManager->RecCount()) + " Rectangle(s), ";
+			totalSelected += pManager->RecCount();
+		}
+		if (pManager->TriCount() > 0) {
+			message += to_string(pManager->TriCount()) + " Triangle(s), ";
+			totalSelected += pManager->TriCount();
+		}
+		if (pManager->HexCount() > 0) {
+			message += to_string(pManager->HexCount()) + " Hexagon(s), ";
+			totalSelected += pManager->HexCount();
+		}
+		if (pManager->CircCount() > 0) {
+			message += to_string(pManager->CircCount()) + " Circle(s), ";
+			totalSelected += pManager->CircCount();
+		}
+		if (pManager->SquCount() > 0) {
+			message += to_string(pManager->SquCount()) + " Square(s), ";
+			totalSelected += pManager->SquCount();
+		}
+		if (totalSelected > 0) {
+			message.pop_back(); 
+			message.pop_back();
+		}
+		pOut->PrintMessage(message);
 
 	}
-
-
-
 }
