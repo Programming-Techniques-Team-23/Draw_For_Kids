@@ -10,8 +10,7 @@ class SaveAction : public Action
 private :
 	ofstream& OutFile;
 public:
-	SaveAction();
-	void SAVE(ApplicationManager* AM);
+	SaveAction(ApplicationManager* AM);
 	virtual void ReadActionParameters();
 	virtual void Execute();
 	~SaveAction();
