@@ -5,9 +5,14 @@
 CSquare::CSquare(Point P1, GfxInfo FigureGfxInfo) :CFigure(FigureGfxInfo)
 {
 	Centre = P1;
+	Type = "Square";
+
 }
 
-
+string CSquare::getType()
+{
+	return Type;
+}
 void CSquare::Draw(Output* pOut) const
 {
 	//Call Output::DrawSqaure to draw a square on the screen	
@@ -28,7 +33,6 @@ bool CSquare::pointchecker(int x, int y)
 
 void CSquare::Save(ofstream& OutFile)
 {
-   
     string s = "   ";
 	string dc;
 	string fc;

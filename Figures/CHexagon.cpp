@@ -5,15 +5,18 @@
 CHexagon::CHexagon(Point P1, GfxInfo FigureGfxInfo) :CFigure(FigureGfxInfo)
 {
 	Centre = P1;
+	Type = "Hexagon";
 }
-
 
 void CHexagon::Draw(Output* pOut) const
 {
 	//Call Output::DrawHex to draw a hexagon on the screen	
 	pOut->DrawHex(Centre, FigGfxInfo, Selected);
 }
-
+string CHexagon::getType()
+{
+	return Type;
+}
 bool CHexagon::pointchecker(int x, int y) {
 	Point P1 = { Centre.x + 60, Centre.y };
 	Point P2 = { Centre.x + 30, Centre.y + 52 };
