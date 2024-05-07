@@ -4,7 +4,7 @@
 #include "..\Figures\CCircle.h"
 #include "..\Figures\CTriangle.h"
 #include "..\Figures\CHexagon.h"
-#include "Figures/CSquare.h"
+#include "..\Figures\CSquare.h"
 #include "..\GUI\input.h"
 #include "..\GUI\Output.h"
 

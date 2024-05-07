@@ -8,7 +8,6 @@ class PickByBoth :
 	CFigure* Fig;
 	Point P;
 	int  no_combs, rand_fig_no, picked_comb_no, rigSel, wrgSel;
-	int combinations[30];
 	void PrntScore(int);
 
 public:

@@ -49,8 +49,7 @@ public:
 	CFigure* getselected();
 	int GetFigCount();
 	void UnselectAll();
-	CFigure* DrawnFigs(int) const;			//Transfer figures in FigList to playmode
-
+	int* Combinations();
 	void SaveAll(string OutFile);
 	int RecCount();
 	int HexCount();
@@ -58,6 +57,8 @@ public:
 	int SquCount();
 	int TriCount();
 	int SelectedCount();
+	CFigure* getRandomFig();
+	void ShowAll();
 };
 
 #endif

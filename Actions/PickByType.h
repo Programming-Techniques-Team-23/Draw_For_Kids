@@ -1,9 +1,7 @@
 #pragma once
-#include "Figures/CFigure.h"
-
-#include "Actions/Action.h"
-class PickByType :
-	public Action
+#include "..\Figures\CFigure.h"
+#include "Action.h"
+class PickByType :public Action
 {
 	CFigure* Fig;
 	Point P;

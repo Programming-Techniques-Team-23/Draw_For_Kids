@@ -13,12 +13,9 @@ protected:
 	bool Selected;	//true if the figure is selected.
 	GfxInfo FigGfxInfo;	//Figure graphis info
 	string Type;  //Type of the figure
-<<<<<<< HEAD
+	bool PlayHidden;		//hides figures in playmode.
 	string DrawColor;
 	string FillingColor;
-=======
-	bool PlayHidden;		//hides figures in playmode.
->>>>>>> 259dc42f9c41d299cd143a0c2f60668586959e83
 	/// Add more parameters if needed.
 
 public:

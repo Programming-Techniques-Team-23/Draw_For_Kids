@@ -144,10 +144,104 @@ CFigure* ApplicationManager::GetFigure(int x, int y) const
 		 FigList[i]->SetSelected(false);
 	 }
  }
- CFigure* ApplicationManager::DrawnFigs(int i) const
- {
-	 return FigList[i];
+ CFigure* ApplicationManager::getRandomFig() {
+	 return FigList[rand() % FigCount];
  }
+ void ApplicationManager::ShowAll() {
+	 for (int i = 0;i < FigCount;i++)
+		 FigList[i]->Show();
+ }
+ int* ApplicationManager::Combinations() {
+	 int combinations[30];
+	 for (int i = 0;i < 30;i++) {
+		 combinations[i] = 0;
+	 }
+	 for (int i = 0; i < FigCount; i++) {
+		 if (FigList[i]->GetGfxInfo().isFilled) //counts combinations occurance.
+		 {
+			 if (FigList[i]->GetGfxInfo().FillClr == BLACK)
+			 {
+				 if (FigList[i]->getType()=="Rectangle")
+					 combinations[0]++;
+				 else if (FigList[i]->getType() == "Triangle")
+					 combinations[1]++;
+				 else if (FigList[i]->getType() == "Square")
+					 combinations[2]++;
+				 else if (FigList[i]->getType() == "Hexagon")
+					 combinations[3]++;
+				 else
+					 combinations[4]++;
+			 }
+			 else if (FigList[i]->GetGfxInfo().FillClr == WHITE)
+			 {
+				 if (FigList[i]->getType() == "Rectangle")
+					 combinations[5]++;
+				 else if (FigList[i]->getType() == "Triangle")
+					 combinations[6]++;
+				 else if (FigList[i]->getType() == "Square")
+					 combinations[7]++;
+				 else if (FigList[i]->getType() == "Hexagon")
+					 combinations[8]++;
+				 else
+					 combinations[9]++;
+			 }
+			 else if (FigList[i]->GetGfxInfo().FillClr == BLUE)
+			 {
+				 if (FigList[i]->getType() == "Rectangle")
+					 combinations[10]++;
+				 else if (FigList[i]->getType() == "Triangle")
+					 combinations[11]++;
+				 else if (FigList[i]->getType() == "Square")
+					 combinations[12]++;
+				 else if (FigList[i]->getType() == "Hexagon")
+					 combinations[13]++;
+				 else
+					 combinations[14]++;
+			 }
+			 else if (FigList[i]->GetGfxInfo().FillClr == GREEN)
+			 {
+				 if (FigList[i]->getType() == "Rectangle")
+					 combinations[15]++;
+				 else if (FigList[i]->getType() == "Triangle")
+					 combinations[16]++;
+				 else if (FigList[i]->getType() == "Square")
+					 combinations[17]++;
+				 else if (FigList[i]->getType() == "Hexagon")
+					 combinations[18]++;
+				 else
+					 combinations[19]++;
+			 }
+			 else
+			 {
+				 if (FigList[i]->getType() == "Rectangle")
+					 combinations[20]++;
+				 else if (FigList[i]->getType() == "Triangle")
+					 combinations[21]++;
+				 else if (FigList[i]->getType() == "Square")
+					 combinations[22]++;
+				 else if (FigList[i]->getType() == "Hexagon")
+					 combinations[23]++;
+				 else
+					 combinations[24]++;
+			 }
+		 }
+		 else {
+			 if (FigList[i]->getType() == "Rectangle")
+				 combinations[25]++;
+			 else if (FigList[i]->getType() == "Triangle")
+				 combinations[26]++;
+			 else if (FigList[i]->getType() == "Square")
+				 combinations[27]++;
+			 else if (FigList[i]->getType() == "Hexagon")
+				 combinations[28]++;
+			 else
+				 combinations[29]++;
+
+		 }
+	 }
+	 return combinations;
+ }
+
 
 
 

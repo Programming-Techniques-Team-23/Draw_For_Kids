@@ -187,20 +187,22 @@
     <ClCompile Include="Actions\Cut.cpp">
       <Filter>Action Classes</Filter>
     </ClCompile>
-<<<<<<< HEAD
-    <ClCompile Include="Actions\Exit.cpp">
+    <ClCompile Include="Actions\PickByType.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="Actions\PlayByBoth.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="Actions\PlayByColor.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="Actions\PlayByType.cpp">
       <Filter>Action Classes</Filter>
     </ClCompile>
     <ClCompile Include="Actions\SaveAction.cpp">
-=======
-    <ClCompile Include="PlayByBoth.cpp">
       <Filter>Action Classes</Filter>
     </ClCompile>
-    <ClCompile Include="PlayByColor.cpp">
-      <Filter>Action Classes</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayByType.cpp">
->>>>>>> 259dc42f9c41d299cd143a0c2f60668586959e83
+    <ClCompile Include="Actions\Exit.cpp">
       <Filter>Action Classes</Filter>
     </ClCompile>
   </ItemGroup>
@@ -335,17 +337,19 @@
     <ClInclude Include="Actions\Paste.h">
       <Filter>Action Classes</Filter>
     </ClInclude>
-<<<<<<< HEAD
+    <ClInclude Include="Actions\PickByType.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\PlayByBoth.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\PlayByColor.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\PlayByType.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
     <ClInclude Include="Actions\SaveAction.h">
-=======
-    <ClInclude Include="PlayByBoth.h">
-      <Filter>Action Classes</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayByColor.h">
-      <Filter>Action Classes</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayByType.h">
->>>>>>> 259dc42f9c41d299cd143a0c2f60668586959e83
       <Filter>Action Classes</Filter>
     </ClInclude>
   </ItemGroup>

@@ -4,7 +4,7 @@
 #include "..\Figures\CHexagon.h"
 #include "..\Figures\CTriangle.h"
 #include "..\Figures\CCircle.h"
-#include "Figures/CSquare.h"
+#include "..\Figures\CSquare.h"
 #include "..\GUI\input.h"
 #include "..\GUI\Output.h"
 
@@ -37,8 +37,6 @@ PickByBoth::PickByBoth(ApplicationManager* pApp) :Action(pApp)
 	no_combs = 0;
 	wrgSel = 0;
 	rigSel = 0;
-	for (int i = 0; i < 23; i++)
-		combinations[i] = 0;
 }
 
 
@@ -49,102 +47,16 @@ PickByBoth::~PickByBoth()
 
 void PickByBoth::ReadActionParameters()
 {
-	for (int i = 0; i < pManager->GetFigCount(); i++) {
-		Fig = pManager->DrawnFigs(i);
-		if ((Fig->GetGfxInfo().isFilled) && !(dynamic_cast<CTriangle*>(Fig) || dynamic_cast<CHexagon*>(Fig) ||
-		dynamic_cast<CSquare*>(Fig) || dynamic_cast<CCircle*>(Fig) || dynamic_cast<CRectangle*>(Fig))) //counts combinations occurance.
-		{
-			if (Fig->GetGfxInfo().FillClr == BLACK)
-			{
-				if (dynamic_cast<CRectangle*>(Fig))
-					combinations[0]++;
-				else if (dynamic_cast<CTriangle*>(Fig))
-					combinations[1]++;
-				else if (dynamic_cast<CSquare*>(Fig))
-					combinations[2]++;
-				else if (dynamic_cast<CHexagon*>(Fig))
-					combinations[3]++;
-				else
-					combinations[4]++;
-			}
-			else if (Fig->GetGfxInfo().FillClr == WHITE)
-			{
-				if (dynamic_cast<CRectangle*>(Fig))
-					combinations[5]++;
-				else if (dynamic_cast<CTriangle*>(Fig))
-					combinations[6]++;
-				else if (dynamic_cast<CSquare*>(Fig))
-					combinations[7]++;
-				else if (dynamic_cast<CHexagon*>(Fig))
-					combinations[8]++;
-				else
-					combinations[9]++;
-			}
-			else if (Fig->GetGfxInfo().FillClr == BLUE)
-			{
-				if (dynamic_cast<CRectangle*>(Fig))
-					combinations[10]++;
-				else if (dynamic_cast<CTriangle*>(Fig))
-					combinations[11]++;
-				else if (dynamic_cast<CSquare*>(Fig))
-					combinations[12]++;
-				else if (dynamic_cast<CHexagon*>(Fig))
-					combinations[13]++;
-				else
-					combinations[14]++;
-			}
-			else if (Fig->GetGfxInfo().FillClr == GREEN)
-			{
-				if (dynamic_cast<CRectangle*>(Fig))
-					combinations[15]++;
-				else if (dynamic_cast<CTriangle*>(Fig))
-					combinations[16]++;
-				else if (dynamic_cast<CSquare*>(Fig))
-					combinations[17]++;
-				else if (dynamic_cast<CHexagon*>(Fig))
-					combinations[18]++;
-				else
-					combinations[19]++;
-			}
-			else
-			{
-				if (dynamic_cast<CRectangle*>(Fig))
-					combinations[20]++;
-				else if (dynamic_cast<CTriangle*>(Fig))
-					combinations[21]++;
-				else if (dynamic_cast<CSquare*>(Fig))
-					combinations[22]++;
-				else if (dynamic_cast<CHexagon*>(Fig))
-					combinations[23]++;
-				else
-					combinations[24]++;
-			}
-		}
-		else {
-			if (dynamic_cast<CRectangle*>(Fig))
-				combinations[25]++;
-			else if (dynamic_cast<CTriangle*>(Fig))
-				combinations[26]++;
-			else if (dynamic_cast<CSquare*>(Fig))
-				combinations[27]++;
-			else if (dynamic_cast<CHexagon*>(Fig))
-				combinations[28]++;
-			else
-				combinations[29]++;
-		
-		}
-	}
+	int* combinations= pManager->Combinations();
 
 	for (int i = 0; i < 30; i++)
 		if (combinations[i] != 0)
 			no_combs++;
-
-
 }
 
 void PickByBoth::Execute()
 {
-
+	int* combinations = pManager->Combinations();
 	Output* pOut = pManager->GetOutput();
 	Input* pIn = pManager->GetInput();
 	ReadActionParameters();
@@ -153,34 +65,30 @@ void PickByBoth::Execute()
 	{
 		//Figure to be hidden
 		CFigure* clickedFig;
-		//Randomize
-		rand_fig_no = rand() % pManager->GetFigCount();
-		//Counting the the color instances.
-		Fig = pManager->DrawnFigs(rand_fig_no);
-		if ((Fig->GetGfxInfo().isFilled) && !(dynamic_cast<CTriangle*>(Fig) || dynamic_cast<CHexagon*>(Fig) ||
-			dynamic_cast<CSquare*>(Fig) || dynamic_cast<CCircle*>(Fig)))
+		CFigure* Fig = pManager->getRandomFig();
+		if (Fig->GetGfxInfo().isFilled)
 		{
 			if (Fig->GetGfxInfo().FillClr == BLACK)
 			{
-				if (dynamic_cast<CRectangle*>(Fig))
+				if (Fig->getType() == "Rectangle")
 				{
 					picked_comb_no = combinations[0];
 					pOut->PrintMessage("Pick up all the black rectangles!");
 
 				}
-				else if (dynamic_cast<CTriangle*>(Fig))
+				else if (Fig->getType() == "Triangle")
 				{
 					picked_comb_no = combinations[1];
 					pOut->PrintMessage("Pick up all the black triangles!");
 
 				}
-				else if (dynamic_cast<CSquare*>(Fig))
+				else if (Fig->getType() == "Square")
 				{
 					picked_comb_no = combinations[2];
 					pOut->PrintMessage("Pick up all the black squares!");
 
 				}
-				else if (dynamic_cast<CHexagon*>(Fig)) {
+				else if (Fig->getType() == "Hexagon") {
 					picked_comb_no = combinations[3];
 					pOut->PrintMessage("Pick up all the black Hexagons!");
 				}
@@ -193,25 +101,25 @@ void PickByBoth::Execute()
 			}
 			else if (Fig->GetGfxInfo().FillClr == WHITE)
 			{
-				if (dynamic_cast<CRectangle*>(Fig))
+				if (Fig->getType() == "Rectangle")
 				{
 					picked_comb_no = combinations[5];
 					pOut->PrintMessage("Pick up all the white rectangles!");
 
 				}
-				else if (dynamic_cast<CTriangle*>(Fig))
+				else if (Fig->getType() == "Triangle")
 				{
 					picked_comb_no = combinations[6];
 					pOut->PrintMessage("Pick up all the white triangles!");
 
 				}
-				else if (dynamic_cast<CSquare*>(Fig))
+				else if (Fig->getType() == "Square")
 				{
 					picked_comb_no = combinations[7];
 					pOut->PrintMessage("Pick up all the white squares!");
 
 				}
-				else if (dynamic_cast<CHexagon*>(Fig)) {
+				else if (Fig->getType() == "Hexagon") {
 					picked_comb_no = combinations[8];
 					pOut->PrintMessage("Pick up all the white Hexagons!");
 				}
@@ -224,25 +132,25 @@ void PickByBoth::Execute()
 			}
 			else if (Fig->GetGfxInfo().FillClr == BLUE)
 			{
-				if (dynamic_cast<CRectangle*>(Fig))
+				if (Fig->getType() == "Rectangle")
 				{
 					picked_comb_no = combinations[10];
 					pOut->PrintMessage("Pick up all the blue rectangles!");
 
 				}
-				else if (dynamic_cast<CTriangle*>(Fig))
+				else if (Fig->getType() == "Triangle")
 				{
 					picked_comb_no = combinations[11];
 					pOut->PrintMessage("Pick up all the blue triangles!");
 
 				}
-				else if (dynamic_cast<CSquare*>(Fig))
+				else if (Fig->getType() == "Square")
 				{
 					picked_comb_no = combinations[12];
 					pOut->PrintMessage("Pick up all the blue squares!");
 
 				}
-				else if (dynamic_cast<CHexagon*>(Fig)) {
+				else if (Fig->getType() == "Hexagon") {
 					picked_comb_no = combinations[13];
 					pOut->PrintMessage("Pick up all the blue Hexagons!");
 				}
@@ -256,25 +164,25 @@ void PickByBoth::Execute()
 			}
 			else if (Fig->GetGfxInfo().FillClr == GREEN)
 			{
-				if (dynamic_cast<CRectangle*>(Fig))
+				if (Fig->getType() == "Rectangle")
 				{
 					picked_comb_no = combinations[15];
 					pOut->PrintMessage("Pick up all the green rectangles!");
 
 				}
-				else if (dynamic_cast<CTriangle*>(Fig))
+				else if (Fig->getType() == "Triangle")
 				{
 					picked_comb_no = combinations[16];
 					pOut->PrintMessage("Pick up all the green triangles!");
 
 				}
-				else if (dynamic_cast<CSquare*>(Fig))
+				else if (Fig->getType() == "Square")
 				{
 					picked_comb_no = combinations[17];
 					pOut->PrintMessage("Pick up all the green squares!");
 
 				}
-				else if (dynamic_cast<CHexagon*>(Fig)) {
+				else if (Fig->getType() == "Hexagon") {
 					picked_comb_no = combinations[18];
 					pOut->PrintMessage("Pick up all the green Hexagons!");
 				}
@@ -287,25 +195,25 @@ void PickByBoth::Execute()
 			}
 			else if (Fig->GetGfxInfo().FillClr == RED)
 			{
-				if (dynamic_cast<CRectangle*>(Fig))
+				if (Fig->getType() == "Rectangle")
 				{
 					picked_comb_no = combinations[20];
 					pOut->PrintMessage("Pick up all the red rectangles!");
 
 				}
-				else if (dynamic_cast<CTriangle*>(Fig))
+				else if (Fig->getType() == "Triangle")
 				{
 					picked_comb_no = combinations[21];
 					pOut->PrintMessage("Pick up all the red triangles!");
 
 				}
-				else if (dynamic_cast<CSquare*>(Fig))
+				else if (Fig->getType() == "Square")
 				{
 					picked_comb_no = combinations[22];
 					pOut->PrintMessage("Pick up all the red squares!");
 
 				}
-				else if (dynamic_cast<CHexagon*>(Fig)) {
+				else if (Fig->getType() == "Hexagon") {
 					picked_comb_no = combinations[23];
 					pOut->PrintMessage("Pick up all the red Hexagons!");
 				}
@@ -320,25 +228,25 @@ void PickByBoth::Execute()
 		}
 		else
 		{
-			if (dynamic_cast<CRectangle*>(Fig))
+			if (Fig->getType() == "Rectangle")
 			{
 				picked_comb_no = combinations[25];
 				pOut->PrintMessage("Pick up all the unfilled rectangles!");
 
 			}
-			else if (dynamic_cast<CTriangle*>(Fig))
+			else if (Fig->getType() == "Triangle")
 			{
 				picked_comb_no = combinations[26];
 				pOut->PrintMessage("Pick up all the unfilled triangles!");
 
 			}
-			else if (dynamic_cast<CSquare*>(Fig))
+			else if (Fig->getType() == "Square")
 			{
 				picked_comb_no = combinations[27];
 				pOut->PrintMessage("Pick up all the unfilled squares!");
 
 			}
-			else if (dynamic_cast<CHexagon*>(Fig))
+			else if (Fig->getType() == "Hexagon")
 			{
 				picked_comb_no = combinations[28];
 				pOut->PrintMessage("Pick up all the unfilled hexagons!");
@@ -350,8 +258,6 @@ void PickByBoth::Execute()
 				pOut->PrintMessage("Pick up all the unfilled circles");
 
 			}
-			
-
 		}
 		while (picked_comb_no > 0)
 		{
@@ -419,6 +325,6 @@ void PickByBoth::Execute()
 	}
 	else pOut->PrintMessage("You must have at least two or more combinations to play pick by both!");
 	for (int i = 0; i < pManager->GetFigCount(); i++)
-		pManager->DrawnFigs(i)->Show();
+		pManager->ShowAll();
 	pManager->UpdateInterface();
 }
