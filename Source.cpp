@@ -66,7 +66,7 @@ void PickByColor::ReadActionParameters()
 
 	for (int i = 0; i < pManager->GetFigCount(); i++) {
 		Fig = pManager->DrawnFigs(i);
-		if (Fig->GetGfxInfo().isFilled ) //counts color occurance.
+		if (Fig->GetGfxInfo().isFilled) //counts color occurance.
 		{
 			if (Fig->GetGfxInfo().FillClr == BLACK)
 				clrs[0]++;
@@ -81,7 +81,8 @@ void PickByColor::ReadActionParameters()
 		}
 		else
 		{
-	        clrs[5]++;
+
+			clrs[5]++;
 		}
 	}
 
@@ -141,9 +142,12 @@ void PickByColor::Execute()
 		}
 		else
 		{
-			
-				picked_color_no = clrs[5];
-				pOut->PrintMessage("Pick up uncolored hollow figures!");
+
+
+			picked_color_no = clrs[5];
+			pOut->PrintMessage("Pick up uncolored hollow figures!");
+
+
 
 		}
 
@@ -157,14 +161,13 @@ void PickByColor::Execute()
 				if (clickedFig != NULL)
 				{
 
-					if ((!(Fig->GetGfxInfo().isFilled)  && (!(clickedFig->GetGfxInfo().isFilled) )))
+					if ((!(Fig->GetGfxInfo().isFilled)) && (!(clickedFig->GetGfxInfo().isFilled)))
 					{
 						PrntScore(1);
 						clickedFig->Hide();
 						pManager->UpdateInterface();
 						picked_color_no--;
 					}
-			
 					else if (clickedFig->GetGfxInfo().isFilled && clickedFig->GetGfxInfo().FillClr == AssignColor(Fig))
 					{
 						PrntScore(1);
@@ -191,8 +194,7 @@ void PickByColor::Execute()
 		if (picked_color_no == 0)
 			PrntScore(3);
 	}
-	else 		
-		pOut->PrintMessage("You must have at least two or more colors to play pick by color!");
+	else 			pOut->PrintMessage("You must have at least two or more colors to play pick by color!");
 	for (int i = 0; i < pManager->GetFigCount(); i++)
 		pManager->DrawnFigs(i)->Show();
 	pManager->UpdateInterface();

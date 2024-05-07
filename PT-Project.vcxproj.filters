@@ -196,6 +196,9 @@
     <ClCompile Include="Actions\Exit.cpp">
       <Filter>Action Classes</Filter>
     </ClCompile>
+    <ClCompile Include="Source.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h">

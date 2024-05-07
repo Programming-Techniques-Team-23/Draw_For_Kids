@@ -14,7 +14,7 @@
 #include"Actions/Cut.h"
 #include "Actions/SaveAction.h"
 #include "Actions/PlayByBoth.h"
-
+#include "Actions/PlayByColor.h"
 //Constructor
 ApplicationManager::ApplicationManager()
 {
@@ -80,6 +80,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case SAVE:
 			pAct = new SaveAction(this);
 			break;
+		case FILLCLR:
+				pAct = new PickByColor(this);
+				break;
 		case TYPENFILLCOLOR:
 			pAct = new PickByBoth(this);
 			break;
