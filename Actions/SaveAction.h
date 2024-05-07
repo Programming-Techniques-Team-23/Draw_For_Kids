@@ -13,5 +13,4 @@ public:
 	SaveAction(ApplicationManager* AM);
 	virtual void ReadActionParameters();
 	virtual void Execute();
-	
 };

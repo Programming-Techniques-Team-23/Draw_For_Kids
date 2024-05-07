@@ -34,77 +34,27 @@ bool CTriangle::pointchecker(int x, int y) {
 		return true;
 	else
 		return false;
-
 }
-
+string CTriangle::Details() {
+	int x1 = Corner1.x;
+	int y1 = Corner1.y;
+	int x2 = Corner2.x;
+	int y2 = Corner2.y;
+	int x3 = Corner3.x;
+	int y3 = Corner3.y;
+	string s = "   ";
+	string message = Type + s;
+	message += to_string(ID) + s;
+	message += to_string(x1) + s;
+	message += to_string(y1) + s;
+	message += to_string(x2) + s;
+	message += to_string(y2) + s;
+	message += to_string(x3) + s;
+	message += to_string(y3) + s;
+	message += DrawColor + s + FillColor;
+	return message;
+}
 void CTriangle::Save(ofstream& OutFile)
 {
-	
-	string t = "Tri ang";
-	string s = "   ";
-	string dc;
-	string fc;
-	if (FigGfxInfo.DrawClr == BLACK)
-	{
-		fc = "Black";
-	}
-	else if (FigGfxInfo.DrawClr == BLUE)
-	{
-		dc = "Blue";
-	}
-	else if (FigGfxInfo.DrawClr == GREEN)
-	{
-		dc = "GREEN";
-	}
-	else if (FigGfxInfo.DrawClr == YELLOW)
-	{
-		dc = "Yellow";
-	}
-	else if (FigGfxInfo.DrawClr == RED)
-	{
-		dc = "RED";
-	}
-	else if (FigGfxInfo.DrawClr == ORANGE)
-	{
-		dc = "ORANGE";
-	}
-	else if (FigGfxInfo.DrawClr == NULL)
-	{
-		dc = "NOT FILLED";
-	}
-	
-	if (FigGfxInfo.FillClr == BLACK)
-	{
-		fc = "Black";
-	}
-	else if (FigGfxInfo.DrawClr == BLUE)
-	{
-		fc = "Blue";
-	}
-	else if (FigGfxInfo.DrawClr == GREEN)
-	{
-		fc = "GREEN";
-	}
-	else if (FigGfxInfo.DrawClr == YELLOW)
-	{
-		fc = "Yellow";
-	}
-	else if (FigGfxInfo.DrawClr == RED)
-	{
-		fc = "RED";
-	}
-	else if (FigGfxInfo.DrawClr == ORANGE)
-	{
-		fc = "ORANGE";
-	}
-	else if (FigGfxInfo.DrawClr == NULL)
-	{
-		fc = "NOT FILLED";
-	}
-	
-
-	
-	
-	OutFile << t << "   " << ID << s << Corner1.x << s << Corner1.y << s << Corner2.x << s << Corner2.y << s << Corner3.x << s << Corner3.y << s << dc << s << fc << endl;
-	
+	OutFile << Details() << endl;
 }

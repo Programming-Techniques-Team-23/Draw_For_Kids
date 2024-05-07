@@ -16,6 +16,7 @@ public:
 	double area(Point , Point , Point );
 	virtual void Save(ofstream& OutFile);
 	string getType();
+	string Details();
 };
 
 #endif

@@ -14,6 +14,7 @@ public:
 	bool pointchecker(int x,int y);
 	virtual void Save(ofstream& OutFile);
 	string getType();
+	string Details();
 };
 
 #endif
