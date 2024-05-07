@@ -13,7 +13,7 @@
 #include"Actions/Copy.h"
 #include"Actions/Cut.h"
 #include "Actions/SaveAction.h"
-
+#include "Actions/PlayByBoth.h"
 
 //Constructor
 ApplicationManager::ApplicationManager()
@@ -80,7 +80,10 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case SAVE:
 			pAct = new SaveAction(this);
 			break;
-
+		case TYPENFILLCOLOR:
+			pAct = new PickByBoth(this);
+			break;
+	
 		case EXIT:
 
 			pAct = new Exit(this);
@@ -92,7 +95,6 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case STATUS:	//a click on the status bar ==> no action
 			return;
 	}
-	
 	//Execute the created action
 	if(pAct != NULL)
 	{
@@ -152,7 +154,7 @@ CFigure* ApplicationManager::GetFigure(int x, int y) const
 		 FigList[i]->Show();
  }
  int* ApplicationManager::Combinations() {
-	 int combinations[30];
+	 int *combinations=new int[30];
 	 for (int i = 0;i < 30;i++) {
 		 combinations[i] = 0;
 	 }
@@ -242,7 +244,10 @@ CFigure* ApplicationManager::GetFigure(int x, int y) const
 	 return combinations;
  }
 
-
+ CFigure* ApplicationManager::DrawnFigs(int i) const
+ {
+	 return FigList[i];
+ }
 
 
  void ApplicationManager::SaveAll( string fname )

@@ -3,10 +3,9 @@
 #include "..\Figures\CRectangle.h"
 #include "..\Figures\CCircle.h"
 #include "..\Figures\CTriangle.h"
-#include "..\Figures\CHexagon.h"
-#include "..\Figures\CSquare.h"
 #include "..\GUI\input.h"
 #include "..\GUI\Output.h"
+
 
 PickByType::PickByType(ApplicationManager* pApp) :Action(pApp)
 {
@@ -51,18 +50,15 @@ void PickByType::ReadActionParameters()
 			figs[0]++;
 		else if (dynamic_cast<CTriangle*>(Fig))
 			figs[1]++;
-		else if (dynamic_cast<CSquare*>(Fig))
+		else if (dynamic_cast<CCircle*>(Fig))
 			figs[2]++;
-		else if (dynamic_cast<CHexagon*>(Fig))
-			figs[3]++;
-		else figs[4]++;
+		else figs[3]++;
 
 
 
 
 	}		for (int i = 0; i < 4; i++)
-		if (figs[i] != 0)
-			no_figs++;
+		if (figs[i] != 0)no_figs++;
 }
 
 void PickByType::Execute()
@@ -89,22 +85,16 @@ void PickByType::Execute()
 			pOut->PrintMessage("Pick up all the triangles!");
 
 		}
-		else if (dynamic_cast<CSquare*>(Fig))
+		else if (dynamic_cast<CCircle*>(Fig))
 		{
 			picked_fig_no = figs[2];
-			pOut->PrintMessage("Pick up all the squares!");
-
-		}
-		else if (dynamic_cast<CHexagon*>(Fig))
-		{
-			picked_fig_no = figs[3];
-			pOut->PrintMessage("Pick up all the hexagons!");
+			pOut->PrintMessage("Pick up all the circles!");
 
 		}
 		else
 		{
-			picked_fig_no = figs[4];
-			pOut->PrintMessage("Pick up all the circles!");
+			picked_fig_no = figs[3];
+			pOut->PrintMessage("Pick up all the lines!");
 
 		}
 		while (picked_fig_no > 0)
@@ -117,36 +107,21 @@ void PickByType::Execute()
 					clickedFig = pManager->GetFigure(P.x, P.y);
 					if (clickedFig != NULL)
 					{
-
-						 if ((dynamic_cast<CRectangle*>(clickedFig)) && (dynamic_cast<CRectangle*>(Fig)))
+						 if ((dynamic_cast<CTriangle*>(clickedFig)) && (dynamic_cast<CTriangle*>(Fig)))
 						{
 							PrntScore(1);
 							clickedFig->Hide();
 							pManager->UpdateInterface();
 							picked_fig_no--;
 						}
-						else if ((dynamic_cast<CTriangle*>(clickedFig)) && (dynamic_cast<CTriangle*>(Fig)))
-						{
-							PrntScore(1);
-							clickedFig->Hide();
-							pManager->UpdateInterface();
-							picked_fig_no--;
-						}
-						else if ((dynamic_cast<CSquare*>(clickedFig)) && (dynamic_cast<CSquare*>(Fig)))
-						 {
-							 PrntScore(1);
-							 clickedFig->Hide();
-							 pManager->UpdateInterface();
-							 picked_fig_no--;
-						 }
-						else if ((dynamic_cast<CHexagon*>(clickedFig)) && (dynamic_cast<CHexagon*>(Fig)))
-						 {
-							 PrntScore(1);
-							 clickedFig->Hide();
-							 pManager->UpdateInterface();
-							 picked_fig_no--;
-						 }
 						else if ((dynamic_cast<CCircle*>(clickedFig)) && (dynamic_cast<CCircle*>(Fig)))
+						{
+							PrntScore(1);
+							clickedFig->Hide();
+							pManager->UpdateInterface();
+							picked_fig_no--;
+						}
+						else if ((dynamic_cast<CRectangle*>(clickedFig)) && (dynamic_cast<CRectangle*>(Fig)))
 						{
 							PrntScore(1);
 							clickedFig->Hide();

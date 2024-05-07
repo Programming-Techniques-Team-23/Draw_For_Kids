@@ -47,7 +47,7 @@ PickByBoth::~PickByBoth()
 
 void PickByBoth::ReadActionParameters()
 {
-	int* combinations= pManager->Combinations();
+	int* combinations = pManager->Combinations();
 
 	for (int i = 0; i < 30; i++)
 		if (combinations[i] != 0)
@@ -63,7 +63,7 @@ void PickByBoth::Execute()
 
 	if (no_combs > 1)
 	{
-		//Figure to be hidden
+	
 		CFigure* clickedFig;
 		CFigure* Fig = pManager->getRandomFig();
 		if (Fig->GetGfxInfo().isFilled)
@@ -269,35 +269,35 @@ void PickByBoth::Execute()
 				if (clickedFig != NULL)
 				{
 
-					if (dynamic_cast<CHexagon*>(Fig) && dynamic_cast<CHexagon*>(clickedFig) && (clickedFig->GetGfxInfo().DrawClr == Fig->GetGfxInfo().DrawClr))
+					if (clickedFig->getType()=="Hexagon" && Fig->getType() == "Hexagon" && (clickedFig->GetGfxInfo().DrawClr == Fig->GetGfxInfo().DrawClr))
 					{
 						PrntScore(1);
 						clickedFig->Hide();
 						pManager->UpdateInterface();
 						picked_comb_no--;
 					}
-					else if (dynamic_cast<CRectangle*>(Fig) && dynamic_cast<CRectangle*>(clickedFig) && (clickedFig->GetGfxInfo().FillClr == Fig->GetGfxInfo().FillClr))
+					else if (clickedFig->getType() == "Rectangle" && Fig->getType() == "Rectangle" && (clickedFig->GetGfxInfo().FillClr == Fig->GetGfxInfo().FillClr))
 					{
 						PrntScore(1);
 						clickedFig->Hide();
 						pManager->UpdateInterface();
 						picked_comb_no--;
 					}
-					else if (dynamic_cast<CCircle*>(Fig) && dynamic_cast<CCircle*>(clickedFig) && (clickedFig->GetGfxInfo().FillClr == Fig->GetGfxInfo().FillClr))
+					else if (clickedFig->getType() == "Circle" && Fig->getType() == "Circle" && (clickedFig->GetGfxInfo().FillClr == Fig->GetGfxInfo().FillClr))
 					{
 						PrntScore(1);
 						clickedFig->Hide();
 						pManager->UpdateInterface();
 						picked_comb_no--;
 					}
-					else if (dynamic_cast<CTriangle*>(Fig) && dynamic_cast<CTriangle*>(clickedFig) && (clickedFig->GetGfxInfo().FillClr == Fig->GetGfxInfo().FillClr))
+					else if (clickedFig->getType() == "Triangle" && Fig->getType() == "Triangle" && (clickedFig->GetGfxInfo().FillClr == Fig->GetGfxInfo().FillClr))
 					{
 						PrntScore(1);
 						clickedFig->Hide();
 						pManager->UpdateInterface();
 						picked_comb_no--;
 					}
-					else if (dynamic_cast<CSquare*>(Fig) && dynamic_cast<CSquare*>(clickedFig) && (clickedFig->GetGfxInfo().FillClr == Fig->GetGfxInfo().FillClr))
+					else if (clickedFig->getType() == "Square" && Fig->getType() == "Square" && (clickedFig->GetGfxInfo().FillClr == Fig->GetGfxInfo().FillClr))
 					{
 						PrntScore(1);
 						clickedFig->Hide();
@@ -327,4 +327,5 @@ void PickByBoth::Execute()
 	for (int i = 0; i < pManager->GetFigCount(); i++)
 		pManager->ShowAll();
 	pManager->UpdateInterface();
+	delete[] combinations;
 }

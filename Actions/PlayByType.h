@@ -2,13 +2,12 @@
 #include "..\Figures\CFigure.h"
 
 #include "Action.h"
-class PickByType :
-	public Action
+class PickByType : public Action
 {
 	CFigure* Fig;
 	Point P;
 	int  no_figs, rand_fig_no, picked_fig_no, wrgSel, rigSel;
-	int figs[5];
+	int figs[4];
 	void PrntScore(int);
 
 public:
@@ -17,4 +16,5 @@ public:
 	void ReadActionParameters();
 	void Execute();
 };
+
 
