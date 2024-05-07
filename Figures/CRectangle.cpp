@@ -1,12 +1,19 @@
 #include "CRectangle.h"
+#include <fstream>
+
 
 CRectangle::CRectangle(Point P1, Point P2, GfxInfo FigureGfxInfo):CFigure(FigureGfxInfo)
 {
 	Corner1 = P1;
 	Corner2 = P2;
+	Type = "Rectangle";
+
 }
 	
-
+string CRectangle::getType()
+{
+	return Type;
+}
 void CRectangle::Draw(Output* pOut) const
 {
 	//Call Output::DrawRect to draw a rectangle on the screen	
@@ -45,10 +52,71 @@ bool CRectangle::pointchecker(int x, int y)
 
 void CRectangle::Save(ofstream& OutFile)
 {
-    ofstream fout(& OutFile);
+    
+    string s = "   ";
+	string dc;
+	string fc;
+	if (FigGfxInfo.DrawClr == BLACK)
+	{
+		fc = "Black";
+	}
+	else if (FigGfxInfo.DrawClr == BLUE)
+	{
+		dc = "Blue";
+	}
+	else if (FigGfxInfo.DrawClr == GREEN)
+	{
+		dc = "GREEN";
+	}
+	else if (FigGfxInfo.DrawClr == YELLOW)
+	{
+		dc = "Yellow";
+	}
+	else if (FigGfxInfo.DrawClr == RED)
+	{
+		dc = "RED";
+	}
+	else if (FigGfxInfo.DrawClr == ORANGE)
+	{
+		dc = "ORANGE";
+	}
+	else if (FigGfxInfo.DrawClr == NULL)
+	{
+		dc = "NOT FILLED";
+	}
 
-    fout << "Rect" << "   " << ID << "   " << Corner1.x << "   " << Corner1.y << "   " << Corner2.x << "   " << Corner2.y << "   " << FigGfxInfo.DrawClr << "   " << FigGfxInfo.FillClr<< '/n';
+	if (FigGfxInfo.FillClr == BLACK)
+	{
+		fc = "Black";
+	}
+	else if (FigGfxInfo.DrawClr == BLUE)
+	{
+		fc = "Blue";
+	}
+	else if (FigGfxInfo.DrawClr == GREEN)
+	{
+		fc = "GREEN";
+	}
+	else if (FigGfxInfo.DrawClr == YELLOW)
+	{
+		fc = "Yellow";
+	}
+	else if (FigGfxInfo.DrawClr == RED)
+	{
+		fc = "RED";
+	}
+	else if (FigGfxInfo.DrawClr == ORANGE)
+	{
+		fc = "ORANGE";
+	}
+	else if (FigGfxInfo.DrawClr == NULL)
+	{
+		fc = "NOT FILLED";
+	}
 
+    
 
+	OutFile << "Rect" << s << ID << s << Corner1.x << s << Corner1.y << s << Corner2.x << s << Corner2.y << s << dc << s << fc << endl;
+	
 }
 

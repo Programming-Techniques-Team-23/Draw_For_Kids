@@ -178,10 +178,14 @@
     <ClCompile Include="Actions\Copy.cpp">
       <Filter>Action Classes</Filter>
     </ClCompile>
-    <ClCompile Include="Actions\Exit.cpp">
+    <ClCompile Include="Actions\Switchtoplay.cpp">
       <Filter>Action Classes</Filter>
     </ClCompile>
-    <ClCompile Include="Actions\Switchtoplay.cpp">
+    <ClCompile Include="Actions\switchtodraw.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="Actions\Exit.cpp" />
+    <ClCompile Include="Actions\Cut.cpp">
       <Filter>Action Classes</Filter>
     </ClCompile>
     <ClCompile Include="PlayByBoth.cpp">
@@ -310,10 +314,19 @@
     <ClInclude Include="Actions\Copy.h">
       <Filter>Action Classes</Filter>
     </ClInclude>
+    <ClInclude Include="Actions\Switchtoplay.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\switchtodraw.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
     <ClInclude Include="Actions\Exit.h">
       <Filter>Action Classes</Filter>
     </ClInclude>
-    <ClInclude Include="Actions\Switchtoplay.h">
+    <ClInclude Include="Actions\Cut.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\Paste.h">
       <Filter>Action Classes</Filter>
     </ClInclude>
     <ClInclude Include="PlayByBoth.h">

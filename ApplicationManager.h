@@ -12,8 +12,11 @@ class ApplicationManager
 	enum { MaxFigCount = 200 };	//Max no of figures
 
 private:
-	int FigCount;		//Actual number of figures
-     string message;
+
+	int FigCount; //Figure Count
+	int mode; //Actual number of figures
+	string message; //Actual number of figures
+  
 	CFigure* FigList[MaxFigCount];	//List of all figures (Array of pointers)
 
 	CFigure* SelectedFig; //Pointer to the selected figure
@@ -47,6 +50,14 @@ public:
 	int GetFigCount();
 	void UnselectAll();
 	CFigure* DrawnFigs(int) const;			//Transfer figures in FigList to playmode
+
+	void SaveAll(string OutFile);
+	int RecCount();
+	int HexCount();
+	int CircCount();
+	int SquCount();
+	int TriCount();
+	int SelectedCount();
 };
 
 #endif

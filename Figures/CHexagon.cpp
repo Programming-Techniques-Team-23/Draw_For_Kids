@@ -1,17 +1,22 @@
 #include "CHexagon.h"
 #include "CTriangle.h"
+#include <fstream>
+
 CHexagon::CHexagon(Point P1, GfxInfo FigureGfxInfo) :CFigure(FigureGfxInfo)
 {
 	Centre = P1;
+	Type = "Hexagon";
 }
-
 
 void CHexagon::Draw(Output* pOut) const
 {
 	//Call Output::DrawHex to draw a hexagon on the screen	
 	pOut->DrawHex(Centre, FigGfxInfo, Selected);
 }
-
+string CHexagon::getType()
+{
+	return Type;
+}
 bool CHexagon::pointchecker(int x, int y) {
 	Point P1 = { Centre.x + 60, Centre.y };
 	Point P2 = { Centre.x + 30, Centre.y + 52 };
@@ -35,8 +40,69 @@ bool CHexagon::pointchecker(int x, int y) {
 
 void CHexagon::Save(ofstream& OutFile)
 {
-	ofstream fout(&OutFile);
 	
-	fout << "Hex" << "   " << ID << "   " << Centre.x << "   "<<  Centre.y << FigGfxInfo.DrawClr << "   " << FigGfxInfo.FillClr << '/n';
+	string s = "   ";
+	string dc;
+	string fc;
+	if (FigGfxInfo.DrawClr == BLACK)
+	{
+		fc = "Black";
+	}
+	else if (FigGfxInfo.DrawClr == BLUE)
+	{
+		dc = "Blue";
+	}
+	else if (FigGfxInfo.DrawClr == GREEN)
+	{
+		dc = "GREEN";
+	}
+	else if (FigGfxInfo.DrawClr == YELLOW)
+	{
+		dc = "Yellow";
+	}
+	else if (FigGfxInfo.DrawClr == RED)
+	{
+		dc = "RED";
+	}
+	else if (FigGfxInfo.DrawClr == ORANGE)
+	{
+		dc = "ORANGE";
+	}
+	else if (FigGfxInfo.DrawClr == NULL)
+	{
+		dc = "NOT FILLED";
+	}
+
+	if (FigGfxInfo.FillClr == BLACK)
+	{
+		fc = "Black";
+	}
+	else if (FigGfxInfo.DrawClr == BLUE)
+	{
+		fc = "Blue";
+	}
+	else if (FigGfxInfo.DrawClr == GREEN)
+	{
+		fc = "GREEN";
+	}
+	else if (FigGfxInfo.DrawClr == YELLOW)
+	{
+		fc = "Yellow";
+	}
+	else if (FigGfxInfo.DrawClr == RED)
+	{
+		fc = "RED";
+	}
+	else if (FigGfxInfo.DrawClr == ORANGE)
+	{
+		fc = "ORANGE";
+	}
+	else if (FigGfxInfo.DrawClr == NULL)
+	{
+		fc = "NOT FILLED";
+	}
+
+	OutFile << "Hex" << s << ID << s << Centre.x << s << Centre.y<< s << dc << s << fc << endl;
+	
 }
 

@@ -9,7 +9,10 @@
 #include"Actions/Switchtoplay.h"
 #include"ApplicationManager.h"
 #include"Actions/Exit.h"
-
+#include"Actions/switchtodraw.h"
+#include"Actions/Copy.h"
+#include"Actions/Cut.h"
+#include "Actions/SaveAction.h"
 
 
 //Constructor
@@ -24,6 +27,7 @@ ApplicationManager::ApplicationManager()
 	//Create an array of figure pointers and set them to NULL		
 	for(int i=0; i<MaxFigCount; i++)
 		FigList[i] = NULL;	
+
 }
 
 //==================================================================================//
@@ -62,11 +66,25 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			pAct = new SelectAction(this);
 			break;
 		case TO_PLAY:
-			pAct = new SwitchToPlay(this);
+			pAct = new SwitchToPlay(this, mode);//1
+			break;
+		case TO_DRAW:
+			pAct = new SwitchToDraw(this, &mode);//0
+			break;
+		case COPY:
+			pAct = new Copy(this);
+			break;
+		case CUT:
+			pAct = new Cut(this);
+			break;
+		case SAVE:
+			pAct = new SaveAction(this);
 			break;
 
 		case EXIT:
+
 			pAct = new Exit(this);
+			
 			///create ExitAction here
 			
 			break;
@@ -90,8 +108,11 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 //Add a figure to the list of figures
 void ApplicationManager::AddFigure(CFigure* pFig)
 {
-	if(FigCount < MaxFigCount )
-		FigList[FigCount++] = pFig;	
+	if (FigCount < MaxFigCount)
+	{
+		FigList[FigCount++] = pFig;
+		pFig->Setid(FigCount);
+	}
 }
 ////////////////////////////////////////////////////////////////////////////////////
 CFigure* ApplicationManager::GetFigure(int x, int y) const
@@ -104,11 +125,11 @@ CFigure* ApplicationManager::GetFigure(int x, int y) const
 	}
 	return Figp;
 }
- void ApplicationManager::setclipboard(CFigure* c) 
+ void ApplicationManager::setclipboard(CFigure* c)    //the clipboard to store on it figures 
 {
 	Clipboard = c;
 }
- void ApplicationManager::setselected(CFigure* sf) {
+ void ApplicationManager::setselected(CFigure* sf) {      //set the selcted figure. We need it on copy, cut, paste and delete actions
 	 SelectedFig = sf;
  }
  CFigure *ApplicationManager::getselected() {
@@ -130,10 +151,14 @@ CFigure* ApplicationManager::GetFigure(int x, int y) const
 
 
 
- void ApplicationManager::SaveAll()
+ void ApplicationManager::SaveAll( string fname )
  {
 	 
-
+	 for (int i = 0; i < FigCount; i++)
+	 {
+		 
+		 FigList[i]->Save(ofstream (fname));
+	 }
  }
 
 	 
@@ -151,11 +176,18 @@ CFigure* ApplicationManager::GetFigure(int x, int y) const
 //==================================================================================//
 
 //Draw all figures on the user interface
-void ApplicationManager::UpdateInterface() const
-{	
-	for(int i=0; i<FigCount; i++)
-		FigList[i]->Draw(pOut);		//Call Draw function (virtual member fn)
-}
+ void ApplicationManager::UpdateInterface() const
+ {
+	 for (int i = 0; i < FigCount; i++)
+		 FigList[i]->Draw(pOut);
+	 if (mode == 0) {
+		 pOut->CreateDrawToolBar();
+	 }
+	 else if (mode == 1) {
+		 pOut->CreatePlayToolBar();
+	 }//Call Draw function (virtual member fn)
+	 
+ }
 ////////////////////////////////////////////////////////////////////////////////////
 //Return a pointer to the input
 Input *ApplicationManager::GetInput() const
@@ -163,13 +195,72 @@ Input *ApplicationManager::GetInput() const
 //Return a pointer to the output
 Output *ApplicationManager::GetOutput() const
 {	return pOut; }
+
+//Rectangle Count
+int ApplicationManager::RecCount() {
+	int cRec = 0;
+	for (int i = 0; i < FigCount; i++) {
+		if (FigList[i]->IsSelected()&& FigList[i]->getType() == "Rectangle")
+			cRec++;
+	}
+	return cRec;
+}
+
+//Hexagon Count
+int ApplicationManager::HexCount() {
+	int cHex = 0;
+	for (int i = 0; i < FigCount; i++) {
+		if (FigList[i]->IsSelected() && FigList[i]->getType() == "Hexagon")
+			cHex++;
+	}
+	return cHex;
+}
+
+//Circle Count
+int ApplicationManager::CircCount() {
+	int cCirc = 0;
+	for (int i = 0; i < FigCount; i++) {
+		if (FigList[i]->IsSelected() && FigList[i]->getType() == "Circle")
+			cCirc++;
+	}
+	return cCirc;
+}
+
+//Square Count
+int ApplicationManager::SquCount() {
+	int cSqu = 0;
+	for (int i = 0; i < FigCount; i++) {
+		if (FigList[i]->IsSelected() && FigList[i]->getType() == "Square")
+			cSqu++;
+	}
+	return cSqu;
+}
+
+//Triangle Count
+int ApplicationManager::TriCount() {
+	int cTri = 0;
+	for (int i = 0; i < FigCount; i++) {
+		if (FigList[i]->IsSelected() && FigList[i]->getType() == "Triangle")
+			cTri++;
+	}
+	return cTri;
+}
+int ApplicationManager::SelectedCount() {
+	int c = 0;
+	for (int i = 0; i < FigCount; i++) {
+		if (FigList[i]->IsSelected())
+			c++;
+	}
+	return c;
+}
+
 ////////////////////////////////////////////////////////////////////////////////////
 //Destructor
 ApplicationManager::~ApplicationManager()
 {
-	for(int i=0; i<FigCount; i++)
+	for (int i = 0; i < FigCount; i++)
 		delete FigList[i];
 	delete pIn;
 	delete pOut;
-	
+
 }
