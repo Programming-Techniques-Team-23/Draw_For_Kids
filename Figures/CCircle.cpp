@@ -27,72 +27,11 @@ bool CCircle::pointchecker(int x, int y)
 void CCircle::Save(ofstream& OutFile)
 {
 	string s ="   ";
-	string c = "circ";
-	string dc;
-	string fc;
-	
-	if (FigGfxInfo.DrawClr == BLACK)
-	{
-		fc = "Black";
-	}
-	else if (FigGfxInfo.DrawClr == BLUE)
-	{
-		dc = "Blue";
-	}
-	else if (FigGfxInfo.DrawClr == GREEN)
-	{
-		dc = "GREEN";
-	}
-	else if (FigGfxInfo.DrawClr == YELLOW)
-	{
-		dc = "Yellow";
-	}
-	else if (FigGfxInfo.DrawClr == RED)
-	{
-		dc = "RED";
-	}
-	else if (FigGfxInfo.DrawClr == ORANGE)
-	{
-		dc = "ORANGE";
-	}
-	else if (FigGfxInfo.DrawClr == NULL)
-	{
-		dc = "NOT FILLED";
-	}
-
-	if (FigGfxInfo.FillClr == BLACK)
-	{
-		fc = "Black";
-	}
-	else if (FigGfxInfo.DrawClr == BLUE)
-	{
-		fc = "Blue";
-	}
-	else if (FigGfxInfo.DrawClr == GREEN)
-	{
-		fc = "GREEN";
-	}
-	else if (FigGfxInfo.DrawClr == YELLOW)
-	{
-		fc = "Yellow";
-	}
-	else if (FigGfxInfo.DrawClr == RED)
-	{
-		fc = "RED";
-	}
-	else if (FigGfxInfo.DrawClr == ORANGE)
-	{
-		fc = "ORANGE";
-	}
-	else if (FigGfxInfo.DrawClr == NULL)
-	{
-		fc = "NOT FILLED";
-	}
 	int x1 = Centre.x;
 	int y1 = Centre.y;
 	int x2 = Radius.x;
 	int y2 = Radius.y;
 
-	OutFile << c << "   " << ID << "   " << x1 << "   " << y1 << "   " << x2 << "   " << y2 << "   " << dc << "   " << fc<<endl;
+	OutFile << Type << s << ID << s << x1 << s << y1 << s << x2 << s << y2 << s << DrawColor << s << FillingColor <<endl;
 	
 }

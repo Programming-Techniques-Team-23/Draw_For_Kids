@@ -13,6 +13,8 @@ protected:
 	bool Selected;	//true if the figure is selected.
 	GfxInfo FigGfxInfo;	//Figure graphis info
 	string Type;  //Type of the figure
+	string DrawColor;
+	string FillingColor;
 	/// Add more parameters if needed.
 
 public:

@@ -31,10 +31,10 @@ void SelectAction::ReadActionParameters()
 void SelectAction::Execute()
 {
 	//This action needs to read some parameters first
-
+	Output* pOut = pManager->GetOutput();
+	CFigure* Figp = pManager->GetFigure(P1.x, P1.y);
 	ReadActionParameters();
 	if (pManager->GetFigCount() != 0) {
-		CFigure* Figp = pManager->GetFigure(P1.x, P1.y);
 		if (Figp != NULL) {
 			if (Figp->IsSelected())
 				Figp->SetSelected(false);
@@ -46,7 +46,6 @@ void SelectAction::Execute()
 		}
 	}
 	if(pManager->SelectedCount()>1){
-		Output* pOut = pManager->GetOutput();
 		string message = "Selected: ";
 		int totalSelected = 0;
 		if (pManager->RecCount() > 0) {
@@ -74,6 +73,8 @@ void SelectAction::Execute()
 			message.pop_back();
 		}
 		pOut->PrintMessage(message);
-
+	}
+	else {
+		pOut->PrintMessage("ID: " +to_string(Figp->getid()));
 	}
 }
