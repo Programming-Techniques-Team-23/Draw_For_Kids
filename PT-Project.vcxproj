@@ -108,6 +108,7 @@
       <WarningLevel>Level3</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <AdditionalIncludeDirectories>C:\Users\rtvpe\source\repos\Phase-2\Actions</AdditionalIncludeDirectories>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -186,6 +187,9 @@
     <ClCompile Include="GUI\Output.cpp" />
     <ClCompile Include="ApplicationManager.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="PlayByBoth.cpp" />
+    <ClCompile Include="PlayByColor.cpp" />
+    <ClCompile Include="PlayByType.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Actions\AddCircAction.h" />
@@ -233,6 +237,9 @@
     <ClInclude Include="GUI\UI_Info.h" />
     <ClInclude Include="ApplicationManager.h" />
     <ClInclude Include="DEFS.h" />
+    <ClInclude Include="PlayByBoth.h" />
+    <ClInclude Include="PlayByColor.h" />
+    <ClInclude Include="PlayByType.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
