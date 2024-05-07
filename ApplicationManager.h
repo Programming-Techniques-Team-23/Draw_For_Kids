@@ -46,6 +46,7 @@ public:
 	CFigure* getselected();
 	int GetFigCount();
 	void UnselectAll();
+	CFigure* DrawnFigs(int) const;			//Transfer figures in FigList to playmode
 };
 
 #endif

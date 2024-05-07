@@ -184,6 +184,15 @@
     <ClCompile Include="Actions\Switchtoplay.cpp">
       <Filter>Action Classes</Filter>
     </ClCompile>
+    <ClCompile Include="PlayByBoth.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayByColor.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayByType.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h">
@@ -305,6 +314,15 @@
       <Filter>Action Classes</Filter>
     </ClInclude>
     <ClInclude Include="Actions\Switchtoplay.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayByBoth.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayByColor.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayByType.h">
       <Filter>Action Classes</Filter>
     </ClInclude>
   </ItemGroup>
