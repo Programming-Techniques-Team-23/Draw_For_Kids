@@ -49,6 +49,8 @@ public:
 	CFigure* getselected();
 	int GetFigCount();
 	void UnselectAll();
+	CFigure* DrawnFigs(int) const;			//Transfer figures in FigList to playmode
+
 	void SaveAll(string OutFile);
 	int RecCount();
 	int HexCount();

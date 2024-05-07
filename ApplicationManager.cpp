@@ -144,6 +144,10 @@ CFigure* ApplicationManager::GetFigure(int x, int y) const
 		 FigList[i]->SetSelected(false);
 	 }
  }
+ CFigure* ApplicationManager::DrawnFigs(int i) const
+ {
+	 return FigList[i];
+ }
 
 
 
