@@ -138,6 +138,7 @@
     <ClCompile Include="Actions\Cut.cpp" />
     <ClCompile Include="Actions\Exit.cpp" />
     <ClCompile Include="Actions\PlayByBoth.cpp" />
+    <ClCompile Include="Actions\PlayByColor.cpp" />
     <ClCompile Include="Actions\PlayByType.cpp" />
     <ClCompile Include="Actions\SaveAction.cpp" />
     <ClCompile Include="Actions\SelectAction.cpp" />
@@ -202,6 +203,7 @@
     <ClInclude Include="Actions\Exit.h" />
     <ClInclude Include="Actions\Paste.h" />
     <ClInclude Include="Actions\PlayByBoth.h" />
+    <ClInclude Include="Actions\PlayByColor.h" />
     <ClInclude Include="Actions\PlayByType.h" />
     <ClInclude Include="Actions\SaveAction.h" />
     <ClInclude Include="Actions\SelectAction.h" />

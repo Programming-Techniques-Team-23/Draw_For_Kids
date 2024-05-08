@@ -30,7 +30,6 @@ private:
 public:	
 	ApplicationManager(); 
 	~ApplicationManager();
-	CFigure* DrawnFigs(int) const;
 	// -- Action-Related Functions
 	//Reads the input command from the user and returns the corresponding action type
 	ActionType GetUserAction() const;
@@ -51,6 +50,7 @@ public:
 	void UnselectAll();
 	int* Combinations();
 	int* types();
+	int* colors();
 	void SaveAll(string OutFile);
 	int RecCount();
 	int HexCount();

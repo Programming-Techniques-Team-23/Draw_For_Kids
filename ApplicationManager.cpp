@@ -15,6 +15,7 @@
 #include "Actions/SaveAction.h"
 #include "Actions/PlayByBoth.h"
 #include "Actions/PlayByType.h"
+#include "Actions/PlayByColor.h"
 #include"Actions/ClearAll.h"
 
 //Constructor
@@ -85,6 +86,8 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case TYPE:
 			pAct = new PickByType(this);
 			break;
+		case FILLCLR:
+			pAct = new PickByColor(this);
 		case TYPENFILLCOLOR:
 			pAct = new PickByBoth(this);
 			break;
@@ -159,6 +162,32 @@ CFigure* ApplicationManager::GetFigure(int x, int y) const
  void ApplicationManager::ShowAll() {
 	 for (int i = 0;i < FigCount;i++)
 		 FigList[i]->Show();
+ }
+ int* ApplicationManager::colors() {
+	 int* colors = new int[6];
+	 for (int i = 0; i < 6; i++)
+		 colors[i] = 0;
+	 for (int i = 0; i < FigCount; i++) {
+		 if (FigList[i]->GetGfxInfo().isFilled) //counts color occurance.
+		 {
+			 if (FigList[i]->GetGfxInfo().FillClr == BLACK)
+				 colors[0]++;
+			 else if (FigList[i]->GetGfxInfo().FillClr == WHITE)
+				 colors[1]++;
+			 else if (FigList[i]->GetGfxInfo().FillClr == BLUE)
+				 colors[2]++;
+			 else if (FigList[i]->GetGfxInfo().FillClr == GREEN)
+				 colors[3]++;
+			 else if (FigList[i]->GetGfxInfo().FillClr == RED)
+				 colors[4]++;
+		 }
+		 else
+		 {
+
+			 colors[5]++;
+		 }
+	 }
+	 return colors;
  }
  int* ApplicationManager::types() {
 	 int* types = new int[5];
@@ -272,10 +301,6 @@ CFigure* ApplicationManager::GetFigure(int x, int y) const
 	 return combinations;
  }
 
- CFigure* ApplicationManager::DrawnFigs(int i) const
- {
-	 return FigList[i];
- }
 
 
  void ApplicationManager::SaveAll( string fname )
