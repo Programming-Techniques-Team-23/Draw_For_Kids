@@ -30,9 +30,19 @@ bool CSquare::pointchecker(int x, int y)
     else
         return false;
 }
+string CSquare::Details() {
+	int x1 = Centre.x;
+	int y1 = Centre.y;
+	string s = "   ";
+	string message = Type + s;
+	message += to_string(ID) + s;
+	message += to_string(x1) + s;
+	message += to_string(y1) + s;
+	message += DrawColor + s + FillColor;
+	return message;
+}
 
 void CSquare::Save(ofstream& OutFile)
 {
-    string s = "   ";
-	OutFile << Type << s << ID << s<<Centre.x << s <<Centre.y<<s << DrawColor << s << FillingColor << endl;
+	OutFile << Details() << endl;
 }

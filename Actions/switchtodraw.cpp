@@ -3,7 +3,7 @@
 
 SwitchToDraw::SwitchToDraw(ApplicationManager* AM, int *mode):Action(AM)
 {
-	mode = 0;
+	*mode = 0;
 	Mode = mode;
 }
 

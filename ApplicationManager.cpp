@@ -15,6 +15,8 @@
 #include "Actions/SaveAction.h"
 #include "Actions/PlayByBoth.h"
 #include "Actions/PlayByColor.h"
+#include"Actions/ClearAll.h"
+
 //Constructor
 ApplicationManager::ApplicationManager()
 {
@@ -86,7 +88,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case TYPENFILLCOLOR:
 			pAct = new PickByBoth(this);
 			break;
-	
+		case CLR_ALL:
+			pAct = new ClearAll(this);
+			break;
 		case EXIT:
 
 			pAct = new Exit(this);

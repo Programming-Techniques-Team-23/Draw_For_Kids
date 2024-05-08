@@ -19,7 +19,7 @@ void SaveAction::Execute()
 	Output* pout = pManager->GetOutput() ;
 	pout->PrintMessage("Enter File Name:") ;
 
-	 name =pIn->GetString(pout) ;
+	name =pIn->GetString(pout) ;
 	ofstream fout(name) ;
 	
 	pManager->SaveAll(name) ;

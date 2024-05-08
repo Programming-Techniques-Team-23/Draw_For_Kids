@@ -34,11 +34,27 @@ bool CTriangle::pointchecker(int x, int y) {
 		return true;
 	else
 		return false;
-
 }
-
+string CTriangle::Details() {
+	int x1 = Corner1.x;
+	int y1 = Corner1.y;
+	int x2 = Corner2.x;
+	int y2 = Corner2.y;
+	int x3 = Corner3.x;
+	int y3 = Corner3.y;
+	string s = "   ";
+	string message = Type + s;
+	message += to_string(ID) + s;
+	message += to_string(x1) + s;
+	message += to_string(y1) + s;
+	message += to_string(x2) + s;
+	message += to_string(y2) + s;
+	message += to_string(x3) + s;
+	message += to_string(y3) + s;
+	message += DrawColor + s + FillColor;
+	return message;
+}
 void CTriangle::Save(ofstream& OutFile)
 {
-		string s = "   ";
-	OutFile << Type << "   " << ID << s << Corner1.x << s << Corner1.y << s << Corner2.x << s << Corner2.y << s << Corner3.x << s << Corner3.y << s << DrawColor << s << FillingColor << endl;
+	OutFile << Details() << endl;
 }

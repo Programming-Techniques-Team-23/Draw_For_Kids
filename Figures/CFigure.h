@@ -15,7 +15,7 @@ protected:
 	string Type;  //Type of the figure
 	bool PlayHidden;		//hides figures in playmode.
 	string DrawColor;
-	string FillingColor;
+	string FillColor;
 	/// Add more parameters if needed.
 
 public:
@@ -33,6 +33,7 @@ public:
 	void Setid(int x);
 	int getid() ;
 	virtual string getType() = 0;
+	virtual string Details() = 0;
 	//checks if the point is inside the figure
 	///The following functions should be supported by the figure class
 	///It should be overridden by each inherited figure

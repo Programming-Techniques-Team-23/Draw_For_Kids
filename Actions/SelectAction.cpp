@@ -31,9 +31,9 @@ void SelectAction::ReadActionParameters()
 void SelectAction::Execute()
 {
 	//This action needs to read some parameters first
+	ReadActionParameters();
 	Output* pOut = pManager->GetOutput();
 	CFigure* Figp = pManager->GetFigure(P1.x, P1.y);
-	ReadActionParameters();
 	if (pManager->GetFigCount() != 0) {
 		if (Figp != NULL) {
 			if (Figp->IsSelected())
@@ -74,7 +74,7 @@ void SelectAction::Execute()
 		}
 		pOut->PrintMessage(message);
 	}
-	else {
-		pOut->PrintMessage("ID: " +to_string(Figp->getid()));
+	else if(pManager->SelectedCount() == 1){
+		pOut->PrintMessage(Figp->Details());
 	}
 }

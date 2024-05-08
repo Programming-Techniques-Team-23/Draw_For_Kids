@@ -24,14 +24,22 @@ bool CCircle::pointchecker(int x, int y)
 		return false;
 }
 
-void CCircle::Save(ofstream& OutFile)
-{
-	string s ="   ";
+string CCircle::Details() {
 	int x1 = Centre.x;
 	int y1 = Centre.y;
 	int x2 = Radius.x;
 	int y2 = Radius.y;
-
-	OutFile << Type << s << ID << s << x1 << s << y1 << s << x2 << s << y2 << s << DrawColor << s << FillingColor <<endl;
-	
+	string s = "   ";
+	string message = Type + s;
+	message += to_string(ID) + s;
+	message += to_string(x1) + s;
+	message += to_string(y1) + s;
+	message += to_string(x2) + s;
+	message += to_string(y2) + s;
+	message += DrawColor + s + FillColor;
+	return message;
+}
+void CCircle::Save(ofstream& OutFile)
+{
+	OutFile << Details() <<endl;	
 }
