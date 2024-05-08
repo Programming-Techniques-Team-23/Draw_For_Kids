@@ -50,6 +50,7 @@ public:
 	int GetFigCount();
 	void UnselectAll();
 	int* Combinations();
+	int* types();
 	void SaveAll(string OutFile);
 	int RecCount();
 	int HexCount();

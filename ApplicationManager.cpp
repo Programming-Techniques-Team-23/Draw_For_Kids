@@ -14,7 +14,7 @@
 #include"Actions/Cut.h"
 #include "Actions/SaveAction.h"
 #include "Actions/PlayByBoth.h"
-#include "Actions/PlayByColor.h"
+#include "Actions/PlayByType.h"
 #include"Actions/ClearAll.h"
 
 //Constructor
@@ -82,9 +82,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case SAVE:
 			pAct = new SaveAction(this);
 			break;
-		case FILLCLR:
-				pAct = new PickByColor(this);
-				break;
+		case TYPE:
+			pAct = new PickByType(this);
+			break;
 		case TYPENFILLCOLOR:
 			pAct = new PickByBoth(this);
 			break;
@@ -159,6 +159,27 @@ CFigure* ApplicationManager::GetFigure(int x, int y) const
  void ApplicationManager::ShowAll() {
 	 for (int i = 0;i < FigCount;i++)
 		 FigList[i]->Show();
+ }
+ int* ApplicationManager::types() {
+	 int* types = new int[5];
+	 for (int i = 0; i < 5; i++)
+		 types[i] = 0;
+	 for (int i = 0; i < FigCount; i++) {
+
+
+		 if (FigList[i]->getType() == "Rectangle")
+			 types[0]++;
+		 else  if (FigList[i]->getType() == "Triangle")
+			 types[1]++;
+		 else  if (FigList[i]->getType() == "Square")
+			 types[2]++;
+		 else  if (FigList[i]->getType() == "Hexagon")
+			 types[3]++;
+		 else  if (FigList[i]->getType() == "Circle")
+			 types[4]++;
+
+	 }
+	 return types;
  }
  int* ApplicationManager::Combinations() {
 	 int *combinations=new int[30];
