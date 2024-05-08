@@ -12,6 +12,11 @@ CFigure::CFigure(GfxInfo FigureGfxInfo)
 void CFigure::SetSelected(bool s)
 {	Selected = s; }
 
+GfxInfo CFigure::GetGfxInfo() const
+{
+	return FigGfxInfo;
+}
+
 bool CFigure::IsSelected() const
 {	return Selected; }
 
@@ -82,6 +87,17 @@ void CFigure::ChngFillClr(color Fclr)
 		FillColor = "Not Filled";
 	}
 }
+//Hides Figures
+void CFigure::Hide()
+{
+	PlayHidden = true;
+}
+//Shows Figures
+void CFigure::Show()
+{
+	PlayHidden = false;
+}
+
 
 void CFigure::Setid(int x)
 {

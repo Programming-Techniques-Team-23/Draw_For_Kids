@@ -52,6 +52,5 @@ string CHexagon::Details() {
 void CHexagon::Save(ofstream& OutFile)
 {
 	OutFile << Details() << endl;
-	
-}
+	}
 

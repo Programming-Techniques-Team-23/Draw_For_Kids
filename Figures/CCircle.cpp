@@ -23,6 +23,7 @@ bool CCircle::pointchecker(int x, int y)
 	else
 		return false;
 }
+
 string CCircle::Details() {
 	int x1 = Centre.x;
 	int y1 = Centre.y;

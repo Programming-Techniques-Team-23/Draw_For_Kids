@@ -45,6 +45,4 @@ string CSquare::Details() {
 void CSquare::Save(ofstream& OutFile)
 {
 	OutFile << Details() << endl;
-	
-
 }
