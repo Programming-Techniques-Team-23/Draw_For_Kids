@@ -161,9 +161,10 @@ void PickByType::Execute()
 	}
 	else
 		pOut->PrintMessage("You must have at least two or more figures to play to play pick by figure!");
-	for (int i = 0; i < pManager->GetFigCount(); i++)
+	for (int i = 0; i < pManager->GetFigCount(); i++) {
 		pManager->ShowAll();
-	pManager->UpdateInterface();
+		pManager->UpdateInterface();
+	}
 	delete[]figs;
 
 
