@@ -178,6 +178,6 @@ void PickByColor::Execute()
 	for (int i = 0; i < pManager->GetFigCount(); i++) {
 		pManager->ShowAll();
 		pManager->UpdateInterface();
-		delete[]colours;
 	}
+	delete[] colours;
 }
