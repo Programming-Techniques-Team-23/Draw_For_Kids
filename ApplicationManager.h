@@ -20,7 +20,8 @@ private:
 	CFigure* FigList[MaxFigCount];	//List of all figures (Array of pointers)
 
 	CFigure* SelectedFig; //Pointer to the selected figure
-	
+	CFigure* SelectedFigs[MaxFigCount]; //array of pointers to the selected figures
+
 	//Pointers to Input and Output classes
 	Input *pIn;
 	Output *pOut;
@@ -46,6 +47,8 @@ public:
     void setclipboard(CFigure* c);
 	void setselected(CFigure*sf);
 	CFigure* getselected();
+	CFigure* const* GetSelectedFigures() const;		//Returns a pointer to the SelectedFigs array
+
 	int GetFigCount();
 	void UnselectAll();
 	int* combinations();
@@ -61,6 +64,8 @@ public:
 	CFigure* getRandomFig();
 	void ShowAll();
 	void clear();
+	void SortSTB(int);			//Sends a figure to the back then resorts the FigList
+
 };
 
 #endif

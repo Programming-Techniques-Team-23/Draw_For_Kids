@@ -14,12 +14,9 @@
 #include"Actions/Cut.h"
 #include "Actions/SaveAction.h"
 #include "Actions/PlayByBoth.h"
-
-
-
 #include "Actions/PlayByType.h"
 #include "Actions/PlayByColor.h"
-
+#include "Actions/SendToBack.h"
 #include"Actions/ClearAll.h"
 
 //Constructor
@@ -87,7 +84,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case SAVE:
 			pAct = new SaveAction(this);
 			break;
-
+		case SNDTOBACK:
+			pAct = new SendToBack(this);
+			break;
 		case TYPE:
 			pAct = new PickByType(this);
 			break;
@@ -153,6 +152,9 @@ CFigure* ApplicationManager::GetFigure(int x, int y) const
  CFigure *ApplicationManager::getselected() {
 	 return SelectedFig;
 
+ }
+ CFigure* const* ApplicationManager::GetSelectedFigures() const {
+	 return SelectedFigs;
  }
  int ApplicationManager::GetFigCount() {
 	 return FigCount;
@@ -318,7 +320,26 @@ CFigure* ApplicationManager::GetFigure(int x, int y) const
 	 return combinations;
  }
 
-
+ void ApplicationManager::SortSTB(int index)
+ {
+	 // Check if the element sent is not the first shape (index 0 is the back)
+	 if (index != FigCount - 1)
+	 {
+		 // Store the shape in temp
+		 CFigure* temp = FigList[index];
+		 // Loop on all figures, starting at the index of the selected one, shifting them forward 1 element
+		 for (int i = index; i < FigCount - 1; i++)
+		 {
+			 FigList[i] = FigList[i + 1];
+			 // Optionally, reassign IDs if necessary
+			 // FigList[i]->Setid(i);
+		 }
+		 // Place the selected figure at the end (back) of the list
+		 FigList[FigCount - 1] = temp;
+		 // Optionally, reassign the ID of the moved figure
+		 // FigList[FigCount - 1]->Setid(FigCount - 1);
+	 }
+ }
 
  void ApplicationManager::SaveAll( string fname )
  {

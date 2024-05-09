@@ -196,7 +196,11 @@
     <ClCompile Include="Actions\Exit.cpp">
       <Filter>Action Classes</Filter>
     </ClCompile>
-    <ClCompile Include="Source.cpp">
+    <ClCompile Include="Actions\ClearAll.cpp" />
+    <ClCompile Include="Actions\Paste.cpp" />
+    <ClCompile Include="Actions\PlayByColor.cpp" />
+    <ClCompile Include="Actions\PlayByType.cpp" />
+    <ClCompile Include="Actions\SendToBack.cpp">
       <Filter>Action Classes</Filter>
     </ClCompile>
   </ItemGroup>
@@ -335,6 +339,12 @@
       <Filter>Action Classes</Filter>
     </ClInclude>
     <ClInclude Include="Actions\SaveAction.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\ClearAll.h" />
+    <ClInclude Include="Actions\PlayByColor.h" />
+    <ClInclude Include="Actions\PlayByType.h" />
+    <ClInclude Include="Actions\SendToBack.h">
       <Filter>Action Classes</Filter>
     </ClInclude>
   </ItemGroup>
