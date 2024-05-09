@@ -39,7 +39,10 @@ void SelectAction::Execute()
 			if (Figp->IsSelected())
 				Figp->SetSelected(false);
 			else
+			{
 				Figp->SetSelected(true);
+				pManager->setselected(Figp);
+			}
 		}
 		else {
 			pManager->UnselectAll();

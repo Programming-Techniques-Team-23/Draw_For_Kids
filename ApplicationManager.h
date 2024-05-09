@@ -59,6 +59,7 @@ public:
 	int SelectedCount();
 	CFigure* getRandomFig();
 	void ShowAll();
+	void clear();
 };
 
 #endif

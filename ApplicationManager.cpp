@@ -14,7 +14,6 @@
 #include"Actions/Cut.h"
 #include "Actions/SaveAction.h"
 #include "Actions/PlayByBoth.h"
-#include "Actions/PlayByColor.h"
 #include"Actions/ClearAll.h"
 
 //Constructor
@@ -82,9 +81,6 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case SAVE:
 			pAct = new SaveAction(this);
 			break;
-		case FILLCLR:
-				pAct = new PickByColor(this);
-				break;
 		case TYPENFILLCOLOR:
 			pAct = new PickByBoth(this);
 			break;
@@ -159,6 +155,14 @@ CFigure* ApplicationManager::GetFigure(int x, int y) const
  void ApplicationManager::ShowAll() {
 	 for (int i = 0;i < FigCount;i++)
 		 FigList[i]->Show();
+ }
+ void ApplicationManager::clear()
+ {
+	 for (int i = 0; i < FigCount; i++) {
+		 delete FigList[i];
+		 FigList[i] = NULL;
+		 FigCount = 0;
+	 }
  }
  int* ApplicationManager::Combinations() {
 	 int *combinations=new int[30];
