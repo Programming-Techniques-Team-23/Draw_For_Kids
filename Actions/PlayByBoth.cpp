@@ -47,7 +47,7 @@ PickByBoth::~PickByBoth()
 
 void PickByBoth::ReadActionParameters()
 {
-	int* combinations = pManager->Combinations();
+	int* combinations = pManager->combinations();
 
 	for (int i = 0; i < 30; i++)
 		if (combinations[i] != 0)
@@ -56,7 +56,7 @@ void PickByBoth::ReadActionParameters()
 
 void PickByBoth::Execute()
 {
-	int* combinations = pManager->Combinations();
+	int* combinations = pManager->combinations();
 	Output* pOut = pManager->GetOutput();
 	Input* pIn = pManager->GetInput();
 	ReadActionParameters();
@@ -324,8 +324,9 @@ void PickByBoth::Execute()
 
 	}
 	else pOut->PrintMessage("You must have at least two or more combinations to play pick by both!");
-	for (int i = 0; i < pManager->GetFigCount(); i++)
+	for (int i = 0; i < pManager->GetFigCount(); i++) {
 		pManager->ShowAll();
-	pManager->UpdateInterface();
+		pManager->UpdateInterface();
+	}
 	delete[] combinations;
 }
