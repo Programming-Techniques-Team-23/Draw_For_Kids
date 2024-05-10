@@ -195,6 +195,7 @@
     <ClCompile Include="ApplicationManager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Sound.cpp" />
+    <ClCompile Include="ChngFillCol.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Actions\AddCircAction.h" />
@@ -248,6 +249,7 @@
     <ClInclude Include="GUI\UI_Info.h" />
     <ClInclude Include="ApplicationManager.h" />
     <ClInclude Include="DEFS.h" />
+    <ClInclude Include="ChngFillCol.h" />
     <ClInclude Include="Sound.h" />
   </ItemGroup>
   <ItemGroup>
@@ -282,6 +284,9 @@
     <Media Include="Square.mp3" />
     <Media Include="Triangle.mp3" />
     <Media Include="yellow.mp3" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="images\MenuItems\Voice.jpg" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -70,23 +70,23 @@ void CFigure::ChngFillClr(color Fclr)
 		{
 			FillColor = "Black";
 		}
-		else if (FigGfxInfo.DrawClr == BLUE)
+		else if (FigGfxInfo.FillClr == BLUE)
 		{
 			FillColor = "Blue";
 		}
-		else if (FigGfxInfo.DrawClr == GREEN)
+		else if (FigGfxInfo.FillClr == GREEN)
 		{
 			FillColor = "Green";
 		}
-		else if (FigGfxInfo.DrawClr == YELLOW)
+		else if (FigGfxInfo.FillClr == YELLOW)
 		{
 			FillColor = "Yellow";
 		}
-		else if (FigGfxInfo.DrawClr == RED)
+		else if (FigGfxInfo.FillClr == RED)
 		{
 			FillColor = "Red";
 		}
-		else if (FigGfxInfo.DrawClr == ORANGE)
+		else if (FigGfxInfo.FillClr == ORANGE)
 		{
 			FillColor = "Orange";
 		}
