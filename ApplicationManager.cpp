@@ -20,6 +20,7 @@
 #include "Actions/SendToBack.h"
 #include "Actions/BringToFront.h"
 #include"Actions/ClearAll.h"
+#include "ChngFillCol.h"
 #include "Sound.h"
 
 //Constructor
@@ -54,104 +55,125 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	//According to Action Type, create the corresponding action object
 	switch (ActType)
 	{
+		case Voice:
+			if (V)
+				V = false;
+			else
+				V = true;
+			break;
 		case DRAW_RECT:
 			pAct = new AddRectAction(this);
-			S.play(1);
+			S.play(1,V);
+			Fill = false;
 			break;
 		case DRAW_SQUR:
 			pAct = new AddSquAction(this);
-			S.play(2);
+			S.play(2,V);
+			Fill = false;
 			break;
 		case DRAW_TRI:
 			pAct = new AddTriAction(this);
-			S.play(3);
+			S.play(3,V);
+			Fill = false;
 			break;
 		case DRAW_HEX:
 			pAct = new AddHexAction(this);
-			S.play(4);
+			S.play(4, V);
+			Fill = false;
 			break;
 		case DRAW_CIRC:
 			pAct = new AddCircAction(this);
-			S.play(5);
+			S.play(5, V);
+			Fill = false;
 			break;
 		case SELECT:
 			pAct = new SelectAction(this);
-			S.play(6);
+			S.play(6, V);
+			Fill = false;
 			break;
 		case CHANGE_BORDER_COLOR:
-			S.play(7);
+			S.play(7, V);
+			Fill = false;
 			break;
 		case CHANGE_FILING_COLOR:
-			S.play(8);
+			pAct = new ChngFillCol(this);
+			S.play(8, V);
+			Fill = true;
 			break;
 		case BLCK:
-			S.play(9);
+			S.play(9, V);
+			if (Fill) {
+				pAct = new ChngFillCol(this, true, BLACK);
+				Fill = false;
+			}
 			break;
 		case YEL:
-			S.play(10);
+			S.play(10, V);
 			break;
 		case ORG:
-			S.play(11);
+			S.play(11, V);
 			break;
 		case RD:
-			S.play(12);
+			S.play(12, V);
 			break;
 		case GRN:
-			S.play(13);
+			S.play(13, V);
 			break;
 		case BLU:
-			S.play(14);
+			S.play(14, V);
+			break;
+		case DELETE_FIG:
+			S.play(15, V);
 			break;
 		case CLR_ALL:
 			pAct = new ClearAll(this);
-			S.play(16);
+			S.play(16, V);
 			break;
 		case COPY:
 			pAct = new Copy(this);
-			S.play(17);
+			S.play(17, V);
 			break;
 		case CUT:
 			pAct = new Cut(this);
-			S.play(18);
+			S.play(18, V);
 			break;
 		case PASTE:
 			pAct = new Paste(this);
-			S.play(19);
+			S.play(19, V);
 			break;
 		case SNDTOFRNT:
 			pAct = new BringToForward(this);
-			S.play(20);
+			S.play(20, V);
 			break;
 		case SNDTOBACK:
 			pAct = new SendToBack(this);
-			S.play(21);
+			S.play(21, V);
 			break;
 		case SAVE:
 			pAct = new SaveAction(this);
-			S.play(22);
+			S.play(22, V);
 			break;
 		case TO_PLAY:
 			pAct = new SwitchToPlay(this, mode);//1
-			S.play(24);
+			S.play(24, V);
 			break;
 		case TYPE:
 			pAct = new PickByType(this);
-			S.play(25);
+			S.play(25, V);
 			break;
 		case FILLCLR:
 			pAct = new PickByColor(this);
-			S.play(26);
+			S.play(26, V);
 			break;
 		case TYPENFILLCOLOR:
 			pAct = new PickByBoth(this);
-			S.play(27);
+			S.play(27, V);
 			break;
 		case TO_DRAW:
 			pAct = new SwitchToDraw(this, &mode);//0
-			S.play(28);
+			S.play(28, V);
 			break;
 		case EXIT:
-
 			pAct = new Exit(this);
 			
 			///create ExitAction here
