@@ -388,8 +388,12 @@ CFigure* ApplicationManager::GetFigure(int x, int y) const
 //Draw all figures on the user interface
  void ApplicationManager::UpdateInterface() const
  {
-	 for (int i = 0; i < FigCount; i++)
+	 pOut->ClearDrawArea();
+	 for (int i = 0; i < FigCount; i++) {
+		
+		 if(!(FigList[i]->IsHidden()))
 		 FigList[i]->Draw(pOut);
+	 }
 	 if (mode == 0) {
 		 pOut->CreateDrawToolBar();
 	 }

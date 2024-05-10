@@ -5,6 +5,7 @@ CFigure::CFigure(GfxInfo FigureGfxInfo)
 { 
 	FigGfxInfo = FigureGfxInfo;	//Default status is non-filled.
 	Selected = false;
+	PlayHidden = false;
 	FillColor = "Not Filled";
 	ChngDrawClr(BLUE);
 }
@@ -97,7 +98,9 @@ void CFigure::Show()
 {
 	PlayHidden = false;
 }
-
+bool CFigure::IsHidden() {
+	return PlayHidden;
+}
 
 void CFigure::Setid(int x)
 {

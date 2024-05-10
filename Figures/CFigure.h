@@ -27,7 +27,7 @@ public:
 	void Hide();					//Hides figures in playmode.
 	void Show();					//Shows figures in playmode.
 	virtual void Draw(Output* pOut) const  = 0 ;		//Draw the figure
-	
+	bool IsHidden();
 	void ChngDrawClr(color Dclr);	//changes the figure's drawing color
 	void ChngFillClr(color Fclr);	//changes the figure's filling color
 	virtual bool pointchecker(int x, int y) = 0; 
