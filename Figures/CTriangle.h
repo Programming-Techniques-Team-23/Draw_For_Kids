@@ -2,6 +2,7 @@
 #define CTRI_H
 #include<string>
 #include "CFigure.h"
+using namespace std;
 
 class CTriangle : public CFigure
 {
@@ -17,6 +18,7 @@ public:
 	virtual void Save(ofstream& OutFile);
 	string getType();
 	string Details();
+	virtual void Load(ifstream& Infile);
 };
 
 #endif

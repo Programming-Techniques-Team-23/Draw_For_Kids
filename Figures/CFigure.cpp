@@ -86,7 +86,12 @@ void CFigure::ChngFillClr(color Fclr)
 	{
 		FillColor = "Not Filled";
 	}
+	
 }
+
+
+
+
 //Hides Figures
 void CFigure::Hide()
 {
@@ -107,5 +112,23 @@ void CFigure::Setid(int x)
 int CFigure::getid()
 {
 	return ID;
+}
+
+color CFigure::stringtoclr(string clr)
+{
+	if (clr == "Black")
+		return BLACK;
+	else if (clr == "Blue")
+		return BLUE;
+	else if (clr == "Red")
+		return RED;
+	else if (clr == "Green")
+		return GREEN;
+	else if (clr == "Yellow")
+		return YELLOW;
+	else if (clr == "Orange")
+		return ORANGE;
+	else if (clr == "Not Filled")
+		return NULL;
 }
 

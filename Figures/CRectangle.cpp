@@ -1,5 +1,8 @@
 #include "CRectangle.h"
 #include <fstream>
+#include "../Actions/LoadAction.h"
+
+using namespace std;
 
 
 CRectangle::CRectangle(Point P1, Point P2, GfxInfo FigureGfxInfo):CFigure(FigureGfxInfo)
@@ -66,6 +69,13 @@ string CRectangle::Details() {
 }
 void CRectangle::Save(ofstream& OutFile)
 {
-	OutFile << Details() << endl;
+    OutFile << Details() << endl;
 }
 
+void CRectangle::Load(ifstream& Infile)
+{
+    Infile >> Type >> ID >> Corner1.x >> Corner1.y >> Corner2.x >> Corner2.y  >> DrawColor >> FillColor;
+    FigGfxInfo.DrawClr = stringtoclr(DrawColor);
+    FigGfxInfo.FillClr = stringtoclr(FillColor);
+   
+}

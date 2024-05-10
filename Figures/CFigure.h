@@ -1,6 +1,8 @@
 #ifndef CFIGURE_H
 #define CFIGURE_H
 #include<fstream>
+#include<iostream>
+using namespace std;
 
 #include "..\defs.h"
 #include "..\GUI\Output.h"
@@ -34,6 +36,8 @@ public:
 	int getid() ;
 	virtual string getType() = 0;
 	virtual string Details() = 0;
+	color stringtoclr(string clr);
+
 	//checks if the point is inside the figure
 	///The following functions should be supported by the figure class
 	///It should be overridden by each inherited figure
@@ -42,7 +46,7 @@ public:
 
 	
 	virtual void Save(ofstream &OutFile)=0;	//Save the figure parameters to the file
-	//virtual void Load(ifstream &Infile) = 0;	//Load the figure parameters to the file
+	virtual void Load(ifstream &Infile) = 0;	//Load the figure parameters to the file
 	//virtual void PrintInfo(Output* pOut) = 0;	//print all figure info on the status bar
 };
 
