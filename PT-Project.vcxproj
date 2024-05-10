@@ -254,15 +254,34 @@
     <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <ItemGroup>
+    <Media Include="black.mp3" />
+    <Media Include="BLUE.mp3" />
+    <Media Include="change border color.mp3" />
+    <Media Include="change Filling color.mp3" />
+    <Media Include="circle.mp3" />
+    <Media Include="Clear All.mp3" />
+    <Media Include="Copy.mp3" />
     <Media Include="Cut.mp3" />
     <Media Include="Delete.mp3" />
+    <Media Include="draw mode.mp3" />
+    <Media Include="green.mp3" />
     <Media Include="Hexagon.mp3" />
     <Media Include="Load.mp3" />
+    <Media Include="orange.mp3" />
+    <Media Include="paste.mp3" />
+    <Media Include="Pick and Hide by Fig (1).mp3" />
+    <Media Include="Pick and Hide by Fig (2).mp3" />
+    <Media Include="Pick and Hide by Fig.mp3" />
+    <Media Include="Play mode.mp3" />
     <Media Include="Rectangle.mp3" />
+    <Media Include="red.mp3" />
     <Media Include="Save.mp3" />
     <Media Include="Select.mp3" />
+    <Media Include="Send to back.mp3" />
+    <Media Include="Send to front.mp3" />
     <Media Include="Square.mp3" />
     <Media Include="Triangle.mp3" />
+    <Media Include="yellow.mp3" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -102,13 +102,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case BLU:
 			S.play(14);
 			break;
-		case TO_PLAY:
-			S.play(24);
-			pAct = new SwitchToPlay(this, mode);//1
-			break;
-		case TO_DRAW:
-			S.play(28);
-			pAct = new SwitchToDraw(this, &mode);//0
+		case CLR_ALL:
+			pAct = new ClearAll(this);
+			S.play(16);
 			break;
 		case COPY:
 			pAct = new Copy(this);
@@ -120,19 +116,23 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			break;
 		case PASTE:
 			pAct = new Paste(this);
+			S.play(19);
 			break;
-
-		case SAVE:
-			pAct = new SaveAction(this);
-			S.play(22);
+		case SNDTOFRNT:
+			pAct = new BringToForward(this);
+			S.play(20);
 			break;
 		case SNDTOBACK:
 			pAct = new SendToBack(this);
 			S.play(21);
 			break;
-		case SNDTOFRNT:
-			pAct = new BringToForward(this);
-			S.play(20);
+		case SAVE:
+			pAct = new SaveAction(this);
+			S.play(22);
+			break;
+		case TO_PLAY:
+			pAct = new SwitchToPlay(this, mode);//1
+			S.play(24);
 			break;
 		case TYPE:
 			pAct = new PickByType(this);
@@ -146,9 +146,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			pAct = new PickByBoth(this);
 			S.play(27);
 			break;
-		case CLR_ALL:
-			pAct = new ClearAll(this);
-			S.play(16);
+		case TO_DRAW:
+			pAct = new SwitchToDraw(this, &mode);//0
+			S.play(28);
 			break;
 		case EXIT:
 
