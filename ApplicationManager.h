@@ -20,7 +20,6 @@ private:
 	CFigure* FigList[MaxFigCount];	//List of all figures (Array of pointers)
 
 	CFigure* SelectedFig; //Pointer to the selected figure
-	CFigure* SelectedFigs[MaxFigCount]; //array of pointers to the selected figures
 
 	//Pointers to Input and Output classes
 	Input *pIn;
