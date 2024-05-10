@@ -18,6 +18,14 @@ GfxInfo CFigure::GetGfxInfo() const
 	return FigGfxInfo;
 }
 
+void CFigure::setgfxinfo(GfxInfo fig)
+{
+	FigGfxInfo = fig;
+}
+
+
+
+
 bool CFigure::IsSelected() const
 {	return Selected; }
 

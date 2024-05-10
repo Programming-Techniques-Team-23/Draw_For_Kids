@@ -12,6 +12,7 @@ enum ActionType // The actions supported (you can add more if needed)
 	DRAW_HEX,
 	DRAW_CIRC,
 	EXIT,		//Exit
+	RESIZE,
 	TO_DRAW,		//Switch interface to Draw mode
 	TO_PLAY,		//Switch interface to Play mode
 	EMPTY,			//A click on empty place in the toolbar

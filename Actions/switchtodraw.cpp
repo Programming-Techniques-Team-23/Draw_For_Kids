@@ -11,7 +11,7 @@ void SwitchToDraw::ReadActionParameters()
 {
 	Output* pOut = pManager->GetOutput();
 	Input* pIn = pManager->GetInput();
-	pOut->PrintMessage("welcome to DRAW MODE");
+	pOut->PrintMessage("Welcome to Drawmode");
 }
 
 void SwitchToDraw::Execute()

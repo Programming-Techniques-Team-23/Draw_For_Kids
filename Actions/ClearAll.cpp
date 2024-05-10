@@ -17,6 +17,7 @@ void ClearAll::Execute()
 	Output* pOut = pManager->GetOutput();
 	pManager->clear();
 	pOut->ClearDrawArea();
+	pManager->setclipboard(NULL);
 }
 
 ClearAll::~ClearAll()

@@ -12,6 +12,7 @@
 #include"Actions/switchtodraw.h"
 #include"Actions/Copy.h"
 #include"Actions/Cut.h"
+#include"Actions/Paste.h"
 #include "Actions/SaveAction.h"
 #include "Actions/PlayByBoth.h"
 #include "Actions/PlayByType.h"
@@ -117,6 +118,10 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			pAct = new Cut(this);
 			S.play(18);
 			break;
+		case PASTE:
+			pAct = new Paste(this);
+			break;
+
 		case SAVE:
 			pAct = new SaveAction(this);
 			S.play(22);
@@ -192,6 +197,10 @@ CFigure* ApplicationManager::GetFigure(int x, int y) const
 {
 	Clipboard = c;
 }
+ CFigure* ApplicationManager::getclipboard()
+ {
+	 return Clipboard;
+ }
  void ApplicationManager::setselected(CFigure* sf) {      //set the selcted figure. We need it on copy, cut, paste and delete actions
 	 SelectedFig = sf;
  }
@@ -223,6 +232,26 @@ CFigure* ApplicationManager::GetFigure(int x, int y) const
 		 FigList[i] = NULL;
 		 FigCount = 0;
 	 }
+ }
+
+ void ApplicationManager::setiscut(bool ic)
+ {
+	 iscut = ic;
+ }
+
+ bool ApplicationManager::getiscut()
+ {
+	 return iscut;
+ }
+
+ void ApplicationManager::setgfxinfo(GfxInfo fig)
+ {
+	figcut = fig;
+ }
+
+ GfxInfo ApplicationManager::getfiginfo()
+ {
+	 return figcut;
  }
 
 	 int* ApplicationManager::colors() {
@@ -431,11 +460,10 @@ CFigure* ApplicationManager::GetFigure(int x, int y) const
  void ApplicationManager::UpdateInterface() const
  {
 	 pOut->ClearDrawArea();
-	 for (int i = 0; i < FigCount; i++) {
-		
-		 if(!(FigList[i]->IsHidden()))
+	 for (int i = 0; i < FigCount; i++)
+		 if(FigList[i]->IsHidden()==false)
 		 FigList[i]->Draw(pOut);
-	 }
+	 
 	 if (mode == 0) {
 		 pOut->CreateDrawToolBar();
 	 }

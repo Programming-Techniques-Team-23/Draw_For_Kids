@@ -1,5 +1,6 @@
 #include "CRectangle.h"
 #include <fstream>
+#include"../ApplicationManager.h"
 
 
 CRectangle::CRectangle(Point P1, Point P2, GfxInfo FigureGfxInfo):CFigure(FigureGfxInfo)
@@ -67,5 +68,16 @@ string CRectangle::Details() {
 void CRectangle::Save(ofstream& OutFile)
 {
 	OutFile << Details() << endl;
+}
+
+Point CRectangle::PasteRect(Point P, Output* pOut)
+{
+    Point P1;
+    P1.x= P.x+ abs(Corner1.x - Corner2.x);
+    P1.y= P.y + abs(Corner1.y - Corner2.y);
+   
+    pOut->DrawRect(P, P1 , FigGfxInfo);
+
+    return P1;
 }
 
