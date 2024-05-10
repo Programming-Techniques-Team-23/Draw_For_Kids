@@ -157,7 +157,9 @@ CFigure* ApplicationManager::GetFigure(int x, int y) const
 	 return SelectedFig;
 
  }
- 
+ CFigure* const* ApplicationManager::GetSelectedFigures() const {
+	 return SelectedFigs;
+ }
  int ApplicationManager::GetFigCount() {
 	 return FigCount;
  }
