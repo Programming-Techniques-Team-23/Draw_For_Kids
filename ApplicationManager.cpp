@@ -15,12 +15,10 @@
 #include"../mostafa/Actions/Paste.h"
 #include "Actions/SaveAction.h"
 #include "Actions/PlayByBoth.h"
-
-
-
 #include "Actions/PlayByType.h"
 #include "Actions/PlayByColor.h"
-
+#include "Actions/SendToBack.h"
+#include "Actions/BringToFront.h"
 #include"Actions/ClearAll.h"
 
 //Constructor
@@ -92,7 +90,12 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case SAVE:
 			pAct = new SaveAction(this);
 			break;
-
+		case SNDTOBACK:
+			pAct = new SendToBack(this);
+			break;
+		case SNDTOFRNT:
+			pAct = new BringToForward(this);
+			break;
 		case TYPE:
 			pAct = new PickByType(this);
 			break;
@@ -163,6 +166,7 @@ CFigure* ApplicationManager::GetFigure(int x, int y) const
 	 return SelectedFig;
 
  }
+ 
  int ApplicationManager::GetFigCount() {
 	 return FigCount;
  }
@@ -349,6 +353,43 @@ CFigure* ApplicationManager::GetFigure(int x, int y) const
 
 
 
+ void ApplicationManager::SortSTB(int index) {
+	 if (index < 0 || index >= FigCount) {
+		 pOut->PrintMessage("Invalid index");
+	 }
+	 else if (index == 0) {
+		 pOut->PrintMessage("Figure is already at the back");
+	 }
+	 else {
+		 CFigure* temp = FigList[index];
+		 for (int i = index; i > 0; i--) {
+			 FigList[i] = FigList[i - 1];
+			 FigList[i]->Setid(i);
+		 }
+		 FigList[0] = temp;
+		 FigList[0]->Setid(0);
+	 }
+ }
+
+ void ApplicationManager::SortBTF(int index) {
+	 if (index < 0 || index >= FigCount) {
+		 pOut->PrintMessage("Invalid index");
+	 }
+	 else if (index == FigCount - 1) {
+		 pOut->PrintMessage("Figure is already at the front");
+	 }
+	 else {
+		 CFigure* temp = FigList[index];
+		 for (int i = index; i < FigCount - 1; i++) {
+			 FigList[i] = FigList[i + 1];
+			 FigList[i]->Setid(i);
+		 }
+		 FigList[FigCount - 1] = temp;
+		 FigList[FigCount - 1]->Setid(FigCount - 1);
+	 }
+ }
+
+
  void ApplicationManager::SaveAll( string fname )
  {
 	 
@@ -379,6 +420,7 @@ CFigure* ApplicationManager::GetFigure(int x, int y) const
 	 pOut->ClearDrawArea();
 	 for (int i = 0; i < FigCount; i++)
 		 FigList[i]->Draw(pOut);
+	 }
 	 if (mode == 0) {
 		 pOut->CreateDrawToolBar();
 	 }

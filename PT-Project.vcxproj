@@ -133,6 +133,7 @@
     <ClCompile Include="Actions\AddHexAction.cpp" />
     <ClCompile Include="Actions\AddSquAction.cpp" />
     <ClCompile Include="Actions\AddTriAction.cpp" />
+    <ClCompile Include="Actions\BringToFront.cpp" />
     <ClCompile Include="Actions\ClearAll.cpp" />
     <ClCompile Include="Actions\Copy.cpp" />
     <ClCompile Include="Actions\Cut.cpp" />
@@ -143,6 +144,7 @@
     <ClCompile Include="Actions\PlayByType.cpp" />
     <ClCompile Include="Actions\SaveAction.cpp" />
     <ClCompile Include="Actions\SelectAction.cpp" />
+    <ClCompile Include="Actions\SendToBack.cpp" />
     <ClCompile Include="Actions\switchtodraw.cpp" />
     <ClCompile Include="Actions\Switchtoplay.cpp" />
     <ClCompile Include="CMUgraphicsLib\auxil.cpp" />
@@ -198,6 +200,7 @@
     <ClInclude Include="Actions\AddHexAction.h" />
     <ClInclude Include="Actions\AddSquAction.h" />
     <ClInclude Include="Actions\AddTriAction.h" />
+    <ClInclude Include="Actions\BringToFront.h" />
     <ClInclude Include="Actions\ClearAll.h" />
     <ClInclude Include="Actions\Copy.h" />
     <ClInclude Include="Actions\Cut.h" />
@@ -208,6 +211,7 @@
     <ClInclude Include="Actions\PlayByType.h" />
     <ClInclude Include="Actions\SaveAction.h" />
     <ClInclude Include="Actions\SelectAction.h" />
+    <ClInclude Include="Actions\SendToBack.h" />
     <ClInclude Include="Actions\switchtodraw.h" />
     <ClInclude Include="Actions\Switchtoplay.h" />
     <ClInclude Include="CMUgraphicsLib\auxil.h" />
