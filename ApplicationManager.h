@@ -29,9 +29,10 @@ private:
 	Output *pOut;
 	bool iscut = false;
 	Sound S;
-
+	bool Bor = false;
+	bool Fill = false;
 	CFigure* Clipboard;  //Pointer to copied/cut figure
-
+	bool V = true;
 public:	
 	ApplicationManager(); 
 	~ApplicationManager();
