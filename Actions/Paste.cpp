@@ -13,7 +13,7 @@ void Paste::ReadActionParameters()
 {
 	Output* pOut = pManager->GetOutput();
 	Input* pIn = pManager->GetInput();
-	pOut->PrintMessage("Coose a point to Paste in");
+	pOut->PrintMessage("Choose a point to Paste in");
 	pIn->GetPointClicked(P.x, P.y);
 }
 

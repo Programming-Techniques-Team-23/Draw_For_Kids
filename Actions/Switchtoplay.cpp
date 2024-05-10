@@ -11,7 +11,7 @@ void SwitchToPlay::ReadActionParameters()
 	Output* pOut = pManager->GetOutput();
 	Input* pIn = pManager->GetInput();
 
-	pOut->PrintMessage("welcome to playmode");
+	pOut->PrintMessage("Welcome to Playmode");
 }
 
 void SwitchToPlay::Execute()

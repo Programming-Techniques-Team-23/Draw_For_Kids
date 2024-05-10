@@ -15,7 +15,7 @@ Output::Output()
 	UI.StatusBarHeight = 50;
 	UI.ToolBarHeight = 50;
 	UI.LineUnderTBWidth = 2;
-	UI.MenuItemWidth = 50;
+	UI.MenuItemWidth = 45;
 
 	UI.DrawColor = BLUE;	//Drawing color
 	UI.FillColor = GREEN;	//Filling color
@@ -106,6 +106,7 @@ void Output::CreateDrawToolBar() const
 	MenuItemImages[ITM_LOAD] = "images\\MenuItems\\open.jpg";
 	MenuItemImages[ITM_PLY] = "images\\MenuItems\\play.jpg";
 	MenuItemImages[ITM_EXIT] = "images\\MenuItems\\EXIT.jpg";
+	MenuItemImages[ITM_RESIZE] = "images\\MenuItems\\Resize.jpg";
 
 	//TODO: Prepare images for each menu item and add it to the list
 
