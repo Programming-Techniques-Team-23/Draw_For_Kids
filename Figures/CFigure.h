@@ -16,6 +16,7 @@ protected:
 	bool PlayHidden;		//hides figures in playmode.
 	string DrawColor;
 	string FillColor;
+
 	/// Add more parameters if needed.
 
 public:

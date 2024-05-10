@@ -1,10 +1,5 @@
 #include "PlayByBoth.h"
 #include "..\ApplicationManager.h"
-#include "..\Figures\CRectangle.h"
-#include "..\Figures\CHexagon.h"
-#include "..\Figures\CTriangle.h"
-#include "..\Figures\CCircle.h"
-#include "..\Figures\CSquare.h"
 #include "..\GUI\input.h"
 #include "..\GUI\Output.h"
 
@@ -252,7 +247,7 @@ void PickByBoth::Execute()
 				pOut->PrintMessage("Pick up all the unfilled hexagons!");
 
 			}
-			else if (dynamic_cast<CCircle*>(Fig))
+			else if (Fig->getType()=="Circle")
 			{
 				picked_comb_no = combinations[29];
 				pOut->PrintMessage("Pick up all the unfilled circles");
