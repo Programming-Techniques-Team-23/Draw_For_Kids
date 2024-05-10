@@ -178,8 +178,10 @@ void ApplicationManager::AddFigure(CFigure* pFig)
 {
 	if (FigCount < MaxFigCount)
 	{
-		FigList[FigCount++] = pFig;
+		FigList[FigCount] = pFig;
 		pFig->Setid(FigCount);
+		FigCount++;
+
 	}
 }
 ////////////////////////////////////////////////////////////////////////////////////
@@ -406,7 +408,7 @@ CFigure* ApplicationManager::GetFigure(int x, int y) const
 		 CFigure* temp = FigList[index];
 		 for (int i = index; i > 0; i--) {
 			 FigList[i] = FigList[i - 1];
-			 FigList[i]->Setid(i);
+			 FigList[i]->Setid(i-1);
 		 }
 		 FigList[0] = temp;
 		 FigList[0]->Setid(0);
@@ -424,7 +426,7 @@ CFigure* ApplicationManager::GetFigure(int x, int y) const
 		 CFigure* temp = FigList[index];
 		 for (int i = index; i < FigCount - 1; i++) {
 			 FigList[i] = FigList[i + 1];
-			 FigList[i]->Setid(i);
+			 FigList[i]->Setid(i+1);
 		 }
 		 FigList[FigCount - 1] = temp;
 		 FigList[FigCount - 1]->Setid(FigCount - 1);
