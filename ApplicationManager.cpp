@@ -17,6 +17,7 @@
 #include "Actions/PlayByType.h"
 #include "Actions/PlayByColor.h"
 #include "Actions/SendToBack.h"
+#include "Actions/BringToFront.h"
 #include"Actions/ClearAll.h"
 
 //Constructor
@@ -86,6 +87,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			break;
 		case SNDTOBACK:
 			pAct = new SendToBack(this);
+			break;
+		case SNDTOFRNT:
+			pAct = new BringToForward(this);
 			break;
 		case TYPE:
 			pAct = new PickByType(this);
@@ -320,26 +324,44 @@ CFigure* ApplicationManager::GetFigure(int x, int y) const
 	 return combinations;
  }
 
- void ApplicationManager::SortSTB(int index)
- {
-	 // Check if the element sent is not the first shape (index 0 is the back)
-	 if (index != FigCount - 1)
-	 {
-		 // Store the shape in temp
+
+
+ void ApplicationManager::SortSTB(int index) {
+	 if (index < 0 || index >= FigCount) {
+		 pOut->PrintMessage("Invalid index");
+	 }
+	 else if (index == 0) {
+		 pOut->PrintMessage("Figure is already at the back");
+	 }
+	 else {
 		 CFigure* temp = FigList[index];
-		 // Loop on all figures, starting at the index of the selected one, shifting them forward 1 element
-		 for (int i = index; i < FigCount - 1; i++)
-		 {
-			 FigList[i] = FigList[i + 1];
-			 // Optionally, reassign IDs if necessary
-			 // FigList[i]->Setid(i);
+		 for (int i = index; i > 0; i--) {
+			 FigList[i] = FigList[i - 1];
+			 FigList[i]->Setid(i);
 		 }
-		 // Place the selected figure at the end (back) of the list
-		 FigList[FigCount - 1] = temp;
-		 // Optionally, reassign the ID of the moved figure
-		 // FigList[FigCount - 1]->Setid(FigCount - 1);
+		 FigList[0] = temp;
+		 FigList[0]->Setid(0);
 	 }
  }
+
+ void ApplicationManager::SortBTF(int index) {
+	 if (index < 0 || index >= FigCount) {
+		 pOut->PrintMessage("Invalid index");
+	 }
+	 else if (index == FigCount - 1) {
+		 pOut->PrintMessage("Figure is already at the front");
+	 }
+	 else {
+		 CFigure* temp = FigList[index];
+		 for (int i = index; i < FigCount - 1; i++) {
+			 FigList[i] = FigList[i + 1];
+			 FigList[i]->Setid(i);
+		 }
+		 FigList[FigCount - 1] = temp;
+		 FigList[FigCount - 1]->Setid(FigCount - 1);
+	 }
+ }
+
 
  void ApplicationManager::SaveAll( string fname )
  {

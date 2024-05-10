@@ -23,19 +23,22 @@ void SendToBack::ReadActionParameters()
 		SelectedFig = NULL;
 }
 //excute the STB action
-void SendToBack::Execute()
-{
-	ReadActionParameters();
-	//Get a Pointer to the Output Interface
-	Output* pOut = pManager->GetOutput();
-	// if one figure is selected send it to the back
-	if (SelectedFig)
-	{
-		pManager->SortSTB(SelectedID);
-		pOut->PrintMessage("Figure sent to back");
-	}
-	//else print one figure needs to be selected
-	else
-		pOut->PrintMessage("Send To Back : One figure needs to be selected");
 
-}
+	void SendToBack::Execute()
+	{
+		ReadActionParameters();
+		Output* pOut = pManager->GetOutput();
+
+		if (SelectedFig)
+		{
+			pManager->SortSTB(SelectedID);
+			pOut->PrintMessage("Figure sent to back");
+
+		}
+		else
+		{
+			pOut->PrintMessage("Send To Back: One figure needs to be selected");
+		}
+	}
+
+

@@ -65,6 +65,7 @@ public:
 	void ShowAll();
 	void clear();
 	void SortSTB(int);			//Sends a figure to the back then resorts the FigList
+	void SortBTF(int);			//Brings a figure to the front then resorts the FigList
 
 };
 

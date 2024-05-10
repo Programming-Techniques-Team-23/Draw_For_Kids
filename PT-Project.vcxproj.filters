@@ -198,9 +198,16 @@
     </ClCompile>
     <ClCompile Include="Actions\ClearAll.cpp" />
     <ClCompile Include="Actions\Paste.cpp" />
-    <ClCompile Include="Actions\PlayByColor.cpp" />
-    <ClCompile Include="Actions\PlayByType.cpp" />
     <ClCompile Include="Actions\SendToBack.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="Actions\PlayByType.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="Actions\PlayByColor.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="Actions\BringToFront.cpp">
       <Filter>Action Classes</Filter>
     </ClCompile>
   </ItemGroup>
@@ -342,9 +349,16 @@
       <Filter>Action Classes</Filter>
     </ClInclude>
     <ClInclude Include="Actions\ClearAll.h" />
-    <ClInclude Include="Actions\PlayByColor.h" />
-    <ClInclude Include="Actions\PlayByType.h" />
     <ClInclude Include="Actions\SendToBack.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\PlayByType.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\PlayByColor.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\BringToFront.h">
       <Filter>Action Classes</Filter>
     </ClInclude>
   </ItemGroup>
