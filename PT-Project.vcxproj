@@ -133,7 +133,6 @@
     <ClCompile Include="Actions\AddHexAction.cpp" />
     <ClCompile Include="Actions\AddSquAction.cpp" />
     <ClCompile Include="Actions\AddTriAction.cpp" />
-    <ClCompile Include="Actions\BringToFront.cpp" />
     <ClCompile Include="Actions\ClearAll.cpp" />
     <ClCompile Include="Actions\Copy.cpp" />
     <ClCompile Include="Actions\Cut.cpp" />
@@ -200,7 +199,6 @@
     <ClInclude Include="Actions\AddHexAction.h" />
     <ClInclude Include="Actions\AddSquAction.h" />
     <ClInclude Include="Actions\AddTriAction.h" />
-    <ClInclude Include="Actions\BringToFront.h" />
     <ClInclude Include="Actions\ClearAll.h" />
     <ClInclude Include="Actions\Copy.h" />
     <ClInclude Include="Actions\Cut.h" />
