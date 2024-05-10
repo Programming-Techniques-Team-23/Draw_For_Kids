@@ -2,5 +2,5 @@
 class Sound {
 public:
 	Sound();
-	void play(int);
+	void play(int,bool);
 };

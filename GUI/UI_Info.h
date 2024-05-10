@@ -41,7 +41,7 @@ enum DrawMenuItem //The items of the Draw menu (you should add more items)
 	ITM_PLY,
 
 	ITM_EXIT,		//Exit item
-	ITM_RESIZE,
+	ITM_Voice,
 	DRAW_ITM_COUNT		//no. of menu items ==> This should be the last line in this enum
 
 

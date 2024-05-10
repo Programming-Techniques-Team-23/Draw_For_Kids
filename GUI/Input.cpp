@@ -71,7 +71,7 @@ ActionType Input::GetUserAction() const
 			case ITM_DEL:return DELETE_FIG;
 			case ITM_CLR:return CLR_ALL;
 			case ITM_COPY:return COPY;
-		
+			case ITM_Voice:return Voice;
 			case ITM_CUT:return CUT;
 			case ITM_PST:return PASTE;
 			case ITM_STB:return SNDTOBACK;
