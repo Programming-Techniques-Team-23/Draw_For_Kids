@@ -12,6 +12,7 @@
 #include"Actions/switchtodraw.h"
 #include"Actions/Copy.h"
 #include"Actions/Cut.h"
+#include"../mostafa/Actions/Paste.h"
 #include "Actions/SaveAction.h"
 #include "Actions/PlayByBoth.h"
 
@@ -84,6 +85,10 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case CUT:
 			pAct = new Cut(this);
 			break;
+		case PASTE:
+			pAct = new Paste(this);
+			break;
+
 		case SAVE:
 			pAct = new SaveAction(this);
 			break;
@@ -147,6 +152,10 @@ CFigure* ApplicationManager::GetFigure(int x, int y) const
 {
 	Clipboard = c;
 }
+ CFigure* ApplicationManager::getclipboard()
+ {
+	 return Clipboard;
+ }
  void ApplicationManager::setselected(CFigure* sf) {      //set the selcted figure. We need it on copy, cut, paste and delete actions
 	 SelectedFig = sf;
  }
@@ -177,6 +186,26 @@ CFigure* ApplicationManager::GetFigure(int x, int y) const
 		 FigList[i] = NULL;
 		 FigCount = 0;
 	 }
+ }
+
+ void ApplicationManager::setiscut(bool ic)
+ {
+	 iscut = ic;
+ }
+
+ bool ApplicationManager::getiscut()
+ {
+	 return iscut;
+ }
+
+ void ApplicationManager::setgfxinfo(GfxInfo fig)
+ {
+	figcut = fig;
+ }
+
+ GfxInfo ApplicationManager::getfiginfo()
+ {
+	 return figcut;
  }
 
 	 int* ApplicationManager::colors() {
@@ -347,6 +376,7 @@ CFigure* ApplicationManager::GetFigure(int x, int y) const
 //Draw all figures on the user interface
  void ApplicationManager::UpdateInterface() const
  {
+	 pOut->ClearDrawArea();
 	 for (int i = 0; i < FigCount; i++)
 		 FigList[i]->Draw(pOut);
 	 if (mode == 0) {

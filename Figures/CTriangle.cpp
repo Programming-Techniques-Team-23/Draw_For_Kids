@@ -35,6 +35,38 @@ bool CTriangle::pointchecker(int x, int y) {
 	else
 		return false;
 }
+Point* CTriangle::PasteTri(Point P, Output* pOut)
+{
+
+	Point ReturnPs[2];
+	if (Corner1.y <= Corner2.y && Corner1.y <= Corner3.y)
+	{
+		ReturnPs[0].x = P.x - (Corner1.x - Corner2.x);
+		ReturnPs[0].y = P.y - (Corner1.y - Corner2.y);
+
+		ReturnPs[1].x = P.x - (Corner1.x - Corner3.x);
+		ReturnPs[1].y = P.y - (Corner1.y - Corner3.y);
+	}
+	else if (Corner2.y <= Corner1.y && Corner2.y <= Corner3.y)
+	{
+		ReturnPs[0].x = P.x - (Corner2.x - Corner1.x);
+		ReturnPs[0].y = P.y - (Corner2.y - Corner1.y);
+
+		ReturnPs[1].x = P.x - (Corner2.x - Corner3.x);
+		ReturnPs[1].y = P.y - (Corner2.y - Corner3.y);
+	}
+	else if (Corner3.y <= Corner1.y && Corner3.y <= Corner2.y)
+	{
+		ReturnPs[0].x = P.x - (Corner3.x - Corner1.x);
+		ReturnPs[0].y = P.y - (Corner3.y - Corner1.y);
+
+		ReturnPs[1].x = P.x - (Corner3.x - Corner2.x);
+		ReturnPs[1].y = P.y - (Corner3.y - Corner2.y);
+	}
+	pOut->DrawTri(P, ReturnPs[0], ReturnPs[1], FigGfxInfo);
+
+	return ReturnPs;
+}
 string CTriangle::Details() {
 	int x1 = Corner1.x;
 	int y1 = Corner1.y;

@@ -13,6 +13,7 @@ public:
 	CTriangle(Point, Point, Point, GfxInfo FigureGfxInfo);
 	virtual void Draw(Output* pOut) const;
 	bool pointchecker(int x, int y);
+	Point* PasteTri(Point P, Output* pOut);
 	double area(Point , Point , Point );
 	virtual void Save(ofstream& OutFile);
 	string getType();

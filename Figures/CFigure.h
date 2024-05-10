@@ -21,6 +21,11 @@ protected:
 public:
 	CFigure(GfxInfo FigureGfxInfo);
 	GfxInfo GetGfxInfo()const;	//returns info about the figure to play mode.
+
+	void setgfxinfo(GfxInfo fig);
+
+
+
 	void SetSelected(bool s);	//select/unselect the figure
 	bool IsSelected() const;	//check whether fig is selected
 	void Hide();					//Hides figures in playmode.

@@ -16,6 +16,8 @@ private:
 	int FigCount; //Figure Count
 	int mode; //Actual number of figures
 	string message; //Actual number of figures
+
+	GfxInfo figcut;
   
 	CFigure* FigList[MaxFigCount];	//List of all figures (Array of pointers)
 
@@ -24,6 +26,7 @@ private:
 	//Pointers to Input and Output classes
 	Input *pIn;
 	Output *pOut;
+	bool iscut = false;
 
 	CFigure* Clipboard;  //Pointer to copied/cut figure
 
@@ -44,6 +47,7 @@ public:
 	Output *GetOutput() const; //Return pointer to the output
 	void UpdateInterface() const;	//Redraws all the drawing window	
     void setclipboard(CFigure* c);
+	CFigure* getclipboard();
 	void setselected(CFigure*sf);
 	CFigure* getselected();
 	int GetFigCount();
@@ -61,6 +65,10 @@ public:
 	CFigure* getRandomFig();
 	void ShowAll();
 	void clear();
+	void setiscut(bool ic);
+	bool getiscut();
+	void setgfxinfo(GfxInfo fig);
+	GfxInfo getfiginfo();
 };
 
 #endif

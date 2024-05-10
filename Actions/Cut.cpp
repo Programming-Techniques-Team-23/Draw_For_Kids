@@ -19,8 +19,14 @@ void Cut::Execute()
 	Output* pOut = pManager->GetOutput();
 	ReadActionParameters();
 	if (pManager->getselected() != NULL) {
+		pManager->setiscut(true);
+		figcut = pManager->getselected()->GetGfxInfo();
+		pManager->setgfxinfo(figcut);
+
+		
 		pManager->getselected()->ChngDrawClr(GRAY);
 		pManager->getselected()->ChngFillClr(GRAY);
+		
 		pManager->setclipboard(pManager->getselected());
 	}
 	else
