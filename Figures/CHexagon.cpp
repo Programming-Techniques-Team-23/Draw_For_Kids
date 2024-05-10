@@ -1,6 +1,9 @@
 #include "CHexagon.h"
 #include "CTriangle.h"
 #include <fstream>
+#include "../Actions/LoadAction.h"
+
+using namespace std;
 
 CHexagon::CHexagon(Point P1, GfxInfo FigureGfxInfo) :CFigure(FigureGfxInfo)
 {
@@ -52,5 +55,12 @@ string CHexagon::Details() {
 void CHexagon::Save(ofstream& OutFile)
 {
 	OutFile << Details() << endl;
-	}
+}
 
+void CHexagon::Load(ifstream& Infile)
+{
+	Infile >> Type >> ID >> Centre.x >> Centre.y  >> DrawColor >> FillColor;
+	FigGfxInfo.DrawClr = stringtoclr(DrawColor);
+	FigGfxInfo.FillClr = stringtoclr(FillColor);
+	
+}

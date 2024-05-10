@@ -1,5 +1,8 @@
 #include "CRectangle.h"
 #include <fstream>
+#include "../Actions/LoadAction.h"
+
+using namespace std;
 #include"../ApplicationManager.h"
 
 
@@ -67,9 +70,16 @@ string CRectangle::Details() {
 }
 void CRectangle::Save(ofstream& OutFile)
 {
-	OutFile << Details() << endl;
+    OutFile << Details() << endl;
 }
 
+void CRectangle::Load(ifstream& Infile)
+{
+    Infile >> Type >> ID >> Corner1.x >> Corner1.y >> Corner2.x >> Corner2.y  >> DrawColor >> FillColor;
+    FigGfxInfo.DrawClr = stringtoclr(DrawColor);
+    FigGfxInfo.FillClr = stringtoclr(FillColor);
+   
+}
 Point CRectangle::PasteRect(Point P, Output* pOut)
 {
     Point P1;

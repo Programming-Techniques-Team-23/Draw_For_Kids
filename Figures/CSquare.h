@@ -14,6 +14,7 @@ public:
 	virtual void Save(ofstream& OutFile);
 	string getType();
 	string Details();
+	virtual void Load(ifstream& Infile);
 };
 
 #endif

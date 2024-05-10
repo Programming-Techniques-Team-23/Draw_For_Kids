@@ -6,6 +6,12 @@
 #include "Actions\AddTriAction.h"
 #include "Figures/CFigure.h"
 #include "Actions/SelectAction.h"
+#include "Actions/Switchtoplay.h"
+#include "ApplicationManager.h"
+#include "Actions/Exit.h"
+#include "Actions/switchtodraw.h"
+#include "Actions/Copy.h"
+#include "Actions/Cut.h"
 #include"Actions/Switchtoplay.h"
 #include"ApplicationManager.h"
 #include"Actions/Exit.h"
@@ -15,6 +21,9 @@
 #include"Actions/Paste.h"
 #include "Actions/SaveAction.h"
 #include "Actions/PlayByBoth.h"
+#include "Actions/ClearAll.h"
+#include "Deletefig.h"
+#include "../Phase-2/Actions/LoadAction.h"
 #include "Actions/PlayByType.h"
 #include "Actions/PlayByColor.h"
 #include "Actions/SendToBack.h"
@@ -157,6 +166,10 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			pAct = new SwitchToPlay(this, mode);//1
 			S.play(24, V);
 			break;
+		/*case FILLCLR:
+				pAct = new PickByColor(this);
+				break;*/
+		/*case TYPENFILLCOLOR:
 		case TYPE:
 			pAct = new PickByType(this);
 			S.play(25, V);
@@ -167,12 +180,22 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			break;
 		case TYPENFILLCOLOR:
 			pAct = new PickByBoth(this);
+			break;*/
+		case CLR_ALL:
+			pAct = new ClearAll(this);
 			S.play(27, V);
 			break;
 		case TO_DRAW:
 			pAct = new SwitchToDraw(this, &mode);//0
 			S.play(28, V);
 			break;
+		case LOAD:
+			pAct = new LoadAction(this);
+			break;
+		case DELETE_FIG:
+			pAct = new Deletefig(this);
+				break;
+
 		case EXIT:
 			pAct = new Exit(this);
 			
@@ -248,6 +271,30 @@ CFigure* ApplicationManager::GetFigure(int x, int y) const
 	 for (int i = 0;i < FigCount;i++)
 		 FigList[i]->Show();
  }
+
+ void ApplicationManager::Loadall(string infile)
+ {
+	 
+ }
+
+ void ApplicationManager::deletefig()
+ {
+	 for (int i = 0; i <FigCount; i++) {
+		 if (FigList[i]->IsSelected())
+		 {
+			 delete FigList[i];
+			 for (int j = i; j < (FigCount - 1);j++)
+			 {
+				 FigList[j] = FigList[j+1];
+			 }
+			 FigCount--;
+			
+		 }
+	 }
+ }
+
+
+ int* ApplicationManager::Combinations() {
 
  void ApplicationManager::clear()
  {
@@ -457,13 +504,9 @@ CFigure* ApplicationManager::GetFigure(int x, int y) const
 
 
  void ApplicationManager::SaveAll( string fname )
- {
-	 
-	 for (int i = 0; i < FigCount; i++)
-	 {
-		 
-		 FigList[i]->Save(ofstream (fname));
-	 }
+ { 
+	 for (int i = 1; i < FigCount; i++)
+		 FigList[i]->Save(ofstream(fname));
  }
 
 	 

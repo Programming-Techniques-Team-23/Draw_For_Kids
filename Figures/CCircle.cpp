@@ -1,5 +1,9 @@
 #include "CCircle.h"
 #include <fstream>
+#include "..\GUI\Output.h"
+#include "../Actions/LoadAction.h"
+
+using namespace std;
 
 CCircle::CCircle(Point P1, Point P2, GfxInfo FigureGfxInfo) :CFigure(FigureGfxInfo)
 {
@@ -39,7 +43,16 @@ string CCircle::Details() {
 	message += DrawColor + s + FillColor;
 	return message;
 }
-void CCircle::Save(ofstream& OutFile)
+void CCircle::Load(ifstream& Infile)
 {
-	OutFile << Details() <<endl;	
+	Infile >> Type >>ID>> Centre.x >> Centre.y >> Radius.x >> Radius.y >> DrawColor >> FillColor;
+	
+	FigGfxInfo.DrawClr = stringtoclr(DrawColor);
+
+	FigGfxInfo.FillClr = stringtoclr(FillColor);
+	
+}
+void CCircle::Save(ofstream& OutFile )
+{
+	OutFile << Details() << endl;
 }

@@ -1,12 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="CMUgraphicsLib">
-      <UniqueIdentifier>{b6ef5278-5399-4c20-8631-3a47fa20276d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="CMUgraphicsLib\JPEG">
-      <UniqueIdentifier>{74881736-22be-4b44-90b6-09a29eb1aa85}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Figures Classes">
       <UniqueIdentifier>{4cc0cf48-df46-46a1-a59b-ffb63f7dd89f}</UniqueIdentifier>
     </Filter>
@@ -18,6 +12,12 @@
     </Filter>
     <Filter Include="Application Manager">
       <UniqueIdentifier>{be3a4e10-d854-4bf8-9add-2f85904b4103}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CMUgraphicsLib">
+      <UniqueIdentifier>{b6ef5278-5399-4c20-8631-3a47fa20276d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CMUgraphicsLib\JPEG">
+      <UniqueIdentifier>{74881736-22be-4b44-90b6-09a29eb1aa85}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -201,6 +201,13 @@
     <ClCompile Include="Actions\SendToBack.cpp">
       <Filter>Action Classes</Filter>
     </ClCompile>
+    <ClCompile Include="Actions\ClearAll.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="LoadAction.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="Deletefig.cpp" />
     <ClCompile Include="Actions\PlayByType.cpp">
       <Filter>Action Classes</Filter>
     </ClCompile>
@@ -348,6 +355,13 @@
     <ClInclude Include="Actions\SaveAction.h">
       <Filter>Action Classes</Filter>
     </ClInclude>
+    <ClInclude Include="Actions\ClearAll.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="LoadAction.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Deletefig.h" />
     <ClInclude Include="Actions\ClearAll.h" />
     <ClInclude Include="Actions\SendToBack.h">
       <Filter>Action Classes</Filter>

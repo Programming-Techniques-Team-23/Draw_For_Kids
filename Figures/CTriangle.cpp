@@ -1,5 +1,7 @@
 #include "CTriangle.h"
 #include <fstream>
+#include "../Actions/LoadAction.h"
+using namespace std;
 
 
 CTriangle::CTriangle(Point P1, Point P2, Point P3,GfxInfo FigureGfxInfo) :CFigure(FigureGfxInfo)
@@ -89,4 +91,13 @@ string CTriangle::Details() {
 void CTriangle::Save(ofstream& OutFile)
 {
 	OutFile << Details() << endl;
+}
+void CTriangle::Load(ifstream& Infile)
+{
+	Infile >> Type >> ID >> Corner1.x >> Corner1.y >> Corner2.x >> Corner2.y >> Corner3.x >> Corner3.y >> DrawColor >> FillColor;
+	
+	FigGfxInfo.DrawClr = stringtoclr(DrawColor);
+	FigGfxInfo.FillClr = stringtoclr(FillColor);
+
+
 }

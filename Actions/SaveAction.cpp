@@ -20,10 +20,17 @@ void SaveAction::Execute()
 	pout->PrintMessage("Enter File Name:") ;
 
 	name =pIn->GetString(pout) ;
-	ofstream fout(name) ;
 	
-	pManager->SaveAll(name) ;
+	ofstream fout(name) ;
+
+	fout.open(name + ".txt", ios::app);
+	
+	fout << pManager->GetFigCount();
+	
+	while(fout.is_open())
+	{
+		pManager->SaveAll(name);
+	}
 	
 	fout.close();
-
 }

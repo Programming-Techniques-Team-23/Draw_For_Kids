@@ -1,5 +1,7 @@
 #include "CSquare.h"
 #include <fstream>
+#include "../Actions/LoadAction.h"
+using namespace std;
 
 
 CSquare::CSquare(Point P1, GfxInfo FigureGfxInfo) :CFigure(FigureGfxInfo)
@@ -45,4 +47,13 @@ string CSquare::Details() {
 void CSquare::Save(ofstream& OutFile)
 {
 	OutFile << Details() << endl;
+}
+
+void CSquare::Load(ifstream& Infile)
+{
+	Infile >> Type >>ID >> Centre.x >> Centre.y >>  DrawColor >> FillColor;
+	FigGfxInfo.DrawClr = stringtoclr(DrawColor);
+
+	FigGfxInfo.FillClr = stringtoclr(FillColor);
+	
 }

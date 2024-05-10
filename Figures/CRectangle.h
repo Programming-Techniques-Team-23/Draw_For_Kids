@@ -16,6 +16,7 @@ public:
 	Point PasteRect(Point P, Output* pOut);
 	string getType();
 	string Details();
+	virtual void Load(ifstream& Infile);
 };
 
 #endif
