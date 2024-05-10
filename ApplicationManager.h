@@ -5,6 +5,7 @@
 #include "Figures\CFigure.h"
 #include "GUI\input.h"
 #include "GUI\output.h"
+#include "Sound.h"
 
 //Main class that manages everything in the application.
 class ApplicationManager
@@ -24,7 +25,7 @@ private:
 	//Pointers to Input and Output classes
 	Input *pIn;
 	Output *pOut;
-
+	Sound S;
 	CFigure* Clipboard;  //Pointer to copied/cut figure
 
 public:	

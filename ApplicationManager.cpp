@@ -19,6 +19,7 @@
 #include "Actions/SendToBack.h"
 #include "Actions/BringToFront.h"
 #include"Actions/ClearAll.h"
+#include "Sound.h"
 
 //Constructor
 ApplicationManager::ApplicationManager()
@@ -54,54 +55,95 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	{
 		case DRAW_RECT:
 			pAct = new AddRectAction(this);
+			S.play(1);
 			break;
 		case DRAW_SQUR:
 			pAct = new AddSquAction(this);
-		break;
-		case DRAW_CIRC:
-			pAct = new AddCircAction(this);
+			S.play(2);
 			break;
 		case DRAW_TRI:
 			pAct = new AddTriAction(this);
+			S.play(3);
 			break;
 		case DRAW_HEX:
 			pAct = new AddHexAction(this);
+			S.play(4);
+			break;
+		case DRAW_CIRC:
+			pAct = new AddCircAction(this);
+			S.play(5);
 			break;
 		case SELECT:
 			pAct = new SelectAction(this);
+			S.play(6);
+			break;
+		case CHANGE_BORDER_COLOR:
+			S.play(7);
+			break;
+		case CHANGE_FILING_COLOR:
+			S.play(8);
+			break;
+		case BLCK:
+			S.play(9);
+			break;
+		case YEL:
+			S.play(10);
+			break;
+		case ORG:
+			S.play(11);
+			break;
+		case RD:
+			S.play(12);
+			break;
+		case GRN:
+			S.play(13);
+			break;
+		case BLU:
+			S.play(14);
 			break;
 		case TO_PLAY:
+			S.play(24);
 			pAct = new SwitchToPlay(this, mode);//1
 			break;
 		case TO_DRAW:
+			S.play(28);
 			pAct = new SwitchToDraw(this, &mode);//0
 			break;
 		case COPY:
 			pAct = new Copy(this);
+			S.play(17);
 			break;
 		case CUT:
 			pAct = new Cut(this);
+			S.play(18);
 			break;
 		case SAVE:
 			pAct = new SaveAction(this);
+			S.play(22);
 			break;
 		case SNDTOBACK:
 			pAct = new SendToBack(this);
+			S.play(21);
 			break;
 		case SNDTOFRNT:
 			pAct = new BringToForward(this);
+			S.play(20);
 			break;
 		case TYPE:
 			pAct = new PickByType(this);
+			S.play(25);
 			break;
 		case FILLCLR:
 			pAct = new PickByColor(this);
-
+			S.play(26);
+			break;
 		case TYPENFILLCOLOR:
 			pAct = new PickByBoth(this);
+			S.play(27);
 			break;
 		case CLR_ALL:
 			pAct = new ClearAll(this);
+			S.play(16);
 			break;
 		case EXIT:
 
