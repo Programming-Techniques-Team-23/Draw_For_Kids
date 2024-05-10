@@ -51,7 +51,8 @@ public:
 	void setselected(CFigure*sf);
 	CFigure* getselected();
 	CFigure* const* GetSelectedFigures() const;		//Returns a pointer to the SelectedFigs array
-
+	void SortSTB(int index);
+	void SortBTF(int index);
 	int GetFigCount();
 	void UnselectAll();
 	int* combinations();

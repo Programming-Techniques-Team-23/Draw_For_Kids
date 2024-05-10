@@ -12,7 +12,7 @@
 #include"Actions/switchtodraw.h"
 #include"Actions/Copy.h"
 #include"Actions/Cut.h"
-#include"../mostafa/Actions/Paste.h"
+#include"Actions/Paste.h"
 #include "Actions/SaveAction.h"
 #include "Actions/PlayByBoth.h"
 #include "Actions/PlayByType.h"
@@ -419,8 +419,9 @@ CFigure* ApplicationManager::GetFigure(int x, int y) const
  {
 	 pOut->ClearDrawArea();
 	 for (int i = 0; i < FigCount; i++)
+		 if(FigList[i]->IsHidden()==false)
 		 FigList[i]->Draw(pOut);
-	 }
+	 
 	 if (mode == 0) {
 		 pOut->CreateDrawToolBar();
 	 }
