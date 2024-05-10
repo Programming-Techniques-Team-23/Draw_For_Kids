@@ -430,7 +430,7 @@ CFigure* ApplicationManager::GetFigure(int x, int y) const
 		 CFigure* temp = FigList[index];
 		 for (int i = index; i > 0; i--) {
 			 FigList[i] = FigList[i - 1];
-			 FigList[i]->Setid(i-1);
+			 FigList[i]->Setid(i);
 		 }
 		 FigList[0] = temp;
 		 FigList[0]->Setid(0);
@@ -448,7 +448,7 @@ CFigure* ApplicationManager::GetFigure(int x, int y) const
 		 CFigure* temp = FigList[index];
 		 for (int i = index; i < FigCount - 1; i++) {
 			 FigList[i] = FigList[i + 1];
-			 FigList[i]->Setid(i+1);
+			 FigList[i]->Setid(i);
 		 }
 		 FigList[FigCount - 1] = temp;
 		 FigList[FigCount - 1]->Setid(FigCount - 1);
