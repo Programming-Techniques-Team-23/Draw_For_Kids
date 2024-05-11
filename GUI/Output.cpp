@@ -198,6 +198,11 @@ int Output::getCrntPenWidth() const		//get current pen width
 	return UI.PenWidth;
 }
 
+color Output::getbackgroundcolor() const
+{
+	return UI.BkGrndColor;
+}
+
 //======================================================================================//
 //								Figures Drawing Functions								//
 //======================================================================================//

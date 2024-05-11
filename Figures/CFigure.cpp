@@ -1,5 +1,6 @@
 #include "CFigure.h"
 #include <fstream>
+#include"../GUI/Output.h"
 
 CFigure::CFigure(GfxInfo FigureGfxInfo)
 { 
@@ -118,6 +119,8 @@ int CFigure::getid()
 
 color CFigure::stringtoclr(string clr)
 {
+	Output* pout{};
+
 	if (clr == "Black")
 		return BLACK;
 	else if (clr == "Blue")
@@ -131,6 +134,8 @@ color CFigure::stringtoclr(string clr)
 	else if (clr == "Orange")
 		return ORANGE;
 	else if (clr == "Not_Filled")
-		return NULL;
+		return pout->getbackgroundcolor();
+	else return NULL;
+
 }
 
