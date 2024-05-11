@@ -1,9 +1,9 @@
 #include "Actions/Action.h"
-class ChngFillCol :public Action{
+class ChngBorCol :public Action {
 private:
 	color CLR;
 public:
-	ChngFillCol(ApplicationManager* pApp);
+	ChngBorCol(ApplicationManager* pApp);
 	virtual void ReadActionParameters();
 	virtual void Execute();
 };

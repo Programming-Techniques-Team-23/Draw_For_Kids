@@ -1,11 +1,11 @@
 #include "ApplicationManager.h"
-#include "ChngFillCol.h"
+#include "ChngBorCol.h"
 #include "Actions/Action.h"
 #include "GUI\input.h"
 #include "GUI\Output.h"
 #include "Figures/CFigure.h"
 #include "DEFS.h"
-ChngFillCol::ChngFillCol(ApplicationManager* pApp) :Action(pApp)
+ChngBorCol::ChngBorCol(ApplicationManager* pApp) :Action(pApp)
 {
 	CLR = PURPLE;
 	Output* pOut = pManager->GetOutput();
@@ -24,37 +24,37 @@ ChngFillCol::ChngFillCol(ApplicationManager* pApp) :Action(pApp)
 		}
 	}
 }
-void ChngFillCol::ReadActionParameters(){
+void ChngBorCol::ReadActionParameters() {
 	Input* pIn = pManager->GetInput();
 	ActionType ActType = pIn->GetUserAction();
 	Output* pOut = pManager->GetOutput();
 	if (pManager->SelectedCount() == 1) {
-			pOut->PrintMessage("Choose a Color");
-			switch (ActType) {
-			case BLCK:
-				CLR = BLACK;
-				break;
-			case YEL:
-				CLR = YELLOW;
-				break;
-			case ORG:
-				CLR = ORANGE;
-				break;
-			case GRN:
-				CLR = GREEN;
-				break;
-			case BLU:
-				CLR = BLU;
-				break;
-			case RD:
-				CLR = RED;
-				break;
-			}
+		pOut->PrintMessage("Choose a Color");
+		switch (ActType) {
+		case BLCK:
+			CLR = BLACK;
+			break;
+		case YEL:
+			CLR = YELLOW;
+			break;
+		case ORG:
+			CLR = ORANGE;
+			break;
+		case GRN:
+			CLR = GREEN;
+			break;
+		case BLU:
+			CLR = BLU;
+			break;
+		case RD:
+			CLR = RED;
+			break;
+		}
 	}
 }
-void ChngFillCol::Execute() {
+void ChngBorCol::Execute() {
 	ReadActionParameters();
 	Output* pOut = pManager->GetOutput();
-	if(CLR!=PURPLE)
-		pManager->getselected()->ChngFillClr(CLR);
+	if (CLR != PURPLE)
+		pManager->getselected()->ChngDrawClr(CLR);
 }

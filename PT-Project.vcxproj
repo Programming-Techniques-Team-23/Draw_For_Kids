@@ -196,6 +196,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Sound.cpp" />
     <ClCompile Include="ChngFillCol.cpp" />
+    <ClCompile Include="ChngBorCol.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Actions\AddCircAction.h" />
@@ -250,6 +251,7 @@
     <ClInclude Include="ApplicationManager.h" />
     <ClInclude Include="DEFS.h" />
     <ClInclude Include="ChngFillCol.h" />
+    <ClInclude Include="ChngBorCol.h" />
     <ClInclude Include="Sound.h" />
   </ItemGroup>
   <ItemGroup>

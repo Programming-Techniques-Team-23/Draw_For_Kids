@@ -21,6 +21,7 @@
 #include "Actions/BringToFront.h"
 #include"Actions/ClearAll.h"
 #include "ChngFillCol.h"
+#include "ChngBorCol.h"
 #include "Sound.h"
 
 //Constructor
@@ -64,63 +65,34 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case DRAW_RECT:
 			pAct = new AddRectAction(this);
 			S.play(1,V);
-			Fill = false;
 			break;
 		case DRAW_SQUR:
 			pAct = new AddSquAction(this);
 			S.play(2,V);
-			Fill = false;
 			break;
 		case DRAW_TRI:
 			pAct = new AddTriAction(this);
 			S.play(3,V);
-			Fill = false;
 			break;
 		case DRAW_HEX:
 			pAct = new AddHexAction(this);
 			S.play(4, V);
-			Fill = false;
 			break;
 		case DRAW_CIRC:
 			pAct = new AddCircAction(this);
 			S.play(5, V);
-			Fill = false;
 			break;
 		case SELECT:
 			pAct = new SelectAction(this);
 			S.play(6, V);
-			Fill = false;
 			break;
 		case CHANGE_BORDER_COLOR:
+			pAct = new ChngBorCol(this);
 			S.play(7, V);
-			Fill = false;
 			break;
 		case CHANGE_FILING_COLOR:
 			pAct = new ChngFillCol(this);
 			S.play(8, V);
-			Fill = true;
-			break;
-		case BLCK:
-			S.play(9, V);
-			if (Fill) {
-				pAct = new ChngFillCol(this, true, BLACK);
-				Fill = false;
-			}
-			break;
-		case YEL:
-			S.play(10, V);
-			break;
-		case ORG:
-			S.play(11, V);
-			break;
-		case RD:
-			S.play(12, V);
-			break;
-		case GRN:
-			S.play(13, V);
-			break;
-		case BLU:
-			S.play(14, V);
 			break;
 		case DELETE_FIG:
 			S.play(15, V);
@@ -229,6 +201,11 @@ CFigure* ApplicationManager::GetFigure(int x, int y) const
 	 SelectedFig = sf;
  }
  CFigure *ApplicationManager::getselected() {
+	 for (int i = 0; i < FigCount; i++) {
+		 if (FigList[i]->IsSelected())
+			 SelectedFig = FigList[i];
+		 break;
+	 }
 	 return SelectedFig;
 
  }

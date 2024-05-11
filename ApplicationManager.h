@@ -21,7 +21,7 @@ private:
 	GfxInfo figcut;
   
 	CFigure* FigList[MaxFigCount];	//List of all figures (Array of pointers)
-
+	int selectC;
 	CFigure* SelectedFig; //Pointer to the selected figure
 
 	//Pointers to Input and Output classes
@@ -29,8 +29,6 @@ private:
 	Output *pOut;
 	bool iscut = false;
 	Sound S;
-	bool Bor = false;
-	bool Fill = false;
 	CFigure* Clipboard;  //Pointer to copied/cut figure
 	bool V = true;
 public:	
@@ -53,7 +51,6 @@ public:
 	CFigure* getclipboard();
 	void setselected(CFigure*sf);
 	CFigure* getselected();
-	CFigure* const* GetSelectedFigures() const;		//Returns a pointer to the SelectedFigs array
 	void SortSTB(int index);
 	void SortBTF(int index);
 	int GetFigCount();
