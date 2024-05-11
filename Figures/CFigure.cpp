@@ -9,6 +9,7 @@ CFigure::CFigure(GfxInfo FigureGfxInfo)
 	FillColor = "Not Filled";
 	ChngDrawClr(BLUE);
 }
+CFigure::CFigure() {}
 
 void CFigure::SetSelected(bool s)
 {	Selected = s; }
@@ -57,7 +58,7 @@ else if (FigGfxInfo.DrawClr == ORANGE)
 }
 else if (FigGfxInfo.DrawClr == NULL)
 {
-	DrawColor = "Not Filled";
+	DrawColor = "Not_Filled";
 }
 }
 
@@ -93,7 +94,7 @@ void CFigure::ChngFillClr(color Fclr)
 	}
 	else
 	{
-		FillColor = "Not Filled";
+		FillColor = "Not_Filled";
 	}
 }
 //Hides Figures
@@ -119,4 +120,24 @@ int CFigure::getid()
 {
 	return ID;
 }
+color CFigure::stringtoclr(string clr)
+{
+	Output* pout{};
 
+	if (clr == "Black")
+		return BLACK;
+	else if (clr == "Blue")
+		return BLUE;
+	else if (clr == "Red")
+		return RED;
+	else if (clr == "Green")
+		return GREEN;
+	else if (clr == "Yellow")
+		return YELLOW;
+	else if (clr == "Orange")
+		return ORANGE;
+	else if (clr == "Not_Filled")
+		return pout->getbackgroundcolor();
+	else return NULL;
+
+}

@@ -317,7 +317,10 @@ void Output::DrawTri(Point P1, Point P2, Point P3, GfxInfo TRIGfxInfo, bool sele
 	pWind->DrawTriangle(P1.x, P1.y, P2.x, P2.y, P3.x, P3.y, style);
 }
 
-
+color Output::getbackgroundcolor() const
+{
+	return UI.BkGrndColor;
+}
 
 
 

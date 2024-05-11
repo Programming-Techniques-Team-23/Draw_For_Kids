@@ -8,7 +8,10 @@ CSquare::CSquare(Point P1, GfxInfo FigureGfxInfo) :CFigure(FigureGfxInfo)
 	Type = "Square";
 
 }
-
+CSquare::CSquare()
+{
+	Type = "Square";
+}
 string CSquare::getType()
 {
 	return Type;
@@ -44,5 +47,15 @@ string CSquare::Details() {
 
 void CSquare::Save(ofstream& OutFile)
 {
-	OutFile << Details() << endl;
+	OutFile.app;
+	OutFile << Type << " " << ID << " " << Centre.x << " " << Centre.y << " " << DrawColor << " " << FillColor << endl;
+}
+
+void CSquare::Load(ifstream& Infile)
+{
+	Infile >> ID >> Centre.x >> Centre.y >> DrawColor >> FillColor;
+	FigGfxInfo.DrawClr = stringtoclr(DrawColor);
+
+	FigGfxInfo.FillClr = stringtoclr(FillColor);
+
 }

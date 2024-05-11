@@ -8,11 +8,13 @@ private:
 	Point Centre;
 public:
 	CHexagon(Point, GfxInfo FigureGfxInfo);
+	CHexagon();
 	virtual void Draw(Output* pOut) const;
 	bool pointchecker(int x, int y);
 	virtual void Save(ofstream& OutFile);
 	string getType();
 	string Details();
+	virtual void Load(ifstream& Infile);
 };
 
 #endif

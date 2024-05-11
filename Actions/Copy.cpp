@@ -18,7 +18,7 @@ void Copy::Execute()
 	Output* pOut = pManager->GetOutput();
 	ReadActionParameters();
 	 
-	if (pManager->getselected() != NULL) {
+	if ((pManager->getselected() != NULL && pManager->SelectedCount() != 0)) {
 	
 		pManager->setclipboard(pManager->getselected());
 		pOut->PrintMessage("Figure has been copied");

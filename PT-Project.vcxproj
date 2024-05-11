@@ -142,7 +142,6 @@
     <ClCompile Include="Actions\PlayByBoth.cpp" />
     <ClCompile Include="Actions\PlayByColor.cpp" />
     <ClCompile Include="Actions\PlayByType.cpp" />
-    <ClCompile Include="Actions\SaveAction.cpp" />
     <ClCompile Include="Actions\SelectAction.cpp" />
     <ClCompile Include="Actions\SendToBack.cpp" />
     <ClCompile Include="Actions\switchtodraw.cpp" />
@@ -183,6 +182,7 @@
     <ClCompile Include="CMUgraphicsLib\jpeg\jquant1.c" />
     <ClCompile Include="CMUgraphicsLib\jpeg\jquant2.c" />
     <ClCompile Include="CMUgraphicsLib\jpeg\jutils.c" />
+    <ClCompile Include="Deletefig.cpp" />
     <ClCompile Include="Figures\CCircle.cpp" />
     <ClCompile Include="Figures\CFigure.cpp" />
     <ClCompile Include="Figures\CHexagon.cpp" />
@@ -193,7 +193,9 @@
     <ClCompile Include="GUI\Input.cpp" />
     <ClCompile Include="GUI\Output.cpp" />
     <ClCompile Include="ApplicationManager.cpp" />
+    <ClCompile Include="LoadAction.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="SaveAction.cpp" />
     <ClCompile Include="Sound.cpp" />
     <ClCompile Include="ChngFillCol.cpp" />
     <ClCompile Include="ChngBorCol.cpp" />
@@ -212,7 +214,6 @@
     <ClInclude Include="Actions\PlayByBoth.h" />
     <ClInclude Include="Actions\PlayByColor.h" />
     <ClInclude Include="Actions\PlayByType.h" />
-    <ClInclude Include="Actions\SaveAction.h" />
     <ClInclude Include="Actions\SelectAction.h" />
     <ClInclude Include="Actions\SendToBack.h" />
     <ClInclude Include="Actions\switchtodraw.h" />
@@ -237,6 +238,7 @@
     <ClInclude Include="CMUgraphicsLib\jpeg\jpegint.h" />
     <ClInclude Include="CMUgraphicsLib\jpeg\jpeglib.h" />
     <ClInclude Include="CMUgraphicsLib\jpeg\jversion.h" />
+    <ClInclude Include="Deletefig.h" />
     <ClInclude Include="Figures\CCircle.h" />
     <ClInclude Include="Figures\CFigure.h" />
     <ClInclude Include="Figures\CHexagon.h" />
@@ -252,6 +254,8 @@
     <ClInclude Include="DEFS.h" />
     <ClInclude Include="ChngFillCol.h" />
     <ClInclude Include="ChngBorCol.h" />
+    <ClInclude Include="LoadAction.h" />
+    <ClInclude Include="SaveAction.h" />
     <ClInclude Include="Sound.h" />
   </ItemGroup>
   <ItemGroup>

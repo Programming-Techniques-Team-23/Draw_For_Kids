@@ -18,7 +18,7 @@ void Cut::Execute()
 {
 	Output* pOut = pManager->GetOutput();
 	ReadActionParameters();
-	if (pManager->getselected() != NULL) {
+	if ((pManager->getselected() != NULL && pManager->SelectedCount() != 0)) {
 		pManager->setiscut(true);
 		figcut = pManager->getselected()->GetGfxInfo();
 		pManager->setgfxinfo(figcut);

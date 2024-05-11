@@ -10,7 +10,10 @@ CRectangle::CRectangle(Point P1, Point P2, GfxInfo FigureGfxInfo):CFigure(Figure
 	Type = "Rectangle";
 
 }
-	
+CRectangle::CRectangle()
+{
+    Type = "Rectangle";
+}
 string CRectangle::getType()
 {
 	return Type;
@@ -67,9 +70,16 @@ string CRectangle::Details() {
 }
 void CRectangle::Save(ofstream& OutFile)
 {
-	OutFile << Details() << endl;
+    OutFile.app;
+    OutFile << Type << " " << ID << " " << Corner1.x << " " << Corner1.y << " " << Corner2.x << " " << Corner2.y << " " << " " << DrawColor << " " << FillColor << endl;
 }
 
+void CRectangle::Load(ifstream& Infile)
+{
+    Infile >> ID >> Corner1.x >> Corner1.y >> Corner2.x >> Corner2.y >> DrawColor >> FillColor;
+    FigGfxInfo.DrawClr = stringtoclr(DrawColor);
+    FigGfxInfo.FillClr = stringtoclr(FillColor);
+}
 Point CRectangle::PasteRect(Point P, Output* pOut)
 {
     Point P1;

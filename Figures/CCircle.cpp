@@ -7,6 +7,10 @@ CCircle::CCircle(Point P1, Point P2, GfxInfo FigureGfxInfo) :CFigure(FigureGfxIn
 	Radius = P2;
 	Type = "Circle";
 }
+CCircle::CCircle()
+{
+	Type = "Circle";
+}
 string CCircle::getType() 
 { return Type; }
 void CCircle::Draw(Output* pOut) const
@@ -39,7 +43,30 @@ string CCircle::Details() {
 	message += DrawColor + s + FillColor;
 	return message;
 }
+Point CCircle::PasteCir(Point P, Output* pOut)
+{
+	Point P1;
+	P1.x = P.x + (Radius.x - Centre.x);
+	P1.y = P.y + (Radius.y - Centre.y);
+
+
+
+
+
+	pOut->DrawCirc(P, P1, FigGfxInfo);
+	return P1;
+}
+void CCircle::Load(ifstream& Infile)
+{
+	Infile >> ID >> Centre.x >> Centre.y >> Radius.x >> Radius.y >> DrawColor >> FillColor;
+
+	FigGfxInfo.DrawClr = stringtoclr(DrawColor);
+
+	FigGfxInfo.FillClr = stringtoclr(FillColor);
+
+}
 void CCircle::Save(ofstream& OutFile)
 {
-	OutFile << Details() <<endl;	
+	OutFile.app;
+	OutFile << Type << " " << ID << " " << Centre.x << " " << Centre.y << " " << Radius.x << " " << Radius.y << " " << " " << DrawColor << " " << FillColor << endl;
 }

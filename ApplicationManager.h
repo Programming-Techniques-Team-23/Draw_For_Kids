@@ -58,7 +58,7 @@ public:
 	int* combinations();
 	int* types();
 	int* colors();
-	void SaveAll(string OutFile);
+	void SaveAll(ofstream& prout) const;
 	int RecCount();
 	int HexCount();
 	int CircCount();
@@ -72,6 +72,7 @@ public:
 	bool getiscut();
 	void setgfxinfo(GfxInfo fig);
 	GfxInfo getfiginfo();
+	void deletefig();
 };
 
 #endif

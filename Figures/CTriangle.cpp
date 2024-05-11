@@ -9,7 +9,10 @@ CTriangle::CTriangle(Point P1, Point P2, Point P3,GfxInfo FigureGfxInfo) :CFigur
 	Corner3 = P3;
 	Type = "Triangle";
 }
-
+CTriangle::CTriangle()
+{
+	Type = "Triangle";
+}
 string CTriangle::getType()
 {
 	return Type;
@@ -35,38 +38,6 @@ bool CTriangle::pointchecker(int x, int y) {
 	else
 		return false;
 }
-Point* CTriangle::PasteTri(Point P, Output* pOut)
-{
-
-	Point ReturnPs[2];
-	if (Corner1.y <= Corner2.y && Corner1.y <= Corner3.y)
-	{
-		ReturnPs[0].x = P.x - (Corner1.x - Corner2.x);
-		ReturnPs[0].y = P.y - (Corner1.y - Corner2.y);
-
-		ReturnPs[1].x = P.x - (Corner1.x - Corner3.x);
-		ReturnPs[1].y = P.y - (Corner1.y - Corner3.y);
-	}
-	else if (Corner2.y <= Corner1.y && Corner2.y <= Corner3.y)
-	{
-		ReturnPs[0].x = P.x - (Corner2.x - Corner1.x);
-		ReturnPs[0].y = P.y - (Corner2.y - Corner1.y);
-
-		ReturnPs[1].x = P.x - (Corner2.x - Corner3.x);
-		ReturnPs[1].y = P.y - (Corner2.y - Corner3.y);
-	}
-	else if (Corner3.y <= Corner1.y && Corner3.y <= Corner2.y)
-	{
-		ReturnPs[0].x = P.x - (Corner3.x - Corner1.x);
-		ReturnPs[0].y = P.y - (Corner3.y - Corner1.y);
-
-		ReturnPs[1].x = P.x - (Corner3.x - Corner2.x);
-		ReturnPs[1].y = P.y - (Corner3.y - Corner2.y);
-	}
-	pOut->DrawTri(P, ReturnPs[0], ReturnPs[1], FigGfxInfo);
-
-	return ReturnPs;
-}
 string CTriangle::Details() {
 	int x1 = Corner1.x;
 	int y1 = Corner1.y;
@@ -86,7 +57,28 @@ string CTriangle::Details() {
 	message += DrawColor + s + FillColor;
 	return message;
 }
+Point* CTriangle::PasteTri(Point P, Output* pOut)
+{
+	Point P12[2];
+	P12[0].x = P.x + (Corner2.x - Corner1.x);
+	P12[0].y = P.y + (Corner2.y - Corner2.y);
+	P12[1].x = P.x + (Corner3.x - Corner1.x);
+	P12[1].y = P.y + (Corner3.y - Corner1.y);
+	pOut->DrawTri(P, P12[0], P12[1], FigGfxInfo);
+	return P12;
+
+}
 void CTriangle::Save(ofstream& OutFile)
 {
-	OutFile << Details() << endl;
+	{
+		OutFile.app;
+		OutFile << Type << " " << ID << " " << Corner1.x << " " << Corner1.y << " " << Corner2.x << " " << Corner2.y << " " << Corner3.x << " " << Corner3.y << " " << DrawColor << " " << FillColor << endl;
+	}
+}
+void CTriangle::Load(ifstream& Infile)
+{
+	Infile >> ID >> Corner1.x >> Corner1.y >> Corner2.x >> Corner2.y >> Corner3.x >> Corner3.y >> DrawColor >> FillColor;
+
+	FigGfxInfo.DrawClr = stringtoclr(DrawColor);
+	FigGfxInfo.FillClr = stringtoclr(FillColor);
 }

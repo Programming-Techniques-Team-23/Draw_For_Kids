@@ -1,0 +1,6 @@
+5
+Circle 0 169 318 270 306  Blue Green
+Triangle 1 409 410 600 429 476 158 Blue Red
+Square 2 821 201 Blue Not_Filled
+Rectangle 3 723 337 965 446  Yellow Not_Filled
+Circle 4 544 173 413 173  Blue Not_Filled

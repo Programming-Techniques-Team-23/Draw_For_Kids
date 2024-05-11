@@ -13,7 +13,7 @@
 #include"Actions/Copy.h"
 #include"Actions/Cut.h"
 #include"Actions/Paste.h"
-#include "Actions/SaveAction.h"
+#include "SaveAction.h"
 #include "Actions/PlayByBoth.h"
 #include "Actions/PlayByType.h"
 #include "Actions/PlayByColor.h"
@@ -23,6 +23,9 @@
 #include "ChngFillCol.h"
 #include "ChngBorCol.h"
 #include "Sound.h"
+#include "Deletefig.h"
+#include "LoadAction.h"
+#include "SaveAction.h"
 
 //Constructor
 ApplicationManager::ApplicationManager()
@@ -95,6 +98,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			S.play(8, V);
 			break;
 		case DELETE_FIG:
+			pAct = new Deletefig(this);
 			S.play(15, V);
 			break;
 		case CLR_ALL:
@@ -124,6 +128,10 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case SAVE:
 			pAct = new SaveAction(this);
 			S.play(22, V);
+			break;
+		case LOAD:
+			pAct = new LoadAction(this);
+			S.play(23, V);
 			break;
 		case TO_PLAY:
 			pAct = new SwitchToPlay(this, mode);//1
@@ -249,6 +257,7 @@ CFigure* ApplicationManager::GetFigure(int x, int y) const
  {
 	figcut = fig;
  }
+
 
  GfxInfo ApplicationManager::getfiginfo()
  {
@@ -433,13 +442,13 @@ CFigure* ApplicationManager::GetFigure(int x, int y) const
  }
 
 
- void ApplicationManager::SaveAll( string fname )
+ void ApplicationManager::SaveAll(ofstream& prout) const
  {
-	 
+	 prout << FigCount << endl;
 	 for (int i = 0; i < FigCount; i++)
 	 {
-		 
-		 FigList[i]->Save(ofstream (fname));
+		 FigList[i]->Save(prout);
+
 	 }
  }
 
@@ -537,6 +546,22 @@ int ApplicationManager::SelectedCount() {
 			c++;
 	}
 	return c;
+}
+void ApplicationManager::deletefig()
+{
+	for (int i = 0; i < FigCount; i++) {
+		if (FigList[i]->IsSelected())
+		{
+			delete FigList[i];
+			FigCount--;
+			for (int j = i; j < (FigCount);j++)
+			{
+				FigList[j] = FigList[j + 1];
+			}
+
+
+		}
+	}
 }
 
 ////////////////////////////////////////////////////////////////////////////////////

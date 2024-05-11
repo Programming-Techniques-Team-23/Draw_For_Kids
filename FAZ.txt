@@ -1,0 +1,4 @@
+3
+Hexagon 0 239 306 Blue Yellow
+Triangle 1 605 258 979 309 829 204 Blue Not Filled
+Square 2 481 327 Yellow Not Filled

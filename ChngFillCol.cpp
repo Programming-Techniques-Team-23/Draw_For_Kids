@@ -22,14 +22,15 @@ ChngFillCol::ChngFillCol(ApplicationManager* pApp) :Action(pApp)
 			pOut->PrintMessage("Choose only 1 figure");
 			return;
 		}
+		else {
+			pOut->PrintMessage("Choose a Color");
+		}
 	}
 }
 void ChngFillCol::ReadActionParameters(){
 	Input* pIn = pManager->GetInput();
 	ActionType ActType = pIn->GetUserAction();
-	Output* pOut = pManager->GetOutput();
 	if (pManager->SelectedCount() == 1) {
-			pOut->PrintMessage("Choose a Color");
 			switch (ActType) {
 			case BLCK:
 				CLR = BLACK;
@@ -44,7 +45,7 @@ void ChngFillCol::ReadActionParameters(){
 				CLR = GREEN;
 				break;
 			case BLU:
-				CLR = BLU;
+				CLR = BLUE;
 				break;
 			case RD:
 				CLR = RED;
@@ -54,7 +55,6 @@ void ChngFillCol::ReadActionParameters(){
 }
 void ChngFillCol::Execute() {
 	ReadActionParameters();
-	Output* pOut = pManager->GetOutput();
-	if(CLR!=PURPLE)
+	if(CLR==BLACK||CLR==YELLOW||CLR==GREEN||CLR==BLUE||CLR==RED||CLR==ORANGE && pManager->SelectedCount() == 1)
 		pManager->getselected()->ChngFillClr(CLR);
 }

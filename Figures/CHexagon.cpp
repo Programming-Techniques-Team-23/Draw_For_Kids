@@ -13,6 +13,10 @@ void CHexagon::Draw(Output* pOut) const
 	//Call Output::DrawHex to draw a hexagon on the screen	
 	pOut->DrawHex(Centre, FigGfxInfo, Selected);
 }
+CHexagon::CHexagon()
+{
+	Type = "Hexagon";
+}
 string CHexagon::getType()
 {
 	return Type;
@@ -51,6 +55,15 @@ string CHexagon::Details() {
 
 void CHexagon::Save(ofstream& OutFile)
 {
-	OutFile << Details() << endl;
-	}
+	OutFile.app;
+	OutFile << Type << " " << ID << " " << Centre.x << " " << Centre.y << " " << DrawColor << " " << FillColor << endl;
+}
+
+void CHexagon::Load(ifstream& Infile)
+{
+	Infile >> ID >> Centre.x >> Centre.y >> DrawColor >> FillColor;
+	FigGfxInfo.DrawClr = stringtoclr(DrawColor);
+	FigGfxInfo.FillClr = stringtoclr(FillColor);
+
+}
 

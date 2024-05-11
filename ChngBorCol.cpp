@@ -55,6 +55,6 @@ void ChngBorCol::ReadActionParameters() {
 void ChngBorCol::Execute() {
 	ReadActionParameters();
 	Output* pOut = pManager->GetOutput();
-	if (CLR != PURPLE)
+	if (CLR != PURPLE && pManager->SelectedCount() == 1)
 		pManager->getselected()->ChngDrawClr(CLR);
 }
