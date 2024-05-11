@@ -137,7 +137,7 @@ color CFigure::stringtoclr(string clr)
 	else if (clr == "Orange")
 		return ORANGE;
 	else if (clr == "Not_Filled")
-		return pout->getbackgroundcolor();
+		return FigGfxInfo.isFilled=false;
 	else return NULL;
 
 }
