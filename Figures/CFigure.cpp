@@ -130,7 +130,7 @@ color CFigure::stringtoclr(string clr)
 		return YELLOW;
 	else if (clr == "Orange")
 		return ORANGE;
-	else if (clr == "Not Filled")
+	else if (clr == "Not_Filled")
 		return NULL;
 }
 
