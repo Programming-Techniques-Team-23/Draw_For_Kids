@@ -265,7 +265,7 @@ CFigure* ApplicationManager::GetFigure(int x, int y) const
  }
 
 	 int* ApplicationManager::colors() {
-	 int* colors = new int[6];
+	 int* colors = new int[7];
 	 for (int i = 0; i < 6; i++)
 		 colors[i] = 0;
 	 for (int i = 0; i < FigCount; i++) {
@@ -273,7 +273,7 @@ CFigure* ApplicationManager::GetFigure(int x, int y) const
 		 {
 			 if (FigList[i]->GetGfxInfo().FillClr == BLACK)
 				 colors[0]++;
-			 else if (FigList[i]->GetGfxInfo().FillClr == WHITE)
+			 else if (FigList[i]->GetGfxInfo().FillClr == YELLOW)
 				 colors[1]++;
 			 else if (FigList[i]->GetGfxInfo().FillClr == BLUE)
 				 colors[2]++;
@@ -281,11 +281,14 @@ CFigure* ApplicationManager::GetFigure(int x, int y) const
 				 colors[3]++;
 			 else if (FigList[i]->GetGfxInfo().FillClr == RED)
 				 colors[4]++;
+			 else if (FigList[i]->GetGfxInfo().FillClr == ORANGE)
+				 colors[5]++;
+		 
 		 }
 		 else
 		 {
 
-			 colors[5]++;
+			 colors[6]++;
 		 }
 	 }
 	 return colors;
@@ -313,7 +316,7 @@ CFigure* ApplicationManager::GetFigure(int x, int y) const
 
  }
  int* ApplicationManager::combinations() {
-	 int *combinations=new int[30];
+	 int *combinations=new int[35];
 	 for (int i = 0;i < 30;i++) {
 		 combinations[i] = 0;
 	 }
@@ -333,7 +336,7 @@ CFigure* ApplicationManager::GetFigure(int x, int y) const
 				 else
 					 combinations[4]++;
 			 }
-			 else if (FigList[i]->GetGfxInfo().FillClr == WHITE)
+			 else if (FigList[i]->GetGfxInfo().FillClr == YELLOW)
 			 {
 				 if (FigList[i]->getType() == "Rectangle")
 					 combinations[5]++;
@@ -372,7 +375,7 @@ CFigure* ApplicationManager::GetFigure(int x, int y) const
 				 else
 					 combinations[19]++;
 			 }
-			 else
+			 else if (FigList[i]->GetGfxInfo().FillClr == RED)
 			 {
 				 if (FigList[i]->getType() == "Rectangle")
 					 combinations[20]++;
@@ -385,18 +388,31 @@ CFigure* ApplicationManager::GetFigure(int x, int y) const
 				 else
 					 combinations[24]++;
 			 }
+			 else if (FigList[i]->GetGfxInfo().FillClr == ORANGE)
+			 {
+				 if (FigList[i]->getType() == "Rectangle")
+					 combinations[25]++;
+				 else if (FigList[i]->getType() == "Triangle")
+					 combinations[26]++;
+				 else if (FigList[i]->getType() == "Square")
+					 combinations[27]++;
+				 else if (FigList[i]->getType() == "Hexagon")
+					 combinations[28]++;
+				 else
+					 combinations[29]++;
+			 }
 		 }
-		 else {
+		 else if(FigList[i]->GetGfxInfo().isFilled==false) {
 			 if (FigList[i]->getType() == "Rectangle")
-				 combinations[25]++;
+				 combinations[30]++;
 			 else if (FigList[i]->getType() == "Triangle")
-				 combinations[26]++;
+				 combinations[31]++;
 			 else if (FigList[i]->getType() == "Square")
-				 combinations[27]++;
+				 combinations[32]++;
 			 else if (FigList[i]->getType() == "Hexagon")
-				 combinations[28]++;
+				 combinations[33]++;
 			 else
-				 combinations[29]++;
+				 combinations[34]++;
 
 		 }
 	 }
@@ -470,8 +486,10 @@ CFigure* ApplicationManager::GetFigure(int x, int y) const
  void ApplicationManager::UpdateInterface() const
  {
 	 pOut->ClearDrawArea();
-	 for (int i = 0; i < FigCount; i++)
+	 for (int i = 0; i < FigCount; i++) {
+		 if(FigList[i]->IsHidden()==false)
 		 FigList[i]->Draw(pOut);
+	 }
 	 if (mode == 0) {
 		 pOut->CreateDrawToolBar();
 	 }

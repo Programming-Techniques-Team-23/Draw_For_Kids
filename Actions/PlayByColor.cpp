@@ -96,10 +96,10 @@ void PickByColor::Execute()
 				picked_color_no = colours[0];
 				pOut->PrintMessage("Pick up figures colored black!");
 			}
-			else if (Fig->GetGfxInfo().FillClr == WHITE)
+			else if (Fig->GetGfxInfo().FillClr == YELLOW)
 			{
 				picked_color_no = colours[1];
-				pOut->PrintMessage("Pick up figures colored white!");
+				pOut->PrintMessage("Pick up figures colored yellow!");
 			}
 			else if (Fig->GetGfxInfo().FillClr == BLUE)
 			{
@@ -119,12 +119,17 @@ void PickByColor::Execute()
 				pOut->PrintMessage("Pick up figures colored red!");
 
 			}
+			else if (Fig->GetGfxInfo().FillClr == ORANGE) {
+				picked_color_no = colours[5];
+				pOut->PrintMessage("Pick up figures colored orange!");
+			}
+
 		}
 		else
 		{
 
 
-			picked_color_no = colours[5];
+			picked_color_no = colours[6];
 			pOut->PrintMessage("Pick up uncolored hollow figures!");
 
 

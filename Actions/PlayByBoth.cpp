@@ -94,7 +94,7 @@ void PickByBoth::Execute()
 				}
 
 			}
-			else if (Fig->GetGfxInfo().FillClr == WHITE)
+			else if (Fig->GetGfxInfo().FillClr == YELLOW)
 			{
 				if (Fig->getType() == "Rectangle")
 				{
@@ -220,36 +220,68 @@ void PickByBoth::Execute()
 
 
 			}
+			else if (Fig->GetGfxInfo().FillClr == ORANGE)
+			{
+				if (Fig->getType() == "Rectangle")
+				{
+					picked_comb_no = combinations[25];
+					pOut->PrintMessage("Pick up all the orange rectangles!");
+
+				}
+				else if (Fig->getType() == "Triangle")
+				{
+					picked_comb_no = combinations[26];
+					pOut->PrintMessage("Pick up all the orange triangles!");
+
+				}
+				else if (Fig->getType() == "Square")
+				{
+					picked_comb_no = combinations[27];
+					pOut->PrintMessage("Pick up all the orange squares!");
+
+				}
+				else if (Fig->getType() == "Hexagon") {
+					picked_comb_no = combinations[28];
+					pOut->PrintMessage("Pick up all the orange Hexagons!");
+				}
+				else
+				{
+					picked_comb_no = combinations[29];
+					pOut->PrintMessage("Pick up all the orange Circles!");
+				}
+
+
+				}
 		}
 		else
 		{
 			if (Fig->getType() == "Rectangle")
 			{
-				picked_comb_no = combinations[25];
+				picked_comb_no = combinations[30];
 				pOut->PrintMessage("Pick up all the unfilled rectangles!");
 
 			}
 			else if (Fig->getType() == "Triangle")
 			{
-				picked_comb_no = combinations[26];
+				picked_comb_no = combinations[31];
 				pOut->PrintMessage("Pick up all the unfilled triangles!");
 
 			}
 			else if (Fig->getType() == "Square")
 			{
-				picked_comb_no = combinations[27];
+				picked_comb_no = combinations[32];
 				pOut->PrintMessage("Pick up all the unfilled squares!");
 
 			}
 			else if (Fig->getType() == "Hexagon")
 			{
-				picked_comb_no = combinations[28];
+				picked_comb_no = combinations[33];
 				pOut->PrintMessage("Pick up all the unfilled hexagons!");
 
 			}
 			else if (Fig->getType()=="Circle")
 			{
-				picked_comb_no = combinations[29];
+				picked_comb_no = combinations[34];
 				pOut->PrintMessage("Pick up all the unfilled circles");
 
 			}
