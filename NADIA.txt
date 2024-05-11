@@ -1,0 +1,4 @@
+3
+Circle 0 1004 299 858 262  Yellow Not_Filled
+Hexagon 1 265 257 Blue Red
+Triangle 2 728 416 728 416 697 270 Blue Not_Filled

@@ -39,7 +39,7 @@ void LoadAction::Execute()
 		pout->PrintMessage(name + ".txt" + "doesn't exist");
 	}
 	else {
-		pout->ClearDrawArea();
+		pManager->clear();
 		int figcnt;
 		fin >> figcnt;
 		for (int i = 0;i < figcnt;i++)

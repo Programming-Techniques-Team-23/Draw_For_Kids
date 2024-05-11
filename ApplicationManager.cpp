@@ -181,7 +181,7 @@ void ApplicationManager::AddFigure(CFigure* pFig)
 	if (FigCount < MaxFigCount)
 	{
 		FigList[FigCount] = pFig;
-		pFig->Setid(FigCount-1);
+		pFig->Setid(FigCount);
 		FigCount++;
 
 	}
