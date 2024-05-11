@@ -1,3 +1,4 @@
+#pragma once
 #include "SaveAction.h"
 #include"../Figures/CFigure.h"
 #include<fstream>
@@ -5,7 +6,7 @@
 #include "..\GUI\input.h"
 #include "..\GUI\Output.h"
 
-SaveAction::SaveAction(ApplicationManager* AM) : Action(AM)
+SaveAction::SaveAction(ApplicationManager* pApp) : Action(pApp)
 {
 }
 
@@ -19,11 +20,15 @@ void SaveAction::Execute()
 	Output* pout = pManager->GetOutput() ;
 	pout->PrintMessage("Enter File Name:") ;
 
-	 name =pIn->GetString(pout) ;
-	ofstream fout(name) ;
+	name =pIn->GetString(pout);
 	
-	pManager->SaveAll(name) ;
+   fout.open( name + ".txt", ios::out);
 	
+
+	
+		pManager->SaveAll(fout);
+		
 	fout.close();
 
+	pout->PrintMessage("File Saved Successfully");
 }

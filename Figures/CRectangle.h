@@ -10,10 +10,19 @@ private:
 	Point Corner2;
 public:
 	CRectangle(Point , Point, GfxInfo FigureGfxInfo );
+	CRectangle();
 	virtual void Draw(Output* pOut) const;
 	bool pointchecker(int x,int y);
 	virtual void Save(ofstream& OutFile);
 	string getType();
+	string Details();
+	virtual void Load(ifstream& Infile);
+	void setcor1(Point f);
+	void setcor2(Point g);
+	void setgfxinfo(GfxInfo gi);
+	Point getcor1();
+	Point getcor2();
+	GfxInfo getgfxinfo();
 };
 
 #endif

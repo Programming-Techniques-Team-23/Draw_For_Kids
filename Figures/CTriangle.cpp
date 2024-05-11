@@ -1,5 +1,7 @@
 #include "CTriangle.h"
 #include <fstream>
+#include "../Actions/LoadAction.h"
+using namespace std;
 
 
 CTriangle::CTriangle(Point P1, Point P2, Point P3,GfxInfo FigureGfxInfo) :CFigure(FigureGfxInfo)
@@ -7,6 +9,11 @@ CTriangle::CTriangle(Point P1, Point P2, Point P3,GfxInfo FigureGfxInfo) :CFigur
 	Corner1 = P1;
 	Corner2 = P2;
 	Corner3 = P3;
+	Type = "Triangle";
+}
+
+CTriangle::CTriangle()
+{
 	Type = "Triangle";
 }
 
@@ -34,77 +41,76 @@ bool CTriangle::pointchecker(int x, int y) {
 		return true;
 	else
 		return false;
-
 }
-
+string CTriangle::Details() {
+	int x1 = Corner1.x;
+	int y1 = Corner1.y;
+	int x2 = Corner2.x;
+	int y2 = Corner2.y;
+	int x3 = Corner3.x;
+	int y3 = Corner3.y;
+	string s = "   ";
+	string message = Type + s;
+	message += to_string(ID) + s;
+	message += to_string(x1) + s;
+	message += to_string(y1) + s;
+	message += to_string(x2) + s;
+	message += to_string(y2) + s;
+	message += to_string(x3) + s;
+	message += to_string(y3) + s;
+	message += DrawColor + s + FillColor;
+	return message;
+}
 void CTriangle::Save(ofstream& OutFile)
 {
+	{
+		OutFile.app;
+		OutFile << Type << " " << ID << " " << Corner1.x << " " << Corner1.y << " " << Corner2.x << " " << Corner2.y << " " << Corner3.x << " " << Corner3.y << " " << DrawColor << " " << FillColor << endl;
+	}
+}
+void CTriangle::Load(ifstream& Infile)
+{
+	Infile >>ID >> Corner1.x >> Corner1.y >> Corner2.x >> Corner2.y >> Corner3.x >> Corner3.y >> DrawColor >> FillColor;
 	
-	string t = "Tri ang";
-	string s = "   ";
-	string dc;
-	string fc;
-	if (FigGfxInfo.DrawClr == BLACK)
-	{
-		fc = "Black";
-	}
-	else if (FigGfxInfo.DrawClr == BLUE)
-	{
-		dc = "Blue";
-	}
-	else if (FigGfxInfo.DrawClr == GREEN)
-	{
-		dc = "GREEN";
-	}
-	else if (FigGfxInfo.DrawClr == YELLOW)
-	{
-		dc = "Yellow";
-	}
-	else if (FigGfxInfo.DrawClr == RED)
-	{
-		dc = "RED";
-	}
-	else if (FigGfxInfo.DrawClr == ORANGE)
-	{
-		dc = "ORANGE";
-	}
-	else if (FigGfxInfo.DrawClr == NULL)
-	{
-		dc = "NOT FILLED";
-	}
-	
-	if (FigGfxInfo.FillClr == BLACK)
-	{
-		fc = "Black";
-	}
-	else if (FigGfxInfo.DrawClr == BLUE)
-	{
-		fc = "Blue";
-	}
-	else if (FigGfxInfo.DrawClr == GREEN)
-	{
-		fc = "GREEN";
-	}
-	else if (FigGfxInfo.DrawClr == YELLOW)
-	{
-		fc = "Yellow";
-	}
-	else if (FigGfxInfo.DrawClr == RED)
-	{
-		fc = "RED";
-	}
-	else if (FigGfxInfo.DrawClr == ORANGE)
-	{
-		fc = "ORANGE";
-	}
-	else if (FigGfxInfo.DrawClr == NULL)
-	{
-		fc = "NOT FILLED";
-	}
-	
+	FigGfxInfo.DrawClr = stringtoclr(DrawColor);
+	FigGfxInfo.FillClr = stringtoclr(FillColor);
+}
+void CTriangle::setcor1(Point f)
+{
+	Corner1 = f;
+}
 
-	
-	
-	OutFile << t << "   " << ID << s << Corner1.x << s << Corner1.y << s << Corner2.x << s << Corner2.y << s << Corner3.x << s << Corner3.y << s << dc << s << fc << endl;
-	
+void CTriangle::setcor2(Point g)
+{
+	Corner2 = g;
+}
+
+void CTriangle::setcor3(Point h)
+{
+	Corner3 = h;
+}
+
+void CTriangle::setgfxinfo(GfxInfo gi)
+{
+	FigGfxInfo = gi;
+}
+
+Point CTriangle::getcor1()
+{
+	return Corner1;
+}
+
+Point CTriangle::getcor2()
+{
+	return Corner2;
+}
+
+Point CTriangle::getcor3()
+{
+	return Corner3;
+}
+
+GfxInfo CTriangle::getgfxinfo()
+{
+	return FigGfxInfo;
 }

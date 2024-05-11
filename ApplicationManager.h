@@ -20,7 +20,7 @@ private:
 	CFigure* FigList[MaxFigCount];	//List of all figures (Array of pointers)
 
 	CFigure* SelectedFig; //Pointer to the selected figure
-
+	
 	//Pointers to Input and Output classes
 	Input *pIn;
 	Output *pOut;
@@ -30,7 +30,7 @@ private:
 public:	
 	ApplicationManager(); 
 	~ApplicationManager();
-	
+	CFigure* DrawnFigs(int) const;
 	// -- Action-Related Functions
 	//Reads the input command from the user and returns the corresponding action type
 	ActionType GetUserAction() const;
@@ -49,15 +49,17 @@ public:
 	CFigure* getselected();
 	int GetFigCount();
 	void UnselectAll();
-	CFigure* DrawnFigs(int) const;			//Transfer figures in FigList to playmode
-
-	void SaveAll(string OutFile);
+	int* Combinations();
+	void SaveAll(ofstream & prout) const;
 	int RecCount();
 	int HexCount();
 	int CircCount();
 	int SquCount();
 	int TriCount();
 	int SelectedCount();
+	CFigure* getRandomFig();
+	void ShowAll();
+	void deletefig ();
 };
 
 #endif

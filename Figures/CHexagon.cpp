@@ -1,10 +1,17 @@
 #include "CHexagon.h"
 #include "CTriangle.h"
 #include <fstream>
+#include "../Actions/LoadAction.h"
+
+using namespace std;
 
 CHexagon::CHexagon(Point P1, GfxInfo FigureGfxInfo) :CFigure(FigureGfxInfo)
 {
 	Centre = P1;
+	Type = "Hexagon";
+}
+CHexagon::CHexagon()
+{
 	Type = "Hexagon";
 }
 
@@ -37,72 +44,47 @@ bool CHexagon::pointchecker(int x, int y) {
 	else
 		return false;
 }
+string CHexagon::Details() {
+	int x1 = Centre.x;
+	int y1 = Centre.y;
+	string s = "   ";
+	string message = Type + s;
+	message += to_string(ID) + s;
+	message += to_string(x1) + s;
+	message += to_string(y1) + s;
+	message += DrawColor + s + FillColor;
+	return message;
+}
+void CHexagon::setcentre(Point f)
+{
+	Centre = f;
+}
+
+void CHexagon::setgfxinfo(GfxInfo gi)
+{
+	FigGfxInfo = gi;
+}
+
+Point CHexagon::getcent()
+{
+	return Centre;
+}
+
+GfxInfo CHexagon::getgfxinfo()
+{
+	return FigGfxInfo;
+}
 
 void CHexagon::Save(ofstream& OutFile)
 {
-	
-	string s = "   ";
-	string dc;
-	string fc;
-	if (FigGfxInfo.DrawClr == BLACK)
-	{
-		fc = "Black";
-	}
-	else if (FigGfxInfo.DrawClr == BLUE)
-	{
-		dc = "Blue";
-	}
-	else if (FigGfxInfo.DrawClr == GREEN)
-	{
-		dc = "GREEN";
-	}
-	else if (FigGfxInfo.DrawClr == YELLOW)
-	{
-		dc = "Yellow";
-	}
-	else if (FigGfxInfo.DrawClr == RED)
-	{
-		dc = "RED";
-	}
-	else if (FigGfxInfo.DrawClr == ORANGE)
-	{
-		dc = "ORANGE";
-	}
-	else if (FigGfxInfo.DrawClr == NULL)
-	{
-		dc = "NOT FILLED";
-	}
-
-	if (FigGfxInfo.FillClr == BLACK)
-	{
-		fc = "Black";
-	}
-	else if (FigGfxInfo.DrawClr == BLUE)
-	{
-		fc = "Blue";
-	}
-	else if (FigGfxInfo.DrawClr == GREEN)
-	{
-		fc = "GREEN";
-	}
-	else if (FigGfxInfo.DrawClr == YELLOW)
-	{
-		fc = "Yellow";
-	}
-	else if (FigGfxInfo.DrawClr == RED)
-	{
-		fc = "RED";
-	}
-	else if (FigGfxInfo.DrawClr == ORANGE)
-	{
-		fc = "ORANGE";
-	}
-	else if (FigGfxInfo.DrawClr == NULL)
-	{
-		fc = "NOT FILLED";
-	}
-
-	OutFile << "Hex" << s << ID << s << Centre.x << s << Centre.y<< s << dc << s << fc << endl;
-	
+	OutFile.app;
+	OutFile << Type << " " << ID << " " << Centre.x << " " << Centre.y << " " << DrawColor << " " << FillColor << endl;
 }
 
+void CHexagon::Load(ifstream& Infile)
+{
+	Infile >>ID >> Centre.x >> Centre.y  >> DrawColor >> FillColor;
+	FigGfxInfo.DrawClr = stringtoclr(DrawColor);
+	FigGfxInfo.FillClr = stringtoclr(FillColor);
+	
+}

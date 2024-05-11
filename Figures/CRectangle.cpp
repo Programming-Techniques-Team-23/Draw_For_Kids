@@ -1,5 +1,8 @@
 #include "CRectangle.h"
 #include <fstream>
+#include "../Actions/LoadAction.h"
+
+using namespace std;
 
 
 CRectangle::CRectangle(Point P1, Point P2, GfxInfo FigureGfxInfo):CFigure(FigureGfxInfo)
@@ -8,6 +11,11 @@ CRectangle::CRectangle(Point P1, Point P2, GfxInfo FigureGfxInfo):CFigure(Figure
 	Corner2 = P2;
 	Type = "Rectangle";
 
+}
+
+CRectangle::CRectangle()
+{
+    Type = "Rectangle";
 }
 	
 string CRectangle::getType()
@@ -49,74 +57,60 @@ bool CRectangle::pointchecker(int x, int y)
     else
         return false;
 }
-
+string CRectangle::Details() {
+    int x1 = Corner1.x;
+    int y1 = Corner1.y;
+    int x2 = Corner2.x;
+    int y2 = Corner2.y;
+    string s = "   ";
+    string message = Type + s;
+    message += to_string(ID) + s;
+    message += to_string(x1) + s;
+    message += to_string(y1) + s;
+    message += to_string(x2) + s;
+    message += to_string(y2) + s;
+    message += DrawColor + s + FillColor;
+    return message;
+}
 void CRectangle::Save(ofstream& OutFile)
 {
-    
-    string s = "   ";
-	string dc;
-	string fc;
-	if (FigGfxInfo.DrawClr == BLACK)
-	{
-		fc = "Black";
-	}
-	else if (FigGfxInfo.DrawClr == BLUE)
-	{
-		dc = "Blue";
-	}
-	else if (FigGfxInfo.DrawClr == GREEN)
-	{
-		dc = "GREEN";
-	}
-	else if (FigGfxInfo.DrawClr == YELLOW)
-	{
-		dc = "Yellow";
-	}
-	else if (FigGfxInfo.DrawClr == RED)
-	{
-		dc = "RED";
-	}
-	else if (FigGfxInfo.DrawClr == ORANGE)
-	{
-		dc = "ORANGE";
-	}
-	else if (FigGfxInfo.DrawClr == NULL)
-	{
-		dc = "NOT FILLED";
-	}
-
-	if (FigGfxInfo.FillClr == BLACK)
-	{
-		fc = "Black";
-	}
-	else if (FigGfxInfo.DrawClr == BLUE)
-	{
-		fc = "Blue";
-	}
-	else if (FigGfxInfo.DrawClr == GREEN)
-	{
-		fc = "GREEN";
-	}
-	else if (FigGfxInfo.DrawClr == YELLOW)
-	{
-		fc = "Yellow";
-	}
-	else if (FigGfxInfo.DrawClr == RED)
-	{
-		fc = "RED";
-	}
-	else if (FigGfxInfo.DrawClr == ORANGE)
-	{
-		fc = "ORANGE";
-	}
-	else if (FigGfxInfo.DrawClr == NULL)
-	{
-		fc = "NOT FILLED";
-	}
-
-    
-
-	OutFile << "Rect" << s << ID << s << Corner1.x << s << Corner1.y << s << Corner2.x << s << Corner2.y << s << dc << s << fc << endl;
-	
+    OutFile.app;
+    OutFile << Type << " " << ID << " " << Corner1.x << " " << Corner1.y << " " << Corner2.x << " " << Corner2.y << " " << " " << DrawColor << " " << FillColor << endl;
 }
 
+void CRectangle::Load(ifstream& Infile)
+{
+    Infile >> ID >> Corner1.x >> Corner1.y >> Corner2.x >> Corner2.y  >> DrawColor >> FillColor;
+    FigGfxInfo.DrawClr = stringtoclr(DrawColor);
+    FigGfxInfo.FillClr = stringtoclr(FillColor);
+   
+}
+void CRectangle::setcor1(Point f)
+{
+    Corner1 = f;
+}
+
+void CRectangle::setcor2(Point g)
+{
+    Corner2 = g;
+}
+
+void CRectangle::setgfxinfo(GfxInfo gi)
+{
+    FigGfxInfo = gi;
+}
+
+Point CRectangle::getcor1()
+{
+    return Corner1;
+}
+
+Point CRectangle::getcor2()
+{
+    return Corner2;
+}
+
+GfxInfo CRectangle::getgfxinfo()
+{
+    return FigGfxInfo;
+}

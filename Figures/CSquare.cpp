@@ -1,5 +1,7 @@
 #include "CSquare.h"
 #include <fstream>
+#include "../Actions/LoadAction.h"
+using namespace std;
 
 
 CSquare::CSquare(Point P1, GfxInfo FigureGfxInfo) :CFigure(FigureGfxInfo)
@@ -7,6 +9,11 @@ CSquare::CSquare(Point P1, GfxInfo FigureGfxInfo) :CFigure(FigureGfxInfo)
 	Centre = P1;
 	Type = "Square";
 
+}
+
+CSquare::CSquare()
+{
+	Type = "Square";
 }
 
 string CSquare::getType()
@@ -30,71 +37,50 @@ bool CSquare::pointchecker(int x, int y)
     else
         return false;
 }
+string CSquare::Details() {
+	int x1 = Centre.x;
+	int y1 = Centre.y;
+	string s = "   ";
+	string message = Type + s;
+	message += to_string(ID) + s;
+	message += to_string(x1) + s;
+	message += to_string(y1) + s;
+	message += DrawColor + s + FillColor;
+	return message;
+}
 
 void CSquare::Save(ofstream& OutFile)
 {
-    string s = "   ";
-	string dc;
-	string fc;
-	if (FigGfxInfo.DrawClr == BLACK)
-	{
-		fc = "Black";
-	}
-	else if (FigGfxInfo.DrawClr == BLUE)
-	{
-		dc = "Blue";
-	}
-	else if (FigGfxInfo.DrawClr == GREEN)
-	{
-		dc = "GREEN";
-	}
-	else if (FigGfxInfo.DrawClr == YELLOW)
-	{
-		dc = "Yellow";
-	}
-	else if (FigGfxInfo.DrawClr == RED)
-	{
-		dc = "RED";
-	}
-	else if (FigGfxInfo.DrawClr == ORANGE)
-	{
-		dc = "ORANGE";
-	}
-	else if (FigGfxInfo.DrawClr == NULL)
-	{
-		dc = "NOT FILLED";
-	}
-
-	if (FigGfxInfo.FillClr == BLACK)
-	{
-		fc = "Black";
-	}
-	else if (FigGfxInfo.DrawClr == BLUE)
-	{
-		fc = "Blue";
-	}
-	else if (FigGfxInfo.DrawClr == GREEN)
-	{
-		fc = "GREEN";
-	}
-	else if (FigGfxInfo.DrawClr == YELLOW)
-	{
-		fc = "Yellow";
-	}
-	else if (FigGfxInfo.DrawClr == RED)
-	{
-		fc = "RED";
-	}
-	else if (FigGfxInfo.DrawClr == ORANGE)
-	{
-		fc = "ORANGE";
-	}
-	else if (FigGfxInfo.DrawClr == NULL)
-	{
-		fc = "NOT FILLED";
-	}
-
-	OutFile << "Squr" << s << ID << s<<Centre.x << s <<Centre.y<<s << dc << s << fc << endl;
-	
-
+	OutFile.app;
+	OutFile << Type << " " << ID << " " << Centre.x << " " << Centre.y << " " << DrawColor << " " << FillColor << endl;
 }
+
+void CSquare::Load(ifstream& Infile)
+{
+	Infile >>ID >> Centre.x >> Centre.y >>  DrawColor >> FillColor;
+	FigGfxInfo.DrawClr = stringtoclr(DrawColor);
+
+	FigGfxInfo.FillClr = stringtoclr(FillColor);
+	
+}
+
+void CSquare::setcentre(Point f)
+{
+ Centre=f;
+}
+
+void CSquare::setgfxinfo(GfxInfo gi)
+{
+	FigGfxInfo = gi;
+}
+
+Point CSquare::getcent()
+{
+	return Centre;
+}
+
+GfxInfo CSquare::getgfxinfo()
+{
+	return FigGfxInfo;
+}
+

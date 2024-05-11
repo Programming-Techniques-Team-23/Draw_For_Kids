@@ -97,6 +97,7 @@ void Output::CreateDrawToolBar() const
 	MenuItemImages[ITM_BLU] = "images\\MenuItems\\blue.jpg";
 	MenuItemImages[ITM_DEL] = "images\\MenuItems\\delete.jpg";
 	MenuItemImages[ITM_CLR] = "images\\MenuItems\\clear.jpg";
+	MenuItemImages[ITM_COPY] = "images\\MenuItems\\copy.jpg";
 	MenuItemImages[ITM_CUT] = "images\\MenuItems\\cut.jpg";
 	MenuItemImages[ITM_PST] = "images\\MenuItems\\paste.jpg";
 	MenuItemImages[ITM_STB] = "images\\MenuItems\\bring_to_back.jpg";
@@ -125,6 +126,7 @@ void Output::CreateDrawToolBar() const
 
 void Output::CreatePlayToolBar() const
 {
+	
 	UI.InterfaceMode = MODE_PLAY;
 	//You can draw the tool bar icons in any way you want.
 	//Below is one possible way
@@ -138,6 +140,8 @@ void Output::CreatePlayToolBar() const
 	MenuItemImages[ITM_FILL] = "images\\MenuItems\\color.jpg";
 	MenuItemImages[ITM_TYPE_FILL] = "images\\MenuItems\\type_color.jpg";
 	MenuItemImages[ITM_DRAW] = "images\\MenuItems\\draw.jpg";
+
+
 	MenuItemImages[ITM_EXIT2] = "images\\MenuItems\\EXIT.jpg";
 	pWind->SetPen(UI.ToolBarColor, 1);
 	pWind->SetBrush(UI.ToolBarColor);

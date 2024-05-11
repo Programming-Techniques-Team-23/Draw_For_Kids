@@ -6,14 +6,17 @@
 #include "Actions\AddTriAction.h"
 #include "Figures/CFigure.h"
 #include "Actions/SelectAction.h"
-#include"Actions/Switchtoplay.h"
-#include"ApplicationManager.h"
-#include"Actions/Exit.h"
-#include"Actions/switchtodraw.h"
-#include"Actions/Copy.h"
-#include"Actions/Cut.h"
+#include "Actions/Switchtoplay.h"
+#include "ApplicationManager.h"
+#include "Actions/Exit.h"
+#include "Actions/switchtodraw.h"
+#include "Actions/Copy.h"
+#include "Actions/Cut.h"
 #include "Actions/SaveAction.h"
-
+#include "Actions/PlayByBoth.h"
+#include "Actions/ClearAll.h"
+#include "Deletefig.h"
+#include "Actions/LoadAction.h"
 
 //Constructor
 ApplicationManager::ApplicationManager()
@@ -80,6 +83,21 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case SAVE:
 			pAct = new SaveAction(this);
 			break;
+		/*case FILLCLR:
+				pAct = new PickByColor(this);
+				break;*/
+		/*case TYPENFILLCOLOR:
+			pAct = new PickByBoth(this);
+			break;*/
+		case CLR_ALL:
+			pAct = new ClearAll(this);
+			break;
+		case LOAD:
+			pAct = new LoadAction(this);
+			break;
+		case DELETE_FIG:
+			pAct = new Deletefig(this);
+				break;
 
 		case EXIT:
 
@@ -92,7 +110,6 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case STATUS:	//a click on the status bar ==> no action
 			return;
 	}
-	
 	//Execute the created action
 	if(pAct != NULL)
 	{
@@ -144,20 +161,137 @@ CFigure* ApplicationManager::GetFigure(int x, int y) const
 		 FigList[i]->SetSelected(false);
 	 }
  }
+ CFigure* ApplicationManager::getRandomFig() {
+	 return FigList[rand() % FigCount];
+ }
+ void ApplicationManager::ShowAll() {
+	 for (int i = 0;i < FigCount;i++)
+		 FigList[i]->Show();
+ }
+
+
+ void ApplicationManager::deletefig()
+ {
+	 for (int i = 0; i <FigCount; i++) {
+		 if (FigList[i]->IsSelected())
+		 {
+			 delete FigList[i];
+             FigCount--;
+			 for (int j = i; j<(FigCount);j++)
+			 {
+				 FigList[j] = FigList[j+1];
+			 }
+			
+			
+		 }
+	 }
+ }
+
+
+ int* ApplicationManager::Combinations() {
+	 int *combinations=new int[30];
+	 for (int i = 0;i < 30;i++) {
+		 combinations[i] = 0;
+	 }
+	 for (int i = 0; i < FigCount; i++) {
+		 if (FigList[i]->GetGfxInfo().isFilled) //counts combinations occurance.
+		 {
+			 if (FigList[i]->GetGfxInfo().FillClr == BLACK)
+			 {
+				 if (FigList[i]->getType()=="Rectangle")
+					 combinations[0]++;
+				 else if (FigList[i]->getType() == "Triangle")
+					 combinations[1]++;
+				 else if (FigList[i]->getType() == "Square")
+					 combinations[2]++;
+				 else if (FigList[i]->getType() == "Hexagon")
+					 combinations[3]++;
+				 else
+					 combinations[4]++;
+			 }
+			 else if (FigList[i]->GetGfxInfo().FillClr == WHITE)
+			 {
+				 if (FigList[i]->getType() == "Rectangle")
+					 combinations[5]++;
+				 else if (FigList[i]->getType() == "Triangle")
+					 combinations[6]++;
+				 else if (FigList[i]->getType() == "Square")
+					 combinations[7]++;
+				 else if (FigList[i]->getType() == "Hexagon")
+					 combinations[8]++;
+				 else
+					 combinations[9]++;
+			 }
+			 else if (FigList[i]->GetGfxInfo().FillClr == BLUE)
+			 {
+				 if (FigList[i]->getType() == "Rectangle")
+					 combinations[10]++;
+				 else if (FigList[i]->getType() == "Triangle")
+					 combinations[11]++;
+				 else if (FigList[i]->getType() == "Square")
+					 combinations[12]++;
+				 else if (FigList[i]->getType() == "Hexagon")
+					 combinations[13]++;
+				 else
+					 combinations[14]++;
+			 }
+			 else if (FigList[i]->GetGfxInfo().FillClr == GREEN)
+			 {
+				 if (FigList[i]->getType() == "Rectangle")
+					 combinations[15]++;
+				 else if (FigList[i]->getType() == "Triangle")
+					 combinations[16]++;
+				 else if (FigList[i]->getType() == "Square")
+					 combinations[17]++;
+				 else if (FigList[i]->getType() == "Hexagon")
+					 combinations[18]++;
+				 else
+					 combinations[19]++;
+			 }
+			 else
+			 {
+				 if (FigList[i]->getType() == "Rectangle")
+					 combinations[20]++;
+				 else if (FigList[i]->getType() == "Triangle")
+					 combinations[21]++;
+				 else if (FigList[i]->getType() == "Square")
+					 combinations[22]++;
+				 else if (FigList[i]->getType() == "Hexagon")
+					 combinations[23]++;
+				 else
+					 combinations[24]++;
+			 }
+		 }
+		 else {
+			 if (FigList[i]->getType() == "Rectangle")
+				 combinations[25]++;
+			 else if (FigList[i]->getType() == "Triangle")
+				 combinations[26]++;
+			 else if (FigList[i]->getType() == "Square")
+				 combinations[27]++;
+			 else if (FigList[i]->getType() == "Hexagon")
+				 combinations[28]++;
+			 else
+				 combinations[29]++;
+
+		 }
+	 }
+	 return combinations;
+ }
+
  CFigure* ApplicationManager::DrawnFigs(int i) const
  {
 	 return FigList[i];
  }
 
 
-
- void ApplicationManager::SaveAll( string fname )
- {
-	 
+ void ApplicationManager::SaveAll( ofstream& prout) const
+ { 
+	 prout << FigCount << endl;
 	 for (int i = 0; i < FigCount; i++)
 	 {
+		 FigList[i]->Save(prout);
 		 
-		 FigList[i]->Save(ofstream (fname));
 	 }
  }
 

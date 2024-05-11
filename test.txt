@@ -1,0 +1,4 @@
+3
+Hexagon 1 219 220 Blue Not Filled
+Triangle 2 630 229 551 334 745 318 Blue Not Filled
+Square 3 356 324 Blue Not Filled

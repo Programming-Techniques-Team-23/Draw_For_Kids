@@ -1,0 +1,7 @@
+6
+Hexagon 1 118 244 Blue Not Filled
+Triangle 2 388 186 407 260 543 283 Blue Not Filled
+Square 3 901 290 Blue Not Filled
+Rectangle 4 291 379 354 434  Blue Not Filled
+Hexagon 5 165 339 Blue Not Filled
+Triangle 6 528 367 498 412 583 432 Blue Not Filled

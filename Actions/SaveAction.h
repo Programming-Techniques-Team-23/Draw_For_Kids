@@ -2,16 +2,14 @@
 #include"../ApplicationManager.h"
 
 
-#ifndef SAVE_ACTION_H
-#endif SAVE_ACTION_H
 
 class SaveAction : public Action
 {
-private :
+private:
 	string name;
+	ofstream fout;
 public:
-	SaveAction(ApplicationManager* AM);
+	SaveAction(ApplicationManager* pApp);
 	virtual void ReadActionParameters();
 	virtual void Execute();
-	
 };

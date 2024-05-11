@@ -1,0 +1,5 @@
+4
+Hexagon 1 278 158 Blue Not Filled
+Circle 2 618 472 618 472  Blue Not Filled
+Square 3 685 286 Blue Not Filled
+Circle 4 230 339 318 373  Blue Not Filled
