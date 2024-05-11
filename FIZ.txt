@@ -1,3 +1,0 @@
-2
-Hexagon 0 361 356 Blue Blue
-Triangle 1 467 269 829 386 800 262 Yellow Blue

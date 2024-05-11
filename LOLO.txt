@@ -1,6 +1,0 @@
-5
-Rectangle 0 159 196 813 457  Blue Not_Filled
-Square 1 501 337 Blue Not_Filled
-Triangle 2 929 225 637 306 946 426 Blue Not_Filled
-Hexagon 3 134 281 Blue Not_Filled
-Circle 4 255 174 297 175  Blue Not_Filled

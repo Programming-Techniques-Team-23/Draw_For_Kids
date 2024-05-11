@@ -56,13 +56,9 @@ void LoadAction::Execute()
 
 			F->Load(fin);
 			pManager->AddFigure(F);
-
 		}
-
 		pManager->UpdateInterface();
 		pManager->UnselectAll();
-
-
 		fin.close();
 		pout->PrintMessage("File loaded");
 	}

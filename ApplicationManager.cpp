@@ -181,7 +181,7 @@ void ApplicationManager::AddFigure(CFigure* pFig)
 	if (FigCount < MaxFigCount)
 	{
 		FigList[FigCount] = pFig;
-		pFig->Setid(FigCount);
+		pFig->Setid(FigCount-1);
 		FigCount++;
 
 	}
@@ -471,9 +471,7 @@ CFigure* ApplicationManager::GetFigure(int x, int y) const
  {
 	 pOut->ClearDrawArea();
 	 for (int i = 0; i < FigCount; i++)
-		 if(FigList[i]->IsHidden()==false)
 		 FigList[i]->Draw(pOut);
-	 
 	 if (mode == 0) {
 		 pOut->CreateDrawToolBar();
 	 }
